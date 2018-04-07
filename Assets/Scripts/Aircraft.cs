@@ -22,22 +22,24 @@ public class Aircraft : MonoBehaviour
     }
     private void Update()
     {
-
-#if UNITY_EDITOR
-        vertical = Input.GetAxis("Vertical");
-        horizontal = Input.GetAxis("Horizontal");
-
-#elif UNITY_ANDROID
-        vertical = Input.GetAxis("Vertical");
-        horizontal = Input.GetAxis("Horizontal");
-        //vertical = CrossPlatformInputManager.GetAxis("Vertical");
-        //horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-#endif
+        vertical = InputController.GetAxis("Vertical");
+        horizontal = InputController.GetAxis("Horizontal");
 
         Move();
         Rotate();
         MoveCamera();
 
+        if (InputController.ButtonClicked ("Slow"))
+        {
+            currentSpeed -= (initialSpeed / 10) * Time.deltaTime;
+            currentSpeed = Mathf.Clamp(currentSpeed, initialSpeed / 10, initialSpeed);
+        }
+
+        if (InputController.ButtonClicked("Turbo"))
+        {
+            currentSpeed += (initialSpeed * 20) * Time.deltaTime;
+            currentSpeed = Mathf.Clamp(currentSpeed, initialSpeed / 10, initialSpeed * 2.5f);
+        }
     }
 
     private void Move()
