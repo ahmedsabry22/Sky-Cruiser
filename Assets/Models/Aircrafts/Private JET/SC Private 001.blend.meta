@@ -1,0 +1,256 @@
+fileFormatVersion: 2
+guid: b742a06eb68cfa54f9058f0339048e72
+timeCreated: 1523038315
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: 001_Pilot_Seat_01
+    100002: 001_Pilot_Seat_02
+    100004: Elevator_Array_Left_
+    100006: Elevator_Array_Left__001
+    100008: Elevator_L01
+    100010: Elevator_R01
+    100012: Engine_01_Left
+    100014: Engine_01_Right
+    100016: Engine_02_Left
+    100018: Engine_02_Right
+    100020: Engine_L01
+    100022: Engine_Left
+    100024: Engine_R01
+    100026: Engine_Right
+    100028: Human_reference_1_75m_tall
+    100030: Human_reference_1_75m_tall_
+    100032: Human_reference_1_75m_tall_GroundCrew_001
+    100034: Light_cold_fill
+    100036: Light_warm_fill
+    100038: Main_Hull
+    100040: Main_Hull_0001
+    100042: Pilot_01
+    100044: Pilot_02
+    100046: Plane
+    100048: //RootNode
+    100050: Wing_SET
+    100052: Wing_set
+    100054: X01_Pilot_Seat_01
+    100056: X01_Pilot_Seat_02
+    100058: X_Pilot_01_
+    100060: X_Pilot_02
+    400000: 001_Pilot_Seat_01
+    400002: 001_Pilot_Seat_02
+    400004: Elevator_Array_Left_
+    400006: Elevator_Array_Left__001
+    400008: Elevator_L01
+    400010: Elevator_R01
+    400012: Engine_01_Left
+    400014: Engine_01_Right
+    400016: Engine_02_Left
+    400018: Engine_02_Right
+    400020: Engine_L01
+    400022: Engine_Left
+    400024: Engine_R01
+    400026: Engine_Right
+    400028: Human_reference_1_75m_tall
+    400030: Human_reference_1_75m_tall_
+    400032: Human_reference_1_75m_tall_GroundCrew_001
+    400034: Light_cold_fill
+    400036: Light_warm_fill
+    400038: Main_Hull
+    400040: Main_Hull_0001
+    400042: Pilot_01
+    400044: Pilot_02
+    400046: Plane
+    400048: //RootNode
+    400050: Wing_SET
+    400052: Wing_set
+    400054: X01_Pilot_Seat_01
+    400056: X01_Pilot_Seat_02
+    400058: X_Pilot_01_
+    400060: X_Pilot_02
+    2100000: Main_Surface_
+    2100002: Material_Chrome
+    2100004: Jet_Eng_ne_Exhaust
+    2100006: Main_Interior_003_Seat_02_001
+    2100008: Main_Interior_003_Seat_01_001
+    2100010: Main_Interior_003_LSS_Glow_001
+    2100012: Pilot_outfit_01_001
+    2100014: Pilot_outfit_02_001
+    2100016: Pilot_outfit_03_001
+    2100018: Pilot_outfit_01
+    2100020: Pilot_outfit_02
+    2100022: Pilot_outfit_03
+    2100024: Light_cold_fill
+    2100026: Light_warm_fill
+    2100028: Ground_plane
+    2300000: 001_Pilot_Seat_01
+    2300002: 001_Pilot_Seat_02
+    2300004: Elevator_Array_Left_
+    2300006: Elevator_Array_Left__001
+    2300008: Elevator_L01
+    2300010: Elevator_R01
+    2300012: Engine_01_Left
+    2300014: Engine_01_Right
+    2300016: Engine_02_Left
+    2300018: Engine_02_Right
+    2300020: Engine_L01
+    2300022: Engine_Left
+    2300024: Engine_R01
+    2300026: Engine_Right
+    2300028: Human_reference_1_75m_tall
+    2300030: Human_reference_1_75m_tall_
+    2300032: Human_reference_1_75m_tall_GroundCrew_001
+    2300034: Light_cold_fill
+    2300036: Light_warm_fill
+    2300038: Main_Hull
+    2300040: Main_Hull_0001
+    2300042: Pilot_01
+    2300044: Pilot_02
+    2300046: Plane
+    2300048: Wing_SET
+    2300050: Wing_set
+    2300052: X01_Pilot_Seat_01
+    2300054: X01_Pilot_Seat_02
+    2300056: X_Pilot_01_
+    2300058: X_Pilot_02
+    3300000: 001_Pilot_Seat_01
+    3300002: 001_Pilot_Seat_02
+    3300004: Elevator_Array_Left_
+    3300006: Elevator_Array_Left__001
+    3300008: Elevator_L01
+    3300010: Elevator_R01
+    3300012: Engine_01_Left
+    3300014: Engine_01_Right
+    3300016: Engine_02_Left
+    3300018: Engine_02_Right
+    3300020: Engine_L01
+    3300022: Engine_Left
+    3300024: Engine_R01
+    3300026: Engine_Right
+    3300028: Human_reference_1_75m_tall
+    3300030: Human_reference_1_75m_tall_
+    3300032: Human_reference_1_75m_tall_GroundCrew_001
+    3300034: Light_cold_fill
+    3300036: Light_warm_fill
+    3300038: Main_Hull
+    3300040: Main_Hull_0001
+    3300042: Pilot_01
+    3300044: Pilot_02
+    3300046: Plane
+    3300048: Wing_SET
+    3300050: Wing_set
+    3300052: X01_Pilot_Seat_01
+    3300054: X01_Pilot_Seat_02
+    3300056: X_Pilot_01_
+    3300058: X_Pilot_02
+    4300000: Main_Hull_0001
+    4300002: Wing_set
+    4300004: Engine_01_Left
+    4300006: Engine_02_Left
+    4300008: Elevator_L01
+    4300010: X01_Pilot_Seat_01
+    4300012: X_Pilot_01_
+    4300014: X01_Pilot_Seat_02
+    4300016: X_Pilot_02
+    4300018: Human_reference_1_75m_tall
+    4300020: Engine_01_Right
+    4300022: Engine_02_Right
+    4300024: Elevator_R01
+    4300026: Human_reference_1_75m_tall_GroundCrew_001
+    4300028: Main_Hull
+    4300030: Engine_Right
+    4300032: Engine_R01
+    4300034: Engine_Left
+    4300036: Elevator_Array_Left__001
+    4300038: Engine_L01
+    4300040: Elevator_Array_Left_
+    4300042: Human_reference_1_75m_tall_
+    4300044: 001_Pilot_Seat_02
+    4300046: Pilot_02
+    4300048: 001_Pilot_Seat_01
+    4300050: Pilot_01
+    4300052: Wing_SET
+    4300054: Light_cold_fill
+    4300056: Light_warm_fill
+    4300058: Plane
+    7400000: Default Take
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
