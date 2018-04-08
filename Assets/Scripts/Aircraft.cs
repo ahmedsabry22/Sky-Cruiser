@@ -29,16 +29,14 @@ public class Aircraft : MonoBehaviour
         Rotate();
         MoveCamera();
 
-        if (InputController.ButtonClicked ("Slow"))
+        if (InputController.ButtonClicked("Brake"))
         {
-            currentSpeed -= (initialSpeed / 10) * Time.deltaTime;
-            currentSpeed = Mathf.Clamp(currentSpeed, initialSpeed / 10, initialSpeed);
+            Brake();
         }
 
         if (InputController.ButtonClicked("Turbo"))
         {
-            currentSpeed += (initialSpeed * 20) * Time.deltaTime;
-            currentSpeed = Mathf.Clamp(currentSpeed, initialSpeed / 10, initialSpeed * 2.5f);
+            Turbo();
         }
     }
 
@@ -51,7 +49,19 @@ public class Aircraft : MonoBehaviour
     }
     private void Rotate()
     {
-        transform.Rotate(new Vector3(-vertical * verticalRotationSpeed, 0, -horizontal * horzontalRotationSpeed) * Time.deltaTime);
+        transform.Rotate(new Vector3(-vertical * verticalRotationSpeed, horizontal * horzontalRotationSpeed, 0) * Time.deltaTime);
+    }
+
+    private void Brake()
+    {
+        currentSpeed -= (initialSpeed / 10) * Time.deltaTime;
+        currentSpeed = Mathf.Clamp(currentSpeed, initialSpeed / 10, initialSpeed);
+    }
+
+    private void Turbo()
+    {
+        currentSpeed += (initialSpeed * 20) * Time.deltaTime;
+        currentSpeed = Mathf.Clamp(currentSpeed, initialSpeed / 10, initialSpeed * 2.5f);
     }
 
     private void MoveCamera()
