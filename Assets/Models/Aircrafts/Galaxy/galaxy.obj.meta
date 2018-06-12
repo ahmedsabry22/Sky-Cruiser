@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: b75d263872e46884d8c0be8c049d32b9
-timeCreated: 1523038377
-licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -1501,6 +1499,7 @@ ModelImporter:
     4300492: Wings_Left_Wing_wing_left_3
     4300494: Wings_Right_Wing1_right_wing_part_1
     4300496: Wings_Right_Wing1_Right_wing_Part_2
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -1520,6 +1519,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5

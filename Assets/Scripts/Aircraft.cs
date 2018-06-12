@@ -1,51 +1,43 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class Aircraft : MonoBehaviour
 {
+    public AircraftData aircraftData;
+
     public float initialSpeed;
     public float currentSpeed;
     public float verticalRotationSpeed, horzontalRotationSpeed;
 
-    public float cameraForwardFactor, cameraUpFactor;
-    public float cameraFollowTime;
-    public float cameraBias;
+    public GameObject ExplosionParticlePrefab;
 
-    private new GameObject camera;
     private float vertical, horizontal;
-    private Vector3 currentVelocity;
+    private float speedAxis;
+
 
     private void Awake()
     {
-        camera = FindObjectOfType<Camera>().gameObject;
         currentSpeed = initialSpeed;
     }
+
     private void Update()
     {
         vertical = InputController.GetAxis("Vertical");
         horizontal = InputController.GetAxis("Horizontal");
+        speedAxis = InputController.GetAxis("Speed");
+        speedAxis = Mathf.Clamp(speedAxis, 0.1f, 1);
 
         Move();
         Rotate();
-        MoveCamera();
-
-        if (InputController.ButtonClicked("Brake"))
-        {
-            Brake();
-        }
-
-        if (InputController.ButtonClicked("Turbo"))
-        {
-            Turbo();
-        }
     }
 
     private void Move()
     {
-        currentSpeed -= transform.forward.y * Time.deltaTime * currentSpeed;
-        currentSpeed = Mathf.Clamp(currentSpeed, initialSpeed / 3, initialSpeed * 3);
+        currentSpeed -= transform.forward.y * initialSpeed * Time.deltaTime;
+        currentSpeed = Mathf.Clamp(currentSpeed, initialSpeed / 3, initialSpeed);
 
-        transform.position += transform.forward * currentSpeed * Time.deltaTime;
+        transform.position += transform.forward * (speedAxis * currentSpeed) * Time.deltaTime;
     }
     private void Rotate()
     {
@@ -64,10 +56,19 @@ public class Aircraft : MonoBehaviour
         currentSpeed = Mathf.Clamp(currentSpeed, initialSpeed / 10, initialSpeed * 2.5f);
     }
 
-    private void MoveCamera()
+    private void OnCollisionEnter(Collision collision)
     {
-        Vector3 desiredPosition = (transform.position - transform.forward * cameraForwardFactor) + (transform.up * cameraUpFactor);
-        camera.transform.position = Vector3.SmoothDamp(camera.transform.position, camera.transform.position * cameraBias + desiredPosition * (1 - cameraBias), ref currentVelocity, cameraFollowTime);
-        camera.transform.LookAt(transform.position + transform.forward * cameraForwardFactor);
+        if (collision.gameObject.tag == "Land")
+        {
+            if (!GetComponent<AircraftWheels>().AircraftLanded)
+            {
+                Instantiate(ExplosionParticlePrefab, transform.position, Quaternion.identity);
+                Audio.Instance.PlayClip("explosion");
+                GameObject losePanel = Instantiate(Resources.Load<GameObject>("Prefabs/LosePanel"), GameObject.FindGameObjectWithTag("UICanvas").transform, false);
+                losePanel.transform.Find("play_btn").GetComponent<Button>().onClick.AddListener(() => FindObjectOfType<SceneController>().StartScene(1));
+                losePanel.transform.Find("exit_btn").GetComponent<Button>().onClick.AddListener(() => FindObjectOfType<SceneController>().StartScene(0));
+                Destroy(gameObject);
+            }
+        }
     }
 }

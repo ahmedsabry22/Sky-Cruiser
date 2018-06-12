@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: 3de26f99b15629944b1f012f44f68cee
-timeCreated: 1523038285
-licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -181,6 +179,7 @@ ModelImporter:
     4300052: X_Pilot_02_Cube.006_Pilot_outfit_01.001
     4300054: X_Pilot_02_Cube.006_Pilot_outfit_02.001
     4300056: X_Pilot_02_Cube.006_Pilot_outfit_03.001
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -200,6 +199,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5

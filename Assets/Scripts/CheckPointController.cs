@@ -7,7 +7,11 @@ public class CheckPointController : MonoBehaviour
     public GameObject[] Points;
     public static CheckPointController Instance;
 
-    public int PreviousPointIndex, TargetPointIndex;
+    private int targetPointIndex;
+    public int TargetPointIndex
+    {
+        get { return (targetPointIndex); }
+    }
 
     private int NumberOfPoints;
 
@@ -16,21 +20,18 @@ public class CheckPointController : MonoBehaviour
         if (Instance == null)
             Instance = this;
 
-        TargetPointIndex = 0;
+        targetPointIndex = 0;
         NumberOfPoints = Points.Length;
     }
 
-    public void OnPointChecked()
+    public void OnPointChecked(Target target)
     {
         if (TargetPointIndex == NumberOfPoints - 1)
         {
-            print("You won!");
-            Destroy(Points[PreviousPointIndex]);
-            return;
+            Mission.Instance.OnMissionDone();
         }
-        PreviousPointIndex = TargetPointIndex;
-        TargetPointIndex++;
 
-        Destroy(Points[PreviousPointIndex]);
+        target.OnTargetChecked(TargetPointIndex);
+        targetPointIndex++;
     }
 }

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    public int MissionNumber;
     public int CheckPointIndexInMission;
 
+    private Target target;
+
+    private bool collided = false;
     public bool Done
     {
         get { return (Done); }
@@ -14,20 +16,33 @@ public class CheckPoint : MonoBehaviour
         {
             if (value)
             {
-                CheckPointController.Instance.OnPointChecked();
+                CheckPointController.Instance.OnPointChecked(target);
             }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Awake()
+    {
+        target = GetComponent<Target>();
+    }
+
+    private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Aircraft")
         {
-            print("collided with aircraft");
+            print(CheckPointIndexInMission + "  " + CheckPointController.Instance.TargetPointIndex);
             if (CheckPointIndexInMission == CheckPointController.Instance.TargetPointIndex)
-                Done = true;
+            {
+                if (!collided)
+                {
+                    collided = true;
+                    Done = true;
+                    Destroy(gameObject);
+                }
+            }
+
             else
-                Debug.LogWarning("missed a check point");
+                Popup.Instance.Show("missed a check point");
         }
     }
 }

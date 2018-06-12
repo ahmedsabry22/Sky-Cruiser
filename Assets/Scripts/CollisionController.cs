@@ -6,7 +6,7 @@ public class CollisionController : MonoBehaviour
     public GameObject[] Colliders;
     public static CollisionController Instance;
 
-    public int PreviousColliderIndex, TargetColliderIndex;
+    private int TargetColliderIndex;
 
     private int NumberOfColliders;
 
@@ -19,17 +19,16 @@ public class CollisionController : MonoBehaviour
         NumberOfColliders = Colliders.Length;
     }
 
-    public void OnCollionEvent()
+    public void OnCollionEvent(CollisionAction collisionAction)
     {
         if (TargetColliderIndex == NumberOfColliders - 1)
         {
-            print("You won!");
-            Destroy(Colliders[PreviousColliderIndex]);
+            if (FindObjectOfType<AircraftWheels>().AircraftLanded)
+            {
+                Mission.Instance.OnMissionDone();
+            }
             return;
         }
-        PreviousColliderIndex = TargetColliderIndex;
         TargetColliderIndex++;
-
-        Destroy(Colliders[TargetColliderIndex]);
     }
 }

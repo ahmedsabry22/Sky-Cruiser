@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Aircraft
+  - Land
+  - Fire
+  - UICanvas
   layers:
   - Default
   - TransparentFX
