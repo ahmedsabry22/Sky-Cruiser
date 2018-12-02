@@ -8,7 +8,7 @@ public class Aircraft : MonoBehaviour
 
     public float initialSpeed;
     public float currentSpeed;
-    public float verticalRotationSpeed, horzontalRotationSpeed;
+    public float verticalRotationSpeed, horizontalRotationSpeed;
 
     public GameObject ExplosionParticlePrefab;
 
@@ -41,7 +41,7 @@ public class Aircraft : MonoBehaviour
     }
     private void Rotate()
     {
-        transform.Rotate(new Vector3(-vertical * verticalRotationSpeed, horizontal * horzontalRotationSpeed, 0) * Time.deltaTime);
+        transform.Rotate(new Vector3(-vertical * verticalRotationSpeed, horizontal * horizontalRotationSpeed, 0) * Time.deltaTime);
     }
 
     private void Brake()

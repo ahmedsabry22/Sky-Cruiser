@@ -29,7 +29,8 @@ public class DamagedEngine : MonoBehaviour
 
     public void PlayParticles()
     {
-        ParticleSystem[] explosions = explosionParticle.GetComponentsInChildren<ParticleSystem>();
+        ParticleSystem[] explosions = explosionParticle.GetComponentsInChildren<ParticleSystem>();  // You should change this to something better, cuz we may add differemt types of particles, so we should not get them all.
+
         foreach (ParticleSystem p in explosions)
         {
             p.Play();

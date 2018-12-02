@@ -6,10 +6,11 @@ public class Mission : MonoBehaviour
 {
     public int missionIndex;
     public Vector3 aircraftStartPosition;
-    public static Mission Instance;
     public MissionType missionType;
 
     public int coinAward;      // Number of coins recieved after finishing the mission successfully.
+
+    public static Mission Instance;
 
     private void Awake()
     {
