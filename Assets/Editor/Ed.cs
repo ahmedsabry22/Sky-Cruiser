@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Ed : EditorWindow
 {
@@ -14,6 +16,7 @@ public class Ed : EditorWindow
 
     public string[] options = new string[] { "Cube", "Sphere", "Plane" };
     int index = 0;
+
     private void OnGUI()
     {
         index = EditorGUILayout.Popup(index, options);

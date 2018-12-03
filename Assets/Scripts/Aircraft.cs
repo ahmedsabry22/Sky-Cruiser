@@ -41,6 +41,7 @@ public class Aircraft : MonoBehaviour
     }
     private void Rotate()
     {
+        print("roatating");
         transform.Rotate(new Vector3(-vertical * verticalRotationSpeed, horizontal * horizontalRotationSpeed, 0) * Time.deltaTime);
     }
 
