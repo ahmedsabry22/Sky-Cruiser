@@ -14,13 +14,14 @@ public class Ed : EditorWindow
         window.Show();
     }
 
-    public string[] options = new string[] { "Cube", "Sphere", "Plane" };
-    int index = 0;
-
     private void OnGUI()
     {
-        index = EditorGUILayout.Popup(index, options);
-        EditorGUILayout.LabelField("This is the first real editor window I create");
+        var style = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.UpperCenter, fontSize = 30, fontStyle = FontStyle.Bold, fixedHeight = 50 };
+
+        EditorGUILayout.LabelField("UI Animation Editor", style);
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
 
         GUILayout.BeginHorizontal();
 
@@ -31,12 +32,6 @@ public class Ed : EditorWindow
                 if (g.GetComponent<AnimationP>() == null)
                 {
                     g.AddComponent<AnimationP>();
-                    if (animatorType == AnimatorTypes.EaseIn)
-                        Debug.Log("Ease In");
-                    else if (animatorType == AnimatorTypes.PingPong)
-                        Debug.Log("Ping Pong");
-                    else if (animatorType == AnimatorTypes.EaseOut)
-                        Debug.Log("Ease Out");
                 }
             }
         }

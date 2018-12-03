@@ -2,6 +2,7 @@
 using UnityEditor;
 
 [CustomEditor(typeof(AnimationP))]
+[CanEditMultipleObjects]
 public class AnimationPInspector : Editor
 {
     private AnimationP animationP;
