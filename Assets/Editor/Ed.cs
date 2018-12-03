@@ -28,9 +28,9 @@ public class Ed : EditorWindow
         {
             foreach (GameObject g in Selection.gameObjects)
             {
-                if (g.GetComponent<Animator>() == null)
+                if (g.GetComponent<AnimationP>() == null)
                 {
-                    g.AddComponent<Animator>();
+                    g.AddComponent<AnimationP>();
                     if (animatorType == AnimatorTypes.EaseIn)
                         Debug.Log("Ease In");
                     else if (animatorType == AnimatorTypes.PingPong)
@@ -44,8 +44,8 @@ public class Ed : EditorWindow
         {
             foreach (GameObject g in Selection.gameObjects)
             {
-                if (g.GetComponent<Animator>() != null)
-                    DestroyImmediate(g.GetComponent<Animator>());
+                if (g.GetComponent<AnimationP>() != null)
+                    DestroyImmediate(g.GetComponent<AnimationP>());
             }
         }
 

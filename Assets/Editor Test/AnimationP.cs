@@ -4,9 +4,19 @@ using UnityEngine.UI;
 
 public class AnimationP : MonoBehaviour
 {
+    public delegate void ItemVisibility();
+    public event ItemVisibility onItemShow;
+    public event ItemVisibility onItemHide;
+
     public float animationDuration = 3;
 
     public AnimationType animationType;
+    public AnimationFromCornerType animationFromCornerType;
+
+    public float elasticPower = 1;
+
+    public bool withDelay;
+    public float delay;
 
     private RectTransform rect;
 
@@ -20,22 +30,68 @@ public class AnimationP : MonoBehaviour
     private void Start()
     {
         initialPosition = transform.position;
+
+        onItemShow += () => print("show event invoked");
+        onItemHide += () => print("hide event invoked");
     }
 
     private void Update()
     {
         if (Input.GetKeyDown("z"))
-            StartCoroutine(AnimateFromCornerWithScale_SHOW());
-        if (Input.GetKeyDown("v"))
-            StartCoroutine(AnimateFromCornerWithScale_HIDE());
+            ShowItem();
         if (Input.GetKeyDown("x"))
-            StartCoroutine(AnimateElasticScale());
-        if (Input.GetKeyDown("c"))
-            StartCoroutine(AnimateScale());
+            HideItem();
+    }
+
+    public void ShowItem()
+    {
+        if (animationType == AnimationType.Scale)
+        {
+            StartCoroutine(AnimateScale_SHOW());
+        }
+        else if (animationType == AnimationType.ScaleElastic)
+        {
+            StartCoroutine(AnimateElasticScale_SHOW());
+        }
+        else if (animationType == AnimationType.Fade)
+        {
+            StartCoroutine(FadeIn_SHOW());
+        }
+        else if (animationType == AnimationType.ShowFromCorner)
+        {
+            StartCoroutine(AnimateFromCornerWithScale_SHOW());
+        }
+
+        onItemShow.Invoke();
+    }
+
+    public void HideItem()
+    {
+        if (animationType == AnimationType.Scale)
+        {
+            StartCoroutine(AnimateScale_HIDE());
+        }
+        else if (animationType == AnimationType.ScaleElastic)
+        {
+            StartCoroutine(AnimateElasticScale_HIDE());
+        }
+        else if (animationType == AnimationType.Fade)
+        {
+            StartCoroutine(FadeIn_HIDE());
+        }
+        else if (animationType == AnimationType.ShowFromCorner)
+        {
+            StartCoroutine(AnimateFromCornerWithScale_HIDE());
+        }
+
+        onItemHide.Invoke();
     }
 
     private IEnumerator AnimateFromCornerWithScale_SHOW()
     {
+        if (withDelay)
+            yield return (new WaitForSeconds(delay));
+
         float startX = 0;
         float startY = 0;
 
@@ -52,22 +108,22 @@ public class AnimationP : MonoBehaviour
             endColors[i].a = 1;
         }
 
-        if (animationType == AnimationType.ShopFromBottomRight)
+        if (animationFromCornerType == AnimationFromCornerType.ShopFromBottomRight)
         {
             startX = Screen.width;
             startY = 0;
         }
-        else if (animationType == AnimationType.ShopFromBottomLeft)
+        else if (animationFromCornerType == AnimationFromCornerType.ShopFromBottomLeft)
         {
             startX = 0;
             startY = 0;
         }
-        else if (animationType == AnimationType.ShopFromTopRight)
+        else if (animationFromCornerType == AnimationFromCornerType.ShopFromTopRight)
         {
             startX = Screen.width;
             startY = Screen.height;
         }
-        else if (animationType == AnimationType.ShopFromTopLeft)
+        else if (animationFromCornerType == AnimationFromCornerType.ShopFromTopLeft)
         {
             startX = 0;
             startY = Screen.height;
@@ -105,6 +161,9 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateFromCornerWithScale_HIDE()
     {
+        if (withDelay)
+            yield return (new WaitForSeconds(delay));
+
         float endX = 0;
         float endY = 0;
         float startX = Screen.width / 2;
@@ -123,22 +182,22 @@ public class AnimationP : MonoBehaviour
             endColors[i].a = 0;
         }
 
-        if (animationType == AnimationType.ShopFromBottomRight)
+        if (animationFromCornerType == AnimationFromCornerType.ShopFromBottomRight)
         {
             endX = Screen.width;
             endY = 0;
         }
-        else if (animationType == AnimationType.ShopFromBottomLeft)
+        else if (animationFromCornerType == AnimationFromCornerType.ShopFromBottomLeft)
         {
             endX = 0;
             endY = 0;
         }
-        else if (animationType == AnimationType.ShopFromTopRight)
+        else if (animationFromCornerType == AnimationFromCornerType.ShopFromTopRight)
         {
             endX = Screen.width;
             endY = Screen.height;
         }
-        else if (animationType == AnimationType.ShopFromTopLeft)
+        else if (animationFromCornerType == AnimationFromCornerType.ShopFromTopLeft)
         {
             endX = 0;
             endY = Screen.height;
@@ -173,8 +232,11 @@ public class AnimationP : MonoBehaviour
         }
     }
 
-    private IEnumerator AnimateElasticScale()
+    private IEnumerator AnimateElasticScale_SHOW()
     {
+        if (withDelay)
+            yield return (new WaitForSeconds(delay));
+
         Vector3 startPosition = rect.position;
         float startTime = Time.time;
 
@@ -182,24 +244,47 @@ public class AnimationP : MonoBehaviour
         {
             float t = (Time.time - startTime) / animationDuration;
 
-            rect.localScale = Vector3.Lerp(Vector3.zero, Vector3.one + new Vector3(0.1f, 0.1f, 0.1f), t);
+            rect.localScale = Vector3.Lerp(Vector3.zero, Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticPower, t);
 
             yield return (null);
         }
 
-        rect.localScale = Vector3.one + new Vector3(0.1f, 0.1f, 0.1f);
+        rect.localScale = Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticPower;
 
         startTime = Time.time;
         while (Time.time <= startTime + animationDuration / 5)
         {
             float t = (Time.time - startTime) / (animationDuration / 5);
-            rect.localScale = Vector3.Lerp(Vector3.one + new Vector3(0.1f, 0.1f, 0.1f), Vector3.one, t);
+            rect.localScale = Vector3.Lerp(Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticPower, Vector3.one, t);
             yield return (null);
         }
     }
 
-    private IEnumerator AnimateScale()
+    private IEnumerator AnimateElasticScale_HIDE()
     {
+        if (withDelay)
+            yield return (new WaitForSeconds(delay));
+
+        Vector3 startPosition = rect.position;
+        float startTime = Time.time;
+
+        while (Time.time <= startTime + animationDuration)
+        {
+            float t = (Time.time - startTime) / animationDuration;
+
+            rect.localScale = Vector3.Lerp(Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticPower, Vector3.zero, t);
+
+            yield return (null);
+        }
+
+        rect.localScale = Vector3.zero;
+    }
+
+    private IEnumerator AnimateScale_SHOW()
+    {
+        if (withDelay)
+            yield return (new WaitForSeconds(delay));
+
         Vector3 startPosition = rect.position;
         float startTime = Time.time;
 
@@ -214,9 +299,103 @@ public class AnimationP : MonoBehaviour
 
         rect.localScale = Vector3.one;
     }
+
+    private IEnumerator AnimateScale_HIDE()
+    {
+        if (withDelay)
+            yield return (new WaitForSeconds(delay));
+
+        Vector3 startPosition = rect.position;
+        float startTime = Time.time;
+
+        while (Time.time <= startTime + animationDuration)
+        {
+            float t = (Time.time - startTime) / animationDuration;
+
+            rect.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t);
+
+            yield return (null);
+        }
+
+        rect.localScale = Vector3.zero;
+    }
+
+    private IEnumerator FadeIn_SHOW()
+    { 
+        if (withDelay)
+            yield return (new WaitForSeconds(delay));
+
+        Image[] images = GetComponentsInChildren<Image>();
+        Color[] startColors = new Color[images.Length];
+        Color[] endColors = new Color[images.Length];
+        float startTime = Time.time;
+
+        for (int i = 0; i < images.Length; i++)
+        {
+            startColors[i] = images[i].color;
+            startColors[i].a = 0;
+
+            endColors[i] = images[i].color;
+            endColors[i].a = 1;
+        }
+
+        while (Time.time < startTime + animationDuration)
+        {
+            float t = (Time.time - startTime) / animationDuration;
+            for (int i = 0; i < images.Length; i++)
+            {
+                images[i].color = Color.Lerp(startColors[i], endColors[i], t);
+            }
+
+            yield return (null);
+        }
+        for (int i = 0; i < images.Length; i++)
+        {
+            images[i].color = endColors[i];
+        }
+    }
+
+    private IEnumerator FadeIn_HIDE()
+    {
+        if (withDelay)
+            yield return (new WaitForSeconds(delay));
+
+        Image[] images = GetComponentsInChildren<Image>();
+        Color[] startColors = new Color[images.Length];
+        Color[] endColors = new Color[images.Length];
+        float startTime = Time.time;
+
+        for (int i = 0; i < images.Length; i++)
+        {
+            startColors[i] = images[i].color;
+
+            endColors[i] = images[i].color;
+            endColors[i].a = 0;
+        }
+
+        while (Time.time < startTime + animationDuration)
+        {
+            float t = (Time.time - startTime) / animationDuration;
+            for (int i = 0; i < images.Length; i++)
+            {
+                images[i].color = Color.Lerp(startColors[i], endColors[i], t);
+            }
+
+            yield return (null);
+        }
+        for (int i = 0; i < images.Length; i++)
+        {
+            images[i].color = endColors[i];
+        }
+    }
 }
 
 public enum AnimationType
+{
+    Scale, ScaleElastic, Fade, ShowFromCorner
+}
+
+public enum AnimationFromCornerType
 {
     ShopFromBottomRight, ShopFromTopRight, ShopFromBottomLeft, ShopFromTopLeft
 }
