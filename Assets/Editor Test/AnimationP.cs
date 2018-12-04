@@ -16,7 +16,9 @@ public class AnimationP : MonoBehaviour
     public float elasticPower = 1;
 
     public bool withDelay;
-    public float delay;
+    public float showDelay;
+    public float hideDelay;
+
 
     private RectTransform rect;
 
@@ -31,8 +33,8 @@ public class AnimationP : MonoBehaviour
     {
         initialPosition = transform.position;
 
-        onItemShow += () => print("show event invoked");
-        onItemHide += () => print("hide event invoked");
+        onItemShow += () => print("SHOW event invoked");
+        onItemHide += () => print("HIDE event invoked");
     }
 
     private void Update()
@@ -87,10 +89,12 @@ public class AnimationP : MonoBehaviour
         onItemHide.Invoke();
     }
 
+    #region Show Coroutines
+
     private IEnumerator AnimateFromCornerWithScale_SHOW()
     {
         if (withDelay)
-            yield return (new WaitForSeconds(delay));
+            yield return (new WaitForSeconds(showDelay));
 
         float startX = 0;
         float startY = 0;
@@ -159,10 +163,174 @@ public class AnimationP : MonoBehaviour
         }
     }
 
+    private IEnumerator AnimateElasticScale_SHOW()
+    {
+        if (withDelay)
+            yield return (new WaitForSeconds(showDelay));
+
+        Vector3 startPosition = rect.position;
+        float startTime = Time.time;
+
+        while (Time.time <= startTime + animationDuration)
+        {
+            float t = (Time.time - startTime) / animationDuration;
+
+            rect.localScale = Vector3.Lerp(Vector3.zero, Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticPower, t);
+
+            yield return (null);
+        }
+
+        rect.localScale = Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticPower;
+
+        startTime = Time.time;
+        while (Time.time <= startTime + animationDuration / 5)
+        {
+            float t = (Time.time - startTime) / (animationDuration / 5);
+            rect.localScale = Vector3.Lerp(Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticPower, Vector3.one, t);
+            yield return (null);
+        }
+    }
+
+    private IEnumerator AnimateScale_SHOW()
+    {
+        if (withDelay)
+            yield return (new WaitForSeconds(showDelay));
+
+        Vector3 startPosition = rect.position;
+        float startTime = Time.time;
+
+        while (Time.time <= startTime + animationDuration)
+        {
+            float t = (Time.time - startTime) / animationDuration;
+
+            rect.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t);
+
+            yield return (null);
+        }
+
+        rect.localScale = Vector3.one;
+    }
+
+    private IEnumerator FadeIn_SHOW()
+    {
+        if (withDelay)
+            yield return (new WaitForSeconds(showDelay));
+
+        Image[] images = GetComponentsInChildren<Image>();
+        Color[] startColors = new Color[images.Length];
+        Color[] endColors = new Color[images.Length];
+        float startTime = Time.time;
+
+        for (int i = 0; i < images.Length; i++)
+        {
+            startColors[i] = images[i].color;
+            startColors[i].a = 0;
+
+            endColors[i] = images[i].color;
+            endColors[i].a = 1;
+        }
+
+        while (Time.time < startTime + animationDuration)
+        {
+            float t = (Time.time - startTime) / animationDuration;
+            for (int i = 0; i < images.Length; i++)
+            {
+                images[i].color = Color.Lerp(startColors[i], endColors[i], t);
+            }
+
+            yield return (null);
+        }
+        for (int i = 0; i < images.Length; i++)
+        {
+            images[i].color = endColors[i];
+        }
+    }
+
+    #endregion
+
+    //=======================================================================================
+    //=======================================================================================
+
+    #region Hide Coroutines
+
+    private IEnumerator FadeIn_HIDE()
+    {
+        if (withDelay)
+            yield return (new WaitForSeconds(hideDelay));
+
+        Image[] images = GetComponentsInChildren<Image>();
+        Color[] startColors = new Color[images.Length];
+        Color[] endColors = new Color[images.Length];
+        float startTime = Time.time;
+
+        for (int i = 0; i < images.Length; i++)
+        {
+            startColors[i] = images[i].color;
+
+            endColors[i] = images[i].color;
+            endColors[i].a = 0;
+        }
+
+        while (Time.time < startTime + animationDuration)
+        {
+            float t = (Time.time - startTime) / animationDuration;
+            for (int i = 0; i < images.Length; i++)
+            {
+                images[i].color = Color.Lerp(startColors[i], endColors[i], t);
+            }
+
+            yield return (null);
+        }
+        for (int i = 0; i < images.Length; i++)
+        {
+            images[i].color = endColors[i];
+        }
+    }
+
+    private IEnumerator AnimateScale_HIDE()
+    {
+        if (withDelay)
+            yield return (new WaitForSeconds(hideDelay));
+
+        Vector3 startPosition = rect.position;
+        float startTime = Time.time;
+
+        while (Time.time <= startTime + animationDuration)
+        {
+            float t = (Time.time - startTime) / animationDuration;
+
+            rect.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t);
+
+            yield return (null);
+        }
+
+        rect.localScale = Vector3.zero;
+    }
+
+    private IEnumerator AnimateElasticScale_HIDE()
+    {
+        if (withDelay)
+            yield return (new WaitForSeconds(hideDelay));
+
+        Vector3 startPosition = rect.position;
+        float startTime = Time.time;
+
+        while (Time.time <= startTime + animationDuration)
+        {
+            float t = (Time.time - startTime) / animationDuration;
+
+            rect.localScale = Vector3.Lerp(Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticPower, Vector3.zero, t);
+
+            yield return (null);
+        }
+
+        rect.localScale = Vector3.zero;
+    }
+
     private IEnumerator AnimateFromCornerWithScale_HIDE()
     {
         if (withDelay)
-            yield return (new WaitForSeconds(delay));
+            yield return (new WaitForSeconds(hideDelay));
 
         float endX = 0;
         float endY = 0;
@@ -232,162 +400,8 @@ public class AnimationP : MonoBehaviour
         }
     }
 
-    private IEnumerator AnimateElasticScale_SHOW()
-    {
-        if (withDelay)
-            yield return (new WaitForSeconds(delay));
+    #endregion
 
-        Vector3 startPosition = rect.position;
-        float startTime = Time.time;
-
-        while (Time.time <= startTime + animationDuration)
-        {
-            float t = (Time.time - startTime) / animationDuration;
-
-            rect.localScale = Vector3.Lerp(Vector3.zero, Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticPower, t);
-
-            yield return (null);
-        }
-
-        rect.localScale = Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticPower;
-
-        startTime = Time.time;
-        while (Time.time <= startTime + animationDuration / 5)
-        {
-            float t = (Time.time - startTime) / (animationDuration / 5);
-            rect.localScale = Vector3.Lerp(Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticPower, Vector3.one, t);
-            yield return (null);
-        }
-    }
-
-    private IEnumerator AnimateElasticScale_HIDE()
-    {
-        if (withDelay)
-            yield return (new WaitForSeconds(delay));
-
-        Vector3 startPosition = rect.position;
-        float startTime = Time.time;
-
-        while (Time.time <= startTime + animationDuration)
-        {
-            float t = (Time.time - startTime) / animationDuration;
-
-            rect.localScale = Vector3.Lerp(Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticPower, Vector3.zero, t);
-
-            yield return (null);
-        }
-
-        rect.localScale = Vector3.zero;
-    }
-
-    private IEnumerator AnimateScale_SHOW()
-    {
-        if (withDelay)
-            yield return (new WaitForSeconds(delay));
-
-        Vector3 startPosition = rect.position;
-        float startTime = Time.time;
-
-        while (Time.time <= startTime + animationDuration)
-        {
-            float t = (Time.time - startTime) / animationDuration;
-
-            rect.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t);
-
-            yield return (null);
-        }
-
-        rect.localScale = Vector3.one;
-    }
-
-    private IEnumerator AnimateScale_HIDE()
-    {
-        if (withDelay)
-            yield return (new WaitForSeconds(delay));
-
-        Vector3 startPosition = rect.position;
-        float startTime = Time.time;
-
-        while (Time.time <= startTime + animationDuration)
-        {
-            float t = (Time.time - startTime) / animationDuration;
-
-            rect.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t);
-
-            yield return (null);
-        }
-
-        rect.localScale = Vector3.zero;
-    }
-
-    private IEnumerator FadeIn_SHOW()
-    { 
-        if (withDelay)
-            yield return (new WaitForSeconds(delay));
-
-        Image[] images = GetComponentsInChildren<Image>();
-        Color[] startColors = new Color[images.Length];
-        Color[] endColors = new Color[images.Length];
-        float startTime = Time.time;
-
-        for (int i = 0; i < images.Length; i++)
-        {
-            startColors[i] = images[i].color;
-            startColors[i].a = 0;
-
-            endColors[i] = images[i].color;
-            endColors[i].a = 1;
-        }
-
-        while (Time.time < startTime + animationDuration)
-        {
-            float t = (Time.time - startTime) / animationDuration;
-            for (int i = 0; i < images.Length; i++)
-            {
-                images[i].color = Color.Lerp(startColors[i], endColors[i], t);
-            }
-
-            yield return (null);
-        }
-        for (int i = 0; i < images.Length; i++)
-        {
-            images[i].color = endColors[i];
-        }
-    }
-
-    private IEnumerator FadeIn_HIDE()
-    {
-        if (withDelay)
-            yield return (new WaitForSeconds(delay));
-
-        Image[] images = GetComponentsInChildren<Image>();
-        Color[] startColors = new Color[images.Length];
-        Color[] endColors = new Color[images.Length];
-        float startTime = Time.time;
-
-        for (int i = 0; i < images.Length; i++)
-        {
-            startColors[i] = images[i].color;
-
-            endColors[i] = images[i].color;
-            endColors[i].a = 0;
-        }
-
-        while (Time.time < startTime + animationDuration)
-        {
-            float t = (Time.time - startTime) / animationDuration;
-            for (int i = 0; i < images.Length; i++)
-            {
-                images[i].color = Color.Lerp(startColors[i], endColors[i], t);
-            }
-
-            yield return (null);
-        }
-        for (int i = 0; i < images.Length; i++)
-        {
-            images[i].color = endColors[i];
-        }
-    }
 }
 
 public enum AnimationType

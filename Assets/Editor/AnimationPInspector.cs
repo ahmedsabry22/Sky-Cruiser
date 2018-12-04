@@ -8,59 +8,76 @@ public class AnimationPInspector : Editor
     private AnimationP animationP;
     private bool showFromCornerAnimation;
 
+    private SerializedProperty _animationDuration;
+    private SerializedProperty _animationType;
+    private SerializedProperty _animationFromCornerType;
+    private SerializedProperty _elasticPower;
+    private SerializedProperty _withDelay;
+    private SerializedProperty _showDelay;
+    private SerializedProperty _hideDelay;
+
     private void OnEnable()
     {
         animationP = (AnimationP)target;
+        _animationDuration = serializedObject.FindProperty("animationDuration");
+        _animationType = serializedObject.FindProperty("animationType");
+        _animationFromCornerType = serializedObject.FindProperty("animationFromCornerType");
+        _elasticPower = serializedObject.FindProperty("elasticPower");
+        _withDelay = serializedObject.FindProperty("withDelay");
+        _showDelay = serializedObject.FindProperty("showDelay");
+        _hideDelay = serializedObject.FindProperty("hideDelay");
     }
 
     public override void OnInspectorGUI()
     {
-        var style = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.UpperCenter, fontSize = 20, fontStyle = FontStyle.Bold, fixedHeight = 50 };
-
+        var titleLabelStyle = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.UpperCenter, fontSize = 20, fontStyle = FontStyle.Bold, fixedHeight = 50 };
+        
         EditorGUILayout.BeginVertical();
-        EditorGUILayout.LabelField("AnimationP Inspector", style);
+        EditorGUILayout.LabelField("AnimationP Inspector", titleLabelStyle);
         EditorGUILayout.EndVertical();
 
+        EditorGUILayout.Space(); EditorGUILayout.Space();
+
+        EditorGUILayout.BeginVertical();
+
+        EditorGUILayout.PropertyField(_animationType, new GUIContent("Animation Type"));
+
+        EditorGUILayout.Space(); EditorGUILayout.Space();
+
+        switch (animationP.animationType)
+        {
+            case (AnimationType.ShowFromCorner):
+                EditorGUILayout.PropertyField(_animationFromCornerType, new GUIContent("Animation From Corner Type"));
+                break;
+            case (AnimationType.ScaleElastic):
+                EditorGUILayout.PropertyField(_elasticPower, new GUIContent("Elastic Power"));
+                break;
+        }
+
         EditorGUILayout.Space();
+
+        EditorGUILayout.PropertyField(_animationDuration, new GUIContent("Animation Duration"));
+        
+        EditorGUILayout.Space(); EditorGUILayout.Space();
+
         EditorGUILayout.Space();
 
         EditorGUILayout.BeginVertical();
 
-        animationP.animationType = (AnimationType)EditorGUILayout.EnumPopup("Animation Type", animationP.animationType);
+            EditorGUILayout.PropertyField(_withDelay, new GUIContent("With Delay"));
 
-        EditorGUILayout.Space();
-
-        if (animationP.animationType == AnimationType.ShowFromCorner)
-        {
-            //showFromCornerAnimation = EditorGUILayout.Foldout(showFromCornerAnimation, "Show From Corner Animation");
-
-            //if (showFromCornerAnimation)
+            if (animationP.withDelay)
             {
-                //EditorGUI.indentLevel += 1;
-                animationP.animationFromCornerType = (AnimationFromCornerType)EditorGUILayout.EnumPopup("Show From Corner Animation", animationP.animationFromCornerType);
-                //EditorGUI.indentLevel -= 1;
+                EditorGUILayout.PropertyField(_showDelay, new GUIContent("Show Delay"));
+                EditorGUILayout.PropertyField(_hideDelay, new GUIContent("Hide Delay"));
             }
-        }
-        else if (animationP.animationType == AnimationType.ScaleElastic)
-        {
-            animationP.elasticPower = EditorGUILayout.FloatField("Elastic Power", animationP.elasticPower);
-        }
-
-        EditorGUILayout.Space();
-
-        animationP.animationDuration = EditorGUILayout.FloatField("Duration", animationP.animationDuration);
-
-        EditorGUILayout.Space();
-
-        EditorGUILayout.BeginHorizontal();
-        animationP.withDelay = EditorGUILayout.Toggle("With Delay", animationP.withDelay);
-        if (animationP.withDelay)
-            animationP.delay = EditorGUILayout.FloatField("Delay", animationP.delay);
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
 
         EditorGUILayout.EndVertical();
+
+        EditorGUILayout.Space(); EditorGUILayout.Space();
+
+        EditorGUILayout.EndVertical();
+
+        serializedObject.ApplyModifiedProperties();
     }
 }
