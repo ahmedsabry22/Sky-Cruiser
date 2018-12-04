@@ -230,11 +230,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationDuration: 0.3
-  animationType: 3
+  animationType: 2
   animationFromCornerType: 0
   elasticPower: 1
-  withDelay: 1
-  showDelay: 0.6
+  withDelay: 0
+  showDelay: 0
   hideDelay: 0
 --- !u!114 &74960009
 MonoBehaviour:
@@ -663,7 +663,7 @@ MonoBehaviour:
   animationFromCornerType: 0
   elasticPower: 1
   withDelay: 1
-  showDelay: 0
+  showDelay: 0.5
   hideDelay: 0
 --- !u!114 &725300150
 MonoBehaviour:
@@ -839,7 +839,7 @@ MonoBehaviour:
   animationFromCornerType: 0
   elasticPower: 1
   withDelay: 1
-  showDelay: 0
+  showDelay: 0.4
   hideDelay: 0
 --- !u!114 &973153323
 MonoBehaviour:
@@ -998,7 +998,7 @@ MonoBehaviour:
   animationFromCornerType: 0
   elasticPower: 1
   withDelay: 1
-  showDelay: 0
+  showDelay: 0.8
   hideDelay: 0
 --- !u!114 &1025868248
 MonoBehaviour:
@@ -1271,11 +1271,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationDuration: 0.5
-  animationType: 0
+  animationType: 2
   animationFromCornerType: 0
   elasticPower: 1
   withDelay: 1
-  showDelay: 0
+  showDelay: 0.9
   hideDelay: 0
 --- !u!114 &1110485504
 MonoBehaviour:
@@ -1363,7 +1363,7 @@ MonoBehaviour:
   animationFromCornerType: 0
   elasticPower: 1
   withDelay: 1
-  showDelay: 0
+  showDelay: 0.7
   hideDelay: 0
 --- !u!114 &1111560651
 MonoBehaviour:
@@ -1539,7 +1539,7 @@ MonoBehaviour:
   animationFromCornerType: 0
   elasticPower: 1
   withDelay: 1
-  showDelay: 0
+  showDelay: 0.6
   hideDelay: 0
 --- !u!114 &1820524706
 MonoBehaviour:
@@ -1715,7 +1715,7 @@ MonoBehaviour:
   animationFromCornerType: 0
   elasticPower: 1
   withDelay: 1
-  showDelay: 0
+  showDelay: 0.3
   hideDelay: 0
 --- !u!114 &1887743476
 MonoBehaviour:
