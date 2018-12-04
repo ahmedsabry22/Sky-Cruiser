@@ -212,7 +212,7 @@ public class AnimationP : MonoBehaviour
     }
 
     private IEnumerator FadeIn_SHOW()
-    { 
+    {
         Image[] images = GetComponentsInChildren<Image>();
         Color[] startColors = new Color[images.Length];
         Color[] endColors = new Color[images.Length];
@@ -222,13 +222,12 @@ public class AnimationP : MonoBehaviour
             startColors[i] = images[i].color;
             startColors[i].a = 0;
 
-            endColors[i] = images[i].color;
-            endColors[i].a = images[i].color.a;
+            endColors[i] = new Color(images[i].color.r, images[i].color.g, images[i].color.b, 1);
         }
 
         for (int i = 0; i < images.Length; i++)
         {
-            images[i].color = startColors[i];
+            images[i].color = new Color(images[i].color.r, images[i].color.g, images[i].color.b, 0);
         }
 
         if (withDelay)

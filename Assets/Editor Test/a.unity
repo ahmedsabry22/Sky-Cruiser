@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.6
+  animationDuration: 1.2
   animationType: 1
   animationFromCornerType: 0
   elasticPower: 1
@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.8
+  animationDuration: 1.8
   animationType: 1
   animationFromCornerType: 0
   elasticPower: 1
@@ -658,7 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
+  animationDuration: 0.3
   animationType: 2
   animationFromCornerType: 0
   elasticPower: 1
@@ -780,7 +780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.9
+  animationDuration: 2.1
   animationType: 1
   animationFromCornerType: 0
   elasticPower: 1
@@ -834,7 +834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
+  animationDuration: 0.3
   animationType: 2
   animationFromCornerType: 0
   elasticPower: 1
@@ -993,7 +993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
+  animationDuration: 0.3
   animationType: 2
   animationFromCornerType: 0
   elasticPower: 1
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
+  animationDuration: 0.3
   animationType: 2
   animationFromCornerType: 0
   elasticPower: 1
@@ -1358,7 +1358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
+  animationDuration: 0.3
   animationType: 2
   animationFromCornerType: 0
   elasticPower: 1
@@ -1480,7 +1480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
+  animationDuration: 0.9
   animationType: 1
   animationFromCornerType: 0
   elasticPower: 1
@@ -1534,7 +1534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
+  animationDuration: 0.3
   animationType: 2
   animationFromCornerType: 0
   elasticPower: 1
@@ -1656,7 +1656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.7
+  animationDuration: 1.5
   animationType: 1
   animationFromCornerType: 0
   elasticPower: 1
@@ -1710,7 +1710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
+  animationDuration: 0.3
   animationType: 2
   animationFromCornerType: 0
   elasticPower: 1
@@ -1898,7 +1898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.4
+  animationDuration: 0.6
   animationType: 1
   animationFromCornerType: 0
   elasticPower: 1
