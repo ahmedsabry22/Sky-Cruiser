@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964127, b: 0.57481724, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -229,13 +229,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.3
-  animationType: 2
+  animationType: 1
   animationFromCornerType: 0
-  elasticPower: 1
+  animationDuration: 0.3
   withDelay: 0
   showDelay: 0
   hideDelay: 0
+  elasticityPower: 1
 --- !u!114 &74960009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,17 +294,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 85531277}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1047317750}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 240.43994, y: -120.47}
-  m_SizeDelta: {x: -1159.8, y: -485.8}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 100, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &85531279
 MonoBehaviour:
@@ -351,13 +351,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 1.2
-  animationType: 1
+  animationType: 0
   animationFromCornerType: 0
-  elasticPower: 1
-  withDelay: 1
+  animationDuration: 3
+  withDelay: 0
   showDelay: 0
   hideDelay: 0
+  elasticityPower: 1
 --- !u!1 &397860213
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +382,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 397860213}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -391,8 +391,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 179.4101}
-  m_SizeDelta: {x: 240.2, y: 120.1}
+  m_AnchoredPosition: {x: -100, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &397860215
 MonoBehaviour:
@@ -439,13 +439,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 1.8
-  animationType: 1
+  animationType: 0
   animationFromCornerType: 0
-  elasticPower: 1
-  withDelay: 1
+  animationDuration: 3
+  withDelay: 0
   showDelay: 0
   hideDelay: 0
+  elasticityPower: 1
 --- !u!1 &487544034
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,10 +554,10 @@ RectTransform:
   m_Father: {fileID: 1047317750}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 240.44, y: 119.73004}
-  m_SizeDelta: {x: -1159.8, y: -485.8}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &614437097
 MonoBehaviour:
@@ -604,13 +604,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.3
-  animationType: 1
+  animationType: 0
   animationFromCornerType: 0
-  elasticPower: 1
-  withDelay: 1
+  animationDuration: 3
+  withDelay: 0
   showDelay: 0
   hideDelay: 0
+  elasticityPower: 1
 --- !u!1 &725300147
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +635,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 725300147}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -644,8 +644,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -240.19995, y: -120.10001}
-  m_SizeDelta: {x: 240.2, y: 240.2}
+  m_AnchoredPosition: {x: 0, y: 100}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &725300149
 MonoBehaviour:
@@ -658,13 +658,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.3
-  animationType: 2
+  animationType: 1
   animationFromCornerType: 0
-  elasticPower: 1
+  animationDuration: 0.3
   withDelay: 1
   showDelay: 0.5
   hideDelay: 0
+  elasticityPower: 1
 --- !u!114 &725300150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,17 +723,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 787996555}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1047317750}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -240.43994, y: 119.73004}
-  m_SizeDelta: {x: -1159.8, y: -485.8}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -99}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &787996557
 MonoBehaviour:
@@ -780,13 +780,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 2.1
-  animationType: 1
+  animationType: 0
   animationFromCornerType: 0
-  elasticPower: 1
-  withDelay: 1
+  animationDuration: 3
+  withDelay: 0
   showDelay: 0
   hideDelay: 0
+  elasticityPower: 1
 --- !u!1 &973153320
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,7 +811,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 973153320}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -820,8 +820,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.000022888}
-  m_SizeDelta: {x: 240.2, y: 240.2}
+  m_AnchoredPosition: {x: 100, y: 100}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &973153322
 MonoBehaviour:
@@ -834,13 +834,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.3
-  animationType: 2
+  animationType: 1
   animationFromCornerType: 0
-  elasticPower: 1
+  animationDuration: 0.3
   withDelay: 1
   showDelay: 0.4
   hideDelay: 0
+  elasticityPower: 1
 --- !u!114 &973153323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -970,7 +970,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1025868245}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -979,8 +979,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 179.4101}
-  m_SizeDelta: {x: 240.2, y: 120.1}
+  m_AnchoredPosition: {x: -100, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1025868247
 MonoBehaviour:
@@ -993,13 +993,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.3
-  animationType: 2
+  animationType: 1
   animationFromCornerType: 0
-  elasticPower: 1
+  animationDuration: 0.3
   withDelay: 1
   showDelay: 0.8
   hideDelay: 0
+  elasticityPower: 1
 --- !u!114 &1025868248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1088,13 +1088,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.3
-  animationType: 1
+  animationType: 0
   animationFromCornerType: 0
-  elasticPower: 1
+  animationDuration: 3
   withDelay: 0
   showDelay: 0
   hideDelay: 0
+  elasticityPower: 1
 --- !u!114 &1047317752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1247,17 +1247,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1110485501}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 74960007}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -240.43994, y: 119.73004}
-  m_SizeDelta: {x: -1159.8, y: -485.8}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -99}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1110485503
 MonoBehaviour:
@@ -1270,13 +1270,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.3
-  animationType: 2
+  animationType: 1
   animationFromCornerType: 0
-  elasticPower: 1
+  animationDuration: 0.3
   withDelay: 1
   showDelay: 0.9
   hideDelay: 0
+  elasticityPower: 1
 --- !u!114 &1110485504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1335,7 +1335,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1111560648}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1344,8 +1344,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -180.15}
-  m_SizeDelta: {x: 240.2, y: 120.1}
+  m_AnchoredPosition: {x: -100, y: 100}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1111560650
 MonoBehaviour:
@@ -1358,13 +1358,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.3
-  animationType: 2
+  animationType: 1
   animationFromCornerType: 0
-  elasticPower: 1
+  animationDuration: 0.3
   withDelay: 1
   showDelay: 0.7
   hideDelay: 0
+  elasticityPower: 1
 --- !u!114 &1111560651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1423,7 +1423,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1459484492}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1432,8 +1432,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -240.19995, y: -120.10001}
-  m_SizeDelta: {x: 240.2, y: 240.2}
+  m_AnchoredPosition: {x: 0, y: 100}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1459484494
 MonoBehaviour:
@@ -1480,13 +1480,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.9
-  animationType: 1
+  animationType: 0
   animationFromCornerType: 0
-  elasticPower: 1
-  withDelay: 1
+  animationDuration: 3
+  withDelay: 0
   showDelay: 0
   hideDelay: 0
+  elasticityPower: 1
 --- !u!1 &1820524703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,17 +1511,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1820524703}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 74960007}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 240.43994, y: -120.47}
-  m_SizeDelta: {x: -1159.8, y: -485.8}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 100, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1820524705
 MonoBehaviour:
@@ -1534,13 +1534,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.3
-  animationType: 2
+  animationType: 1
   animationFromCornerType: 0
-  elasticPower: 1
+  animationDuration: 0.3
   withDelay: 1
   showDelay: 0.6
   hideDelay: 0
+  elasticityPower: 1
 --- !u!114 &1820524706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1599,7 +1599,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1825606116}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1608,8 +1608,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -180.15}
-  m_SizeDelta: {x: 240.2, y: 120.1}
+  m_AnchoredPosition: {x: -100, y: 100}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1825606118
 MonoBehaviour:
@@ -1656,13 +1656,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 1.5
-  animationType: 1
+  animationType: 0
   animationFromCornerType: 0
-  elasticPower: 1
-  withDelay: 1
+  animationDuration: 3
+  withDelay: 0
   showDelay: 0
   hideDelay: 0
+  elasticityPower: 1
 --- !u!1 &1887743473
 GameObject:
   m_ObjectHideFlags: 0
@@ -1694,10 +1694,10 @@ RectTransform:
   m_Father: {fileID: 74960007}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 240.44, y: 119.73004}
-  m_SizeDelta: {x: -1159.8, y: -485.8}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1887743475
 MonoBehaviour:
@@ -1710,13 +1710,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.3
-  animationType: 2
+  animationType: 1
   animationFromCornerType: 0
-  elasticPower: 1
+  animationDuration: 0.3
   withDelay: 1
   showDelay: 0.3
   hideDelay: 0
+  elasticityPower: 1
 --- !u!114 &1887743476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1841,7 +1841,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1995761072}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1850,8 +1850,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.000022888}
-  m_SizeDelta: {x: 240.2, y: 240.2}
+  m_AnchoredPosition: {x: 100, y: 100}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1995761074
 MonoBehaviour:
@@ -1898,10 +1898,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.6
-  animationType: 1
+  animationType: 0
   animationFromCornerType: 0
-  elasticPower: 1
-  withDelay: 1
+  animationDuration: 3
+  withDelay: 0
   showDelay: 0
   hideDelay: 0
+  elasticityPower: 1

@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 public class Ed : EditorWindow
 {
-     AnimatorTypes animatorType;
+    private static EditorWindow window;
 
-    [MenuItem("Window/Ed")]
+    [MenuItem("Window/Ed %#e")]
     private static void ShowWindow()
     {
-        EditorWindow window = GetWindow<Ed>("Ed Test");
+        window = GetWindow<Ed>("Ed Test");
         window.Show();
     }
 
@@ -45,6 +45,13 @@ public class Ed : EditorWindow
         }
 
         GUILayout.EndHorizontal();
+
+        GUILayout.BeginVertical();
+        if (GUILayout.Button("Close"))
+        {
+            window.Close();
+        }
+        GUILayout.EndVertical();
     }
 }
 

@@ -8,82 +8,75 @@ public class AnimationP : MonoBehaviour
     public event ItemVisibility onItemShow;
     public event ItemVisibility onItemHide;
 
-    public float animationDuration = 3;
-
     public AnimationType animationType;
     public AnimationFromCornerType animationFromCornerType;
 
-    public float elasticPower = 1;
+    public float animationDuration = 3;
 
     public bool withDelay;
     public float showDelay;
     public float hideDelay;
 
+    public float elasticityPower = 1;
 
-    private RectTransform rect;
-
+    private RectTransform rectTransform;
     private Vector3 initialPosition;
 
     private void Awake()
     {
-        rect = GetComponent<RectTransform>();
+        rectTransform = GetComponent<RectTransform>();
     }
 
     private void Start()
     {
         initialPosition = transform.position;
-
-        onItemShow += () => print("SHOW event invoked");
-        onItemHide += () => print("HIDE event invoked");
     }
 
     private void Update()
     {
         if (Input.GetKeyDown("z"))
-            ShowItem();
+            ShowMenu();
         if (Input.GetKeyDown("x"))
-            HideItem();
+            HideMenu();
     }
 
-    public void ShowItem()
+    public void ShowMenu()
     {
-        if (animationType == AnimationType.Scale)
+        switch (animationType)
         {
-            StartCoroutine(AnimateScale_SHOW());
-        }
-        else if (animationType == AnimationType.ScaleElastic)
-        {
-            StartCoroutine(AnimateElasticScale_SHOW());
-        }
-        else if (animationType == AnimationType.Fade)
-        {
-            StartCoroutine(FadeIn_SHOW());
-        }
-        else if (animationType == AnimationType.ShowFromCorner)
-        {
-            StartCoroutine(AnimateFromCornerWithScale_SHOW());
+            case (AnimationType.Scale):
+                StartCoroutine(AnimateScale_SHOW());
+                break;
+            case (AnimationType.ScaleElastic):
+                StartCoroutine(AnimateElasticScale_SHOW());
+                break;
+            case (AnimationType.Fade):
+                StartCoroutine(AnimateFadeIn_SHOW());
+                break;
+            case (AnimationType.ShowFromCorner):
+                StartCoroutine(AnimateFromCornerWithScale_SHOW());
+                break;
         }
 
         onItemShow.Invoke();
     }
 
-    public void HideItem()
+    public void HideMenu()
     {
-        if (animationType == AnimationType.Scale)
+        switch (animationType)
         {
-            StartCoroutine(AnimateScale_HIDE());
-        }
-        else if (animationType == AnimationType.ScaleElastic)
-        {
-            StartCoroutine(AnimateElasticScale_HIDE());
-        }
-        else if (animationType == AnimationType.Fade)
-        {
-            StartCoroutine(FadeIn_HIDE());
-        }
-        else if (animationType == AnimationType.ShowFromCorner)
-        {
-            StartCoroutine(AnimateFromCornerWithScale_HIDE());
+            case (AnimationType.Scale):
+                StartCoroutine(AnimateScale_HIDE());
+                break;
+            case (AnimationType.ScaleElastic):
+                StartCoroutine(AnimateElasticScale_HIDE());
+                break;
+            case (AnimationType.Fade):
+                StartCoroutine(AnimateFadeIn_HIDE());
+                break;
+            case (AnimationType.ShowFromCorner):
+                StartCoroutine(AnimateFromCornerWithScale_HIDE());
+                break;
         }
 
         onItemHide.Invoke();
@@ -96,71 +89,73 @@ public class AnimationP : MonoBehaviour
         if (withDelay)
             yield return (new WaitForSeconds(showDelay));
 
-        float startX = 0;
-        float startY = 0;
+        float startPositionX = 0;
+        float startPositionY = 0;
 
-        Image[] images = GetComponentsInChildren<Image>();
-        Color[] startColors = new Color[images.Length];
-        Color[] endColors = new Color[images.Length];
+        Image[] imagesInMenu = GetComponentsInChildren<Image>();
 
-        for (int i = 0; i < images.Length; i++)
+        Color[] startColors = new Color[imagesInMenu.Length];
+        Color[] endColors = new Color[imagesInMenu.Length];
+
+        // Here we get start color to a color with alpha = 0, and the end color to a color with alpha = 1.
+        for (int i = 0; i < imagesInMenu.Length; i++)
         {
-            startColors[i] = images[i].color;
+            startColors[i] = imagesInMenu[i].color;
             startColors[i].a = 0;
 
-            endColors[i] = images[i].color;
+            endColors[i] = imagesInMenu[i].color;
             endColors[i].a = 1;
         }
 
-        if (animationFromCornerType == AnimationFromCornerType.ShopFromBottomRight)
+        switch (animationFromCornerType)
         {
-            startX = Screen.width;
-            startY = 0;
-        }
-        else if (animationFromCornerType == AnimationFromCornerType.ShopFromBottomLeft)
-        {
-            startX = 0;
-            startY = 0;
-        }
-        else if (animationFromCornerType == AnimationFromCornerType.ShopFromTopRight)
-        {
-            startX = Screen.width;
-            startY = Screen.height;
-        }
-        else if (animationFromCornerType == AnimationFromCornerType.ShopFromTopLeft)
-        {
-            startX = 0;
-            startY = Screen.height;
+            case (AnimationFromCornerType.ShowFromBottomRight):
+                startPositionX = Screen.width;
+                startPositionY = 0;
+                break;
+            case (AnimationFromCornerType.ShowFromBottomLeft):
+                startPositionX = 0;
+                startPositionY = 0;
+                break;
+            case (AnimationFromCornerType.ShowFromTopRight):
+                startPositionX = Screen.width;
+                startPositionY = Screen.height;
+                break;
+            case (AnimationFromCornerType.ShowFromTopLeft):
+                startPositionX = 0;
+                startPositionY = Screen.height;
+                break;
         }
 
+        // Starting animating.
         float startTime = Time.time;
 
-        Vector3 startPos = new Vector3(startX, startY, 0);
+        Vector3 startPos = new Vector3(startPositionX, startPositionY, 0);
         Vector3 targetPosition = initialPosition;
 
-        rect.position = startPos;
+        rectTransform.position = startPos;
 
         while (Time.time <= startTime + animationDuration)
         {
             float t = (Time.time - startTime) / animationDuration;
-            rect.position = Vector3.Lerp(startPos, targetPosition, t);
-            rect.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t);
 
-            for (int i = 0; i < images.Length; i++)
-            {
-                images[i].color = Color.Lerp(startColors[i], endColors[i], t);
-            }
+            // Here we Lerp the position and the scale as well.
+            rectTransform.position = Vector3.Lerp(startPos, targetPosition, t);
+            rectTransform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t);
+
+            // Here we lerp the color from totally transparent to totally visible.
+            for (int i = 0; i < imagesInMenu.Length; i++)
+                imagesInMenu[i].color = Color.Lerp(startColors[i], endColors[i], t);
 
             yield return (null);
         }
 
-        rect.position = targetPosition;
-        rect.localScale = Vector3.one;
+        // Here we set the values to their end so we avoid the missing final step.
+        rectTransform.position = targetPosition;
+        rectTransform.localScale = Vector3.one;
 
-        for (int i = 0; i < images.Length; i++)
-        {
-            images[i].color = endColors[i];
-        }
+        for (int i = 0; i < imagesInMenu.Length; i++)
+            imagesInMenu[i].color = endColors[i];
     }
 
     private IEnumerator AnimateElasticScale_SHOW()
@@ -168,25 +163,25 @@ public class AnimationP : MonoBehaviour
         if (withDelay)
             yield return (new WaitForSeconds(showDelay));
 
-        Vector3 startPosition = rect.position;
+        Vector3 startPosition = rectTransform.position;
         float startTime = Time.time;
 
         while (Time.time <= startTime + animationDuration)
         {
             float t = (Time.time - startTime) / animationDuration;
 
-            rect.localScale = Vector3.Lerp(Vector3.zero, Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticPower, t);
+            rectTransform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticityPower, t);
 
             yield return (null);
         }
 
-        rect.localScale = Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticPower;
+        rectTransform.localScale = Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticityPower;
 
         startTime = Time.time;
         while (Time.time <= startTime + animationDuration / 5)
         {
             float t = (Time.time - startTime) / (animationDuration / 5);
-            rect.localScale = Vector3.Lerp(Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticPower, Vector3.one, t);
+            rectTransform.localScale = Vector3.Lerp(Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticityPower, Vector3.one, t);
             yield return (null);
         }
     }
@@ -196,22 +191,22 @@ public class AnimationP : MonoBehaviour
         if (withDelay)
             yield return (new WaitForSeconds(showDelay));
 
-        Vector3 startPosition = rect.position;
+        Vector3 startPosition = rectTransform.position;
         float startTime = Time.time;
 
         while (Time.time <= startTime + animationDuration)
         {
             float t = (Time.time - startTime) / animationDuration;
 
-            rect.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t);
+            rectTransform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t);
 
             yield return (null);
         }
 
-        rect.localScale = Vector3.one;
+        rectTransform.localScale = Vector3.one;
     }
 
-    private IEnumerator FadeIn_SHOW()
+    private IEnumerator AnimateFadeIn_SHOW()
     {
         Image[] images = GetComponentsInChildren<Image>();
         Color[] startColors = new Color[images.Length];
@@ -258,7 +253,7 @@ public class AnimationP : MonoBehaviour
 
     #region Hide Coroutines
 
-    private IEnumerator FadeIn_HIDE()
+    private IEnumerator AnimateFadeIn_HIDE()
     {
         if (withDelay)
             yield return (new WaitForSeconds(hideDelay));
@@ -302,19 +297,19 @@ public class AnimationP : MonoBehaviour
         if (withDelay)
             yield return (new WaitForSeconds(hideDelay));
 
-        Vector3 startPosition = rect.position;
+        Vector3 startPosition = rectTransform.position;
         float startTime = Time.time;
 
         while (Time.time <= startTime + animationDuration)
         {
             float t = (Time.time - startTime) / animationDuration;
 
-            rect.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t);
+            rectTransform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t);
 
             yield return (null);
         }
 
-        rect.localScale = Vector3.zero;
+        rectTransform.localScale = Vector3.zero;
     }
 
     private IEnumerator AnimateElasticScale_HIDE()
@@ -322,19 +317,19 @@ public class AnimationP : MonoBehaviour
         if (withDelay)
             yield return (new WaitForSeconds(hideDelay));
 
-        Vector3 startPosition = rect.position;
+        Vector3 startPosition = rectTransform.position;
         float startTime = Time.time;
 
         while (Time.time <= startTime + animationDuration)
         {
             float t = (Time.time - startTime) / animationDuration;
 
-            rect.localScale = Vector3.Lerp(Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticPower, Vector3.zero, t);
+            rectTransform.localScale = Vector3.Lerp(Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticityPower, Vector3.zero, t);
 
             yield return (null);
         }
 
-        rect.localScale = Vector3.zero;
+        rectTransform.localScale = Vector3.zero;
     }
 
     private IEnumerator AnimateFromCornerWithScale_HIDE()
@@ -360,22 +355,22 @@ public class AnimationP : MonoBehaviour
             endColors[i].a = 0;
         }
 
-        if (animationFromCornerType == AnimationFromCornerType.ShopFromBottomRight)
+        if (animationFromCornerType == AnimationFromCornerType.ShowFromBottomRight)
         {
             endX = Screen.width;
             endY = 0;
         }
-        else if (animationFromCornerType == AnimationFromCornerType.ShopFromBottomLeft)
+        else if (animationFromCornerType == AnimationFromCornerType.ShowFromBottomLeft)
         {
             endX = 0;
             endY = 0;
         }
-        else if (animationFromCornerType == AnimationFromCornerType.ShopFromTopRight)
+        else if (animationFromCornerType == AnimationFromCornerType.ShowFromTopRight)
         {
             endX = Screen.width;
             endY = Screen.height;
         }
-        else if (animationFromCornerType == AnimationFromCornerType.ShopFromTopLeft)
+        else if (animationFromCornerType == AnimationFromCornerType.ShowFromTopLeft)
         {
             endX = 0;
             endY = Screen.height;
@@ -385,13 +380,13 @@ public class AnimationP : MonoBehaviour
 
         Vector3 startPos = initialPosition;
         Vector3 targetPosition = new Vector3(endX, endY, 0);
-        rect.position = startPos;
+        rectTransform.position = startPos;
 
         while (Time.time <= startTime + animationDuration)
         {
             float t = (Time.time - startTime) / animationDuration;
-            rect.position = Vector3.Lerp(startPos, targetPosition, t);
-            rect.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t);
+            rectTransform.position = Vector3.Lerp(startPos, targetPosition, t);
+            rectTransform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t);
 
             for (int i = 0; i < images.Length; i++)
             {
@@ -401,8 +396,8 @@ public class AnimationP : MonoBehaviour
             yield return (null);
         }
 
-        rect.position = targetPosition;
-        rect.localScale = Vector3.zero;
+        rectTransform.position = targetPosition;
+        rectTransform.localScale = Vector3.zero;
 
         for (int i = 0; i < images.Length; i++)
         {
@@ -411,7 +406,6 @@ public class AnimationP : MonoBehaviour
     }
 
     #endregion
-
 }
 
 public enum AnimationType
@@ -421,5 +415,5 @@ public enum AnimationType
 
 public enum AnimationFromCornerType
 {
-    ShopFromBottomRight, ShopFromTopRight, ShopFromBottomLeft, ShopFromTopLeft
+    ShowFromBottomRight, ShowFromTopRight, ShowFromBottomLeft, ShowFromTopLeft
 }
