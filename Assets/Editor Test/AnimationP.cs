@@ -58,7 +58,8 @@ public class AnimationP : MonoBehaviour
                 break;
         }
 
-        onItemShow.Invoke();
+        if (onItemShow != null)
+            onItemShow.Invoke();
     }
 
     public void HideMenu()
@@ -79,7 +80,8 @@ public class AnimationP : MonoBehaviour
                 break;
         }
 
-        onItemHide.Invoke();
+        if (onItemHide != null)
+            onItemHide.Invoke();
     }
 
     #region Show Coroutines

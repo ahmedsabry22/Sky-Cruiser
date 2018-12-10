@@ -16,13 +16,21 @@ public class Ed : EditorWindow
 
     private void OnGUI()
     {
-        var style = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.UpperCenter, fontSize = 30, fontStyle = FontStyle.Bold, fixedHeight = 50 };
+        WindowTitle_LABEL();
+        AddRemoveAnimation_BUTTONS();
+        Close_BUTTON();
+    }
 
-        EditorGUILayout.LabelField("UI Animation Editor", style);
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
+    private void WindowTitle_LABEL()
+    {
+        var titleLabelStyle = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.UpperCenter, fontSize = 30, fontStyle = FontStyle.Bold, fixedHeight = 50 };
 
+        EditorGUILayout.LabelField("UI Animation Editor", titleLabelStyle);
+        EditorGUILayout.Space(); EditorGUILayout.Space(); EditorGUILayout.Space();
+    }
+
+    private void AddRemoveAnimation_BUTTONS()
+    {
         GUILayout.BeginHorizontal();
 
         if (GUILayout.Button("Add Animator"))
@@ -46,6 +54,13 @@ public class Ed : EditorWindow
 
         GUILayout.EndHorizontal();
 
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+    }
+
+    private void Close_BUTTON()
+    {
         GUILayout.BeginVertical();
         if (GUILayout.Button("Close"))
         {
