@@ -24,7 +24,6 @@ public class AnchorP : MonoBehaviour
 
     private void Start()
     {
-        SetInitialValues();
     }
 
     private void Update()
@@ -45,8 +44,22 @@ public class AnchorP : MonoBehaviour
         yC = (height / 2) * (Screen.height * factor);
     }
 
+    [ContextMenu("XXX")]
+    private void YYY()
+    {
+        StartCoroutine(XXX());
+    }
+    private IEnumerator XXX()
+    {
+        yield return (new WaitForSeconds(1));
+        print("x");
+
+        yield return (new WaitForSeconds(1));
+        print("y");
+    }
+
     [ContextMenu("Set Anchores")]
-    private void SetAnchors()
+    public void SetAnchors()
     {
         // (anchor in center of screen) = 0.5, 0.5
         // (center of rect for a value between 0 and 1) = (rect.position.x / screenWidth, rect.position.y / screenHeight)
