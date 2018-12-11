@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class AnimationP : MonoBehaviour
 {
-    public delegate void ItemVisibility();
-    public event ItemVisibility onItemShow;
-    public event ItemVisibility onItemHide;
+    //public delegate void ItemVisibility();
+    public UnityEvent onItemShow;
+    public UnityEvent onItemHide;
 
     public AnimationType animationType;
     public AnimationFromCornerType animationFromCornerType;

@@ -19,6 +19,11 @@ public class AnchorED : EditorWindow
             SetAnchorsOfSelectedGameObject();
         }
 
+        if (GUILayout.Button("Set Rect To Anchors"))
+        {
+            SetRectToAnchorSelectedGameObject();
+        }
+
         if (GUILayout.Button("Close"))
         {
             window.Close();
@@ -36,6 +41,21 @@ public class AnchorED : EditorWindow
             if (anchorP != null)
             {
                 anchorP.SetAnchors();
+            }
+        }
+    }
+
+    private static void SetRectToAnchorSelectedGameObject()
+    {
+        GameObject[] selectedGameObjects = Selection.gameObjects;
+
+        foreach (var g in selectedGameObjects)
+        {
+            AnchorP anchorP = g.GetComponent<AnchorP>();
+
+            if (anchorP != null)
+            {
+                anchorP.SetRectToAnchor();
             }
         }
     }

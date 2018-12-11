@@ -15,6 +15,8 @@ public class AnimationPInspector : Editor
     private SerializedProperty _withDelay;
     private SerializedProperty _showDelay;
     private SerializedProperty _hideDelay;
+    private SerializedProperty _onItemShow;
+    private SerializedProperty _onItemHide;
 
     private void OnEnable()
     {
@@ -26,6 +28,8 @@ public class AnimationPInspector : Editor
         _withDelay = serializedObject.FindProperty("withDelay");
         _showDelay = serializedObject.FindProperty("showDelay");
         _hideDelay = serializedObject.FindProperty("hideDelay");
+        _onItemShow = serializedObject.FindProperty("onItemShow");
+        _onItemHide = serializedObject.FindProperty("onItemHide");
     }
 
     public override void OnInspectorGUI()
@@ -34,6 +38,7 @@ public class AnimationPInspector : Editor
         AnimationType_DROPDOWN();
         AnimationDuration_INPUT();
         AnimationDelay_PROPERTIES();
+        OnShowOnHide_EVENTS();
 
         serializedObject.ApplyModifiedProperties();
     }
@@ -95,5 +100,13 @@ public class AnimationPInspector : Editor
         EditorGUILayout.Space(); EditorGUILayout.Space();
 
         EditorGUILayout.EndVertical();
+    }
+
+    private void OnShowOnHide_EVENTS()
+    {
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.PropertyField(_onItemShow, new GUIContent("onItemShow"));
+        EditorGUILayout.PropertyField(_onItemHide, new GUIContent("onItemHide"));
+        EditorGUILayout.EndHorizontal();
     }
 }

@@ -9,7 +9,7 @@ public class AnchorP : MonoBehaviour
 
     private RectTransform rectTransform;
 
-    private float rectwidth, rectheight;
+    private float rectWidth, rectHeight;
 
     private Vector3 rectInitialPosition;
     private Vector2 minAnchors;
@@ -19,10 +19,9 @@ public class AnchorP : MonoBehaviour
     private float widthRelativeToScreen;
     private float heightRelativeToScreen;
 
-    private void Update()
+    private void GetRectComponent()
     {
-        if (Input.GetKeyDown("a"))
-            SetAnchors();
+        rectTransform = GetComponent<RectTransform>();
     }
 
     public void SetAnchors()
@@ -42,13 +41,13 @@ public class AnchorP : MonoBehaviour
         // Resetting the rect to its initial position, width, and height.
         rectTransform.position = rectInitialPosition;
 
-        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, rectheight);
-        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, rectwidth);
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, rectHeight);
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, rectWidth);
     }
 
     private void SetInitialValues()
     {
-        rectTransform = GetComponent<RectTransform>();
+        GetRectComponent();
         // Initial Position, because we will reset the position later.
         rectInitialPosition = rectTransform.position;
 
@@ -59,13 +58,13 @@ public class AnchorP : MonoBehaviour
         screenHeight = int.Parse(resolution[1]);
 
         // Rect dimensions.
-        rectwidth = rectTransform.rect.width;
-        rectheight = rectTransform.rect.height;
+        rectWidth = rectTransform.rect.width;
+        rectHeight = rectTransform.rect.height;
 
         // Relative position, width, and height.
         rectRelativeToScreenPosition = new Vector2(rectTransform.position.x / screenWidth, rectTransform.position.y / screenHeight);
-        widthRelativeToScreen = rectwidth / screenWidth;
-        heightRelativeToScreen = rectheight / screenHeight;
+        widthRelativeToScreen = rectWidth / screenWidth;
+        heightRelativeToScreen = rectHeight / screenHeight;
 
         float minX = rectRelativeToScreenPosition.x - (widthRelativeToScreen / 2);
         float minY = rectRelativeToScreenPosition.y - (heightRelativeToScreen / 2);
@@ -74,6 +73,14 @@ public class AnchorP : MonoBehaviour
 
         minAnchors = new Vector2(minX, minY);
         maxAnchors = new Vector2(maxX, maxY);
+    }
+
+    public void SetRectToAnchor()
+    {
+        SetInitialValues();
+
+        rectTransform.offsetMin = Vector2.zero;
+        rectTransform.offsetMax = Vector2.zero;
     }
 
     #region Old
