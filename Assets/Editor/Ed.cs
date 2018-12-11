@@ -18,7 +18,8 @@ public class Ed : EditorWindow
     {
         WindowTitle_LABEL();
         AddRemoveAnimation_BUTTONS();
-        Close_BUTTON();
+        AddRemoveAnchor_BUTTONS();
+        CloseWindow_BUTTON();
     }
 
     private void WindowTitle_LABEL()
@@ -59,7 +60,37 @@ public class Ed : EditorWindow
         EditorGUILayout.Space();
     }
 
-    private void Close_BUTTON()
+    private void AddRemoveAnchor_BUTTONS()
+    {
+        GUILayout.BeginHorizontal();
+
+        if (GUILayout.Button("Add Anchor Controller"))
+        {
+            foreach (GameObject g in Selection.gameObjects)
+            {
+                if (g.GetComponent<AnchorP>() == null)
+                {
+                    g.AddComponent<AnchorP>();
+                }
+            }
+        }
+        if (GUILayout.Button("Remove Anchor Controller"))
+        {
+            foreach (GameObject g in Selection.gameObjects)
+            {
+                if (g.GetComponent<AnchorP>() != null)
+                    DestroyImmediate(g.GetComponent<AnchorP>());
+            }
+        }
+
+        GUILayout.EndHorizontal();
+
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+    }
+
+    private void CloseWindow_BUTTON()
     {
         GUILayout.BeginVertical();
         if (GUILayout.Button("Close"))

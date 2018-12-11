@@ -8,7 +8,7 @@ public class AnchorED : EditorWindow
     [MenuItem ("Window/Anchors Window %#a")]
     private static void ShowWindow()
     {
-        window = GetWindow<AnchorED>();
+        window = GetWindow<AnchorED>("Anchor Ed");
         window.Show();
     }
 
@@ -16,21 +16,27 @@ public class AnchorED : EditorWindow
     {
         if (GUILayout.Button("Set Anchors"))
         {
-            GameObject[] selectedGameObjects = Selection.gameObjects;
-            foreach(var g in selectedGameObjects)
-            {
-                AnchorP anchorP = g.GetComponent<AnchorP>();
-
-                if (anchorP != null)
-                {
-                    anchorP.SetAnchors();
-                }
-            }
+            SetAnchorsOfSelectedGameObject();
         }
 
         if (GUILayout.Button("Close"))
         {
             window.Close();
+        }
+    }
+
+    private static void SetAnchorsOfSelectedGameObject()
+    {
+        GameObject[] selectedGameObjects = Selection.gameObjects;
+
+        foreach (var g in selectedGameObjects)
+        {
+            AnchorP anchorP = g.GetComponent<AnchorP>();
+
+            if (anchorP != null)
+            {
+                anchorP.SetAnchors();
+            }
         }
     }
 }

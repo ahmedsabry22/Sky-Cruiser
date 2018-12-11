@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -192,7 +192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &74960007
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1209,9 +1209,9 @@ MonoBehaviour:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 900, y: 1600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1448,7 +1448,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1305908204
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1462,10 +1462,10 @@ RectTransform:
   m_Father: {fileID: 1007227308}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54.8, y: 340.2}
-  m_SizeDelta: {x: 187.7, y: 201.4}
+  m_AnchorMin: {x: 0.5233253, y: 0.7904327}
+  m_AnchorMax: {x: 0.56500804, y: 0.8395673}
+  m_AnchoredPosition: {x: -32.649902, y: 0}
+  m_SizeDelta: {x: 105.16821, y: 148.33461}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1305908205
 MonoBehaviour:
@@ -1478,25 +1478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a610e3cbf7f2294681c923f70461d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectTransform: {fileID: 1305908204}
-  width: 893.4
-  height: 377.7
-  minAnchors: {x: 0.27847528, y: 0.61719406}
-  maxAnchors: {x: 0.46430248, y: 0.79603505}
-  factor: 0.000001
-  screenWidth: 1920
-  screenHeight: 1080
-  xC: 0.18582721
-  yC: 0.17884095
-  initialPosition: {x: 0, y: 0, z: 0}
-  rectCords:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  fx: 3.67
-  fy: 1.16
 --- !u!114 &1305908206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1636,7 +1617,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1643712822
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1650,10 +1631,10 @@ RectTransform:
   m_Father: {fileID: 1007227308}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -431.8, y: 308.9}
-  m_SizeDelta: {x: 390.1, y: 264}
+  m_AnchorMin: {x: 0.24392733, y: 0.7648497}
+  m_AnchorMax: {x: 0.3305572, y: 0.81605667}
+  m_AnchoredPosition: {x: -16.972656, y: 0}
+  m_SizeDelta: {x: 221.19185, y: 209.54097}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1643712823
 MonoBehaviour:
@@ -1666,25 +1647,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a610e3cbf7f2294681c923f70461d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectTransform: {fileID: 1643712822}
-  width: 893.4
-  height: 377.7
-  minAnchors: {x: 0.27847528, y: 0.61719406}
-  maxAnchors: {x: 0.46430248, y: 0.79603505}
-  factor: 0.000001
-  screenWidth: 1920
-  screenHeight: 1080
-  xC: 0.18582721
-  yC: 0.17884095
-  initialPosition: {x: 0, y: 0, z: 0}
-  rectCords:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  fx: 3.67
-  fy: 1.16
 --- !u!114 &1643712824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1743,17 +1705,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1775877530}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1007227308}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 98, y: -233}
-  m_SizeDelta: {x: 920.15, y: 509.7}
+  m_AnchorMin: {x: 0.5045214, y: 0.48780173}
+  m_AnchorMax: {x: 0.5267286, y: 0.51219827}
+  m_AnchoredPosition: {x: -30.9375, y: 0}
+  m_SizeDelta: {x: 56.02986, y: 73.65174}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1775877532
 MonoBehaviour:
@@ -1766,25 +1728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a610e3cbf7f2294681c923f70461d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectTransform: {fileID: 1775877531}
-  width: 893.4
-  height: 377.7
-  minAnchors: {x: 0.27847528, y: 0.61719406}
-  maxAnchors: {x: 0.46430248, y: 0.79603505}
-  factor: 0.000001
-  screenWidth: 1920
-  screenHeight: 1080
-  xC: 0.18582721
-  yC: 0.17884095
-  initialPosition: {x: 0, y: 0, z: 0}
-  rectCords:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  fx: 3.67
-  fy: 1.16
 --- !u!114 &1775877533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2180,11 +2123,11 @@ RectTransform:
   m_Father: {fileID: 1007227308}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 599.3, y: 243.45}
-  m_SizeDelta: {x: 563.6, y: 394.9}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.14568165, y: 0.28084278}
+  m_AnchorMax: {x: 0.80487394, y: 0.8345876}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0.000015258789}
+  m_SizeDelta: {x: 0.00009346008, y: -0.00001335144}
+  m_Pivot: {x: 0.49999997, y: 0.49999994}
 --- !u!114 &1994976026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2196,25 +2139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a610e3cbf7f2294681c923f70461d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectTransform: {fileID: 1994976025}
-  width: 893.4
-  height: 377.7
-  minAnchors: {x: 0.27847528, y: 0.61719406}
-  maxAnchors: {x: 0.46430248, y: 0.79603505}
-  factor: 0.000001
-  screenWidth: 1920
-  screenHeight: 1080
-  xC: 0.18582721
-  yC: 0.17884095
-  initialPosition: {x: 0, y: 0, z: 0}
-  rectCords:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  fx: 3.67
-  fy: 1.16
 --- !u!114 &1994976027
 MonoBehaviour:
   m_ObjectHideFlags: 0
