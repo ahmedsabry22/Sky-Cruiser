@@ -211,7 +211,7 @@ RectTransform:
   - {fileID: 1025868246}
   - {fileID: 1110485502}
   m_Father: {fileID: 1007227308}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.14652526, y: 0.1465253}
   m_AnchorMax: {x: 0.34, y: 0.75}
@@ -249,6 +249,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  showOnStart: 0
   animationType: 3
   animationFromCornerType: 0
   animationDuration: 0.3
@@ -314,17 +315,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 85531277}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1047317750}
+  m_Father: {fileID: 1400560977}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 193.20322, y: 0.30863953}
+  m_SizeDelta: {x: 192.43494, y: 192.05191}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &85531279
 MonoBehaviour:
@@ -391,13 +392,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  showOnStart: 1
   animationType: 0
   animationFromCornerType: 0
-  animationDuration: 3
-  withDelay: 0
-  showDelay: 0
-  hideDelay: 0
-  elasticityPower: 1
+  animationDuration: 0.7
+  withDelay: 1
+  showDelay: 0.7
+  hideDelay: 0.7
+  elasticityPower: 1.5
 --- !u!1 &397860213
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,17 +424,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 397860213}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1047317750}
+  m_Father: {fileID: 1400560977}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -193.1666, y: 0.30863953}
+  m_SizeDelta: {x: 193.43494, y: 192.05191}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &397860215
 MonoBehaviour:
@@ -499,13 +501,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  showOnStart: 1
   animationType: 0
   animationFromCornerType: 0
-  animationDuration: 3
-  withDelay: 0
-  showDelay: 0
-  hideDelay: 0
-  elasticityPower: 1
+  animationDuration: 0.7
+  withDelay: 1
+  showDelay: 0.7
+  hideDelay: 0.7
+  elasticityPower: 1.5
 --- !u!1 &487544034
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,17 +610,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 614437095}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1047317750}
+  m_Father: {fileID: 1400560977}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.26831055, y: 0.30863953}
+  m_SizeDelta: {x: 193.43494, y: 192.05191}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &614437097
 MonoBehaviour:
@@ -684,13 +687,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  showOnStart: 1
   animationType: 0
   animationFromCornerType: 0
-  animationDuration: 3
-  withDelay: 0
-  showDelay: 0
-  hideDelay: 0
-  elasticityPower: 1
+  animationDuration: 0.7
+  withDelay: 1
+  showDelay: 0.7
+  hideDelay: 0.7
+  elasticityPower: 1.5
 --- !u!1 &725300147
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,6 +762,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  showOnStart: 0
   animationType: 1
   animationFromCornerType: 0
   animationDuration: 0.3
@@ -823,17 +828,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 787996555}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1047317750}
+  m_Father: {fileID: 1400560977}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -99}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.26831055, y: -189.90903}
+  m_SizeDelta: {x: 193.43494, y: 191.05193}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &787996557
 MonoBehaviour:
@@ -900,13 +905,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  showOnStart: 1
   animationType: 0
   animationFromCornerType: 0
-  animationDuration: 3
-  withDelay: 0
-  showDelay: 0
-  hideDelay: 0
-  elasticityPower: 1
+  animationDuration: 0.7
+  withDelay: 1
+  showDelay: 0.7
+  hideDelay: 0.7
+  elasticityPower: 1.5
 --- !u!1 &973153320
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,6 +980,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  showOnStart: 0
   animationType: 1
   animationFromCornerType: 0
   animationDuration: 0.3
@@ -1042,7 +1049,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1047317750}
   - {fileID: 74960007}
   - {fileID: 1643712822}
   - {fileID: 1305908204}
@@ -1159,6 +1165,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  showOnStart: 0
   animationType: 1
   animationFromCornerType: 0
   animationDuration: 0.3
@@ -1200,133 +1207,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1025868245}
   m_CullTransparentMesh: 0
---- !u!1 &1047317749
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1047317750}
-  - component: {fileID: 1047317753}
-  - component: {fileID: 1047317752}
-  - component: {fileID: 1047317751}
-  - component: {fileID: 1047317754}
-  m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1047317750
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1047317749}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 614437096}
-  - {fileID: 1995761073}
-  - {fileID: 1459484493}
-  - {fileID: 85531278}
-  - {fileID: 1825606117}
-  - {fileID: 397860214}
-  - {fileID: 787996556}
-  m_Father: {fileID: 1007227308}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.14634296, y: 0.16419443}
-  m_AnchorMax: {x: 0.85368764, y: 0.8349377}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1047317751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1047317749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnShow:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnHide:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnShowComplete:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnHideComplete:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  animationType: 0
-  animationFromCornerType: 0
-  animationDuration: 3
-  withDelay: 0
-  showDelay: 0
-  hideDelay: 0
-  elasticityPower: 1
---- !u!114 &1047317752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1047317749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &1047317753
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1047317749}
-  m_CullTransparentMesh: 0
---- !u!114 &1047317754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1047317749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a610e3cbf7f2294681c923f70461d07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1086077770
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,6 +1368,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  showOnStart: 0
   animationType: 1
   animationFromCornerType: 0
   animationDuration: 0.3
@@ -1596,6 +1477,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  showOnStart: 0
   animationType: 1
   animationFromCornerType: 0
   animationDuration: 0.3
@@ -1666,7 +1548,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1007227308}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5233253, y: 0.7904327}
   m_AnchorMax: {x: 0.56500804, y: 0.8395673}
@@ -1746,14 +1628,21 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 614437096}
+  - {fileID: 1995761073}
+  - {fileID: 1459484493}
+  - {fileID: 85531278}
+  - {fileID: 1825606117}
+  - {fileID: 397860214}
+  - {fileID: 787996556}
   m_Father: {fileID: 1007227308}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.26111487, y: 0.21262965}
-  m_AnchorMax: {x: 0.9813541, y: 0.6232963}
-  m_AnchoredPosition: {x: 155, y: 190}
-  m_SizeDelta: {x: -310, y: 380}
+  m_AnchorMin: {x: 0.236875, y: 0.08333334}
+  m_AnchorMax: {x: 0.763125, y: 0.9166666}
+  m_AnchoredPosition: {x: 0, y: 0.000030517578}
+  m_SizeDelta: {x: -0.0000076293945, y: 0.000044703484}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1400560978
 MonoBehaviour:
@@ -1766,11 +1655,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebabf37f9fef2eb478fd71fa54221f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  withGraphic: 0
+  withGraphic: 1
   position: 0
   graphicType: 0
+  scale: 1
   buttonText: Back
-  graphicSprite: {fileID: 0}
+  graphicSprite: {fileID: 21300000, guid: dcf7e60ba7accad4d9b7a57c95b79fe6, type: 3}
   backButtonManager: {fileID: 0}
 --- !u!114 &1400560979
 MonoBehaviour:
@@ -1803,9 +1693,10 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  showOnStart: 1
   animationType: 3
-  animationFromCornerType: 4
-  animationDuration: 2
+  animationFromCornerType: 1
+  animationDuration: 0.7
   withDelay: 0
   showDelay: 0
   hideDelay: 0
@@ -1868,17 +1759,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1459484492}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1047317750}
+  m_Father: {fileID: 1400560977}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.26831055, y: 191.86057}
+  m_SizeDelta: {x: 193.43494, y: 191.05188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1459484494
 MonoBehaviour:
@@ -1945,13 +1836,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  showOnStart: 1
   animationType: 0
   animationFromCornerType: 0
-  animationDuration: 3
-  withDelay: 0
-  showDelay: 0
-  hideDelay: 0
-  elasticityPower: 1
+  animationDuration: 0.7
+  withDelay: 1
+  showDelay: 0.7
+  hideDelay: 0.7
+  elasticityPower: 1.5
 --- !u!1 &1467388226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1970,7 +1862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1467388227
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1982,12 +1874,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1007227308}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.22072917, y: 0.11916667}
   m_AnchorMax: {x: 0.7792708, y: 0.8808333}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -0.000076293945, y: -0.000012397766}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
+  m_SizeDelta: {x: -0.000022888184, y: 0.00001001358}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1467388228
 MonoBehaviour:
@@ -2003,6 +1895,7 @@ MonoBehaviour:
   withGraphic: 0
   position: 0
   graphicType: 0
+  scale: 0
   buttonText: Back
   graphicSprite: {fileID: 0}
   backButtonManager: {fileID: 0}
@@ -2059,11 +1952,12 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  animationType: 3
-  animationFromCornerType: 5
-  animationDuration: 2
-  withDelay: 0
-  showDelay: 0
+  showOnStart: 1
+  animationType: 2
+  animationFromCornerType: 4
+  animationDuration: 0.7
+  withDelay: 1
+  showDelay: 0.5
   hideDelay: 0
   elasticityPower: 1
 --- !u!114 &1467388230
@@ -2130,12 +2024,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1007227308}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.016848892, y: 0.03254631}
   m_AnchorMax: {x: 0.57539046, y: 0.79421294}
   m_AnchoredPosition: {x: 0.000061035156, y: 0}
-  m_SizeDelta: {x: 0.00009536743, y: 0.000019788742}
+  m_SizeDelta: {x: 0.000120162964, y: -0.000024199486}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1538256957
 MonoBehaviour:
@@ -2151,6 +2045,7 @@ MonoBehaviour:
   withGraphic: 0
   position: 0
   graphicType: 0
+  scale: 0
   buttonText: Back
   graphicSprite: {fileID: 21300000, guid: a04a45ce3fb9e4a48bf5112b609a63b2, type: 3}
   backButtonManager: {fileID: 0}
@@ -2185,11 +2080,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  animationType: 3
-  animationFromCornerType: 1
-  animationDuration: 2
-  withDelay: 0
-  showDelay: 0
+  showOnStart: 1
+  animationType: 2
+  animationFromCornerType: 2
+  animationDuration: 0.7
+  withDelay: 1
+  showDelay: 1
   hideDelay: 0
   elasticityPower: 1
 --- !u!114 &1538256959
@@ -2255,7 +2151,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1007227308}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.24392733, y: 0.7648497}
   m_AnchorMax: {x: 0.3305572, y: 0.81605667}
@@ -2335,7 +2231,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1007227308}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5233253, y: 0.21200001}
   m_AnchorMax: {x: 0.70318764, y: 0.42951852}
@@ -2443,6 +2339,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  showOnStart: 0
   animationType: 1
   animationFromCornerType: 0
   animationDuration: 0.3
@@ -2508,17 +2405,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1825606116}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1047317750}
+  m_Father: {fileID: 1400560977}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 100}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -193.1666, y: 191.86057}
+  m_SizeDelta: {x: 193.43494, y: 191.05188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1825606118
 MonoBehaviour:
@@ -2585,13 +2482,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  showOnStart: 1
   animationType: 0
   animationFromCornerType: 0
-  animationDuration: 3
-  withDelay: 0
-  showDelay: 0
-  hideDelay: 0
-  elasticityPower: 1
+  animationDuration: 0.7
+  withDelay: 1
+  showDelay: 0.7
+  hideDelay: 0.7
+  elasticityPower: 1.5
 --- !u!1 &1887743473
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,6 +2557,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  showOnStart: 0
   animationType: 1
   animationFromCornerType: 0
   animationDuration: 0.3
@@ -2790,17 +2689,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1995761072}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1047317750}
+  m_Father: {fileID: 1400560977}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 100}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 193.20322, y: 191.86057}
+  m_SizeDelta: {x: 192.43494, y: 191.05188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1995761074
 MonoBehaviour:
@@ -2867,10 +2766,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  showOnStart: 1
   animationType: 0
   animationFromCornerType: 0
-  animationDuration: 3
-  withDelay: 0
-  showDelay: 0
-  hideDelay: 0
-  elasticityPower: 1
+  animationDuration: 0.7
+  withDelay: 1
+  showDelay: 0.7
+  hideDelay: 0.7
+  elasticityPower: 1.5

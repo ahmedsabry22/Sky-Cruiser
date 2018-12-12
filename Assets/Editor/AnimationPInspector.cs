@@ -8,6 +8,7 @@ public class AnimationPInspector : Editor
     private AnimationP animationP;
     private bool showFromCornerAnimation;
 
+    private SerializedProperty _showOnStart;
     private SerializedProperty _animationDuration;
     private SerializedProperty _animationType;
     private SerializedProperty _animationFromCornerType;
@@ -23,6 +24,8 @@ public class AnimationPInspector : Editor
     private void OnEnable()
     {
         animationP = (AnimationP)target;
+
+        _showOnStart = serializedObject.FindProperty("showOnStart");
         _animationDuration = serializedObject.FindProperty("animationDuration");
         _animationType = serializedObject.FindProperty("animationType");
         _animationFromCornerType = serializedObject.FindProperty("animationFromCornerType");
@@ -39,6 +42,7 @@ public class AnimationPInspector : Editor
     public override void OnInspectorGUI()
     {
         InspectorTitle_LABEL();
+        AnimationWorksOnStart_TOGGLE();
         AnimationType_DROPDOWN();
         AnimationDuration_INPUT();
         AnimationDelay_PROPERTIES();
@@ -58,6 +62,17 @@ public class AnimationPInspector : Editor
         EditorGUILayout.Space(); EditorGUILayout.Space();
     }
 
+    private void AnimationWorksOnStart_TOGGLE()
+    {
+        EditorGUILayout.BeginVertical();
+
+        GUI.color = Color.cyan;
+        EditorGUILayout.PropertyField(_showOnStart, new GUIContent("Show On Start"));
+        GUI.color = Color.white;
+
+        GUILayout.Space(10);
+    }
+
     private void AnimationType_DROPDOWN()
     {
         EditorGUILayout.BeginVertical();
@@ -75,7 +90,6 @@ public class AnimationPInspector : Editor
                 EditorGUILayout.PropertyField(_elasticPower, new GUIContent("Elastic Power"));
                 break;
         }
-
     }
 
     private void AnimationDuration_INPUT()

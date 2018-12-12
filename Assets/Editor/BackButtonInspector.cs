@@ -14,6 +14,7 @@ public class BackButtonInspector : Editor
     private SerializedProperty _graphicType;
     private SerializedProperty _buttonText;
     private SerializedProperty _graphicSprite;
+    private SerializedProperty _scale;
 
     private void OnEnable()
     {
@@ -24,6 +25,7 @@ public class BackButtonInspector : Editor
         _graphicType = serializedObject.FindProperty("graphicType");
         _buttonText = serializedObject.FindProperty("buttonText");
         _graphicSprite = serializedObject.FindProperty("graphicSprite");
+        _scale = serializedObject.FindProperty("scale");
     }
 
     public override void OnInspectorGUI()
@@ -46,6 +48,8 @@ public class BackButtonInspector : Editor
         if (backButtonP.withGraphic)
         {
             EditorGUILayout.PropertyField(_graphicType);
+
+            EditorGUILayout.PropertyField(_scale);
 
             if (backButtonP.graphicType == BackButtonP.GraphicType.Image)
             {

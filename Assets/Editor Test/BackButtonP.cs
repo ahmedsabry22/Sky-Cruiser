@@ -12,6 +12,8 @@ public class BackButtonP : MonoBehaviour
 
     public GraphicType graphicType;
 
+    [Range(0.1f, 1)] public float scale = 0.5f;
+
     public string buttonText = "Back";
     public Sprite graphicSprite;
 
@@ -59,6 +61,7 @@ public class BackButtonP : MonoBehaviour
             backButton = Instantiate(backButtonPrefab, transform, false);
             backButton.onClick.AddListener(DoBack);
             backButton.name = backButtonPrefab.name;
+            backButton.GetComponent<RectTransform>().localScale = new Vector3(scale, scale, scale);
 
             Image img = backButton.transform.Find("Image").GetComponent<Image>();
             Text txt = backButton.transform.Find("Text").GetComponent<Text>();

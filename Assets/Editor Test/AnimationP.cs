@@ -11,6 +11,8 @@ public class AnimationP : MonoBehaviour
     public UnityEvent OnShowComplete;
     public UnityEvent OnHideComplete;
 
+    public bool showOnStart;
+
     public AnimationType animationType;
     public AnimationFromCornerType animationFromCornerType;
 
@@ -33,6 +35,9 @@ public class AnimationP : MonoBehaviour
     private void Start()
     {
         initialPosition = transform.position;
+
+        if (showOnStart)
+            ShowMenu();
     }
 
     private void Update()
@@ -91,18 +96,16 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateFromCornerWithScale_SHOW()
     {
-        if (withDelay)
-            yield return (new WaitForSeconds(showDelay));
-
+        #region Initialization Part
         float startPositionX = 0;
         float startPositionY = 0;
 
-        Image[] imagesInMenu = GetComponentsInChildren<Image>();
+        Graphic[] imagesInMenu = GetComponentsInChildren<Graphic>();
 
+        // Here we get start color to a color with alpha = 0, and the end color to a color with alpha = 1.
         Color[] startColors = new Color[imagesInMenu.Length];
         Color[] endColors = new Color[imagesInMenu.Length];
 
-        // Here we get start color to a color with alpha = 0, and the end color to a color with alpha = 1.
         for (int i = 0; i < imagesInMenu.Length; i++)
         {
             startColors[i] = imagesInMenu[i].color;
@@ -140,11 +143,19 @@ public class AnimationP : MonoBehaviour
                 break;
         }
 
-        // Starting animating.
-        float startTime = Time.time;
-
         Vector3 startPos = new Vector3(startPositionX, startPositionY, 0);
         Vector3 targetPosition = initialPosition;
+
+        rectTransform.position = startPos;
+        rectTransform.localScale = Vector3.zero;
+
+        #endregion
+
+        if (withDelay)
+            yield return (new WaitForSeconds(showDelay));
+
+        // Starting animating.
+        float startTime = Time.time;
 
         rectTransform.position = startPos;
 
@@ -176,10 +187,12 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateElasticScale_SHOW()
     {
+        Vector3 startPosition = rectTransform.position;
+        rectTransform.localScale = Vector3.zero;
+
         if (withDelay)
             yield return (new WaitForSeconds(showDelay));
 
-        Vector3 startPosition = rectTransform.position;
         float startTime = Time.time;
 
         while (Time.time <= startTime + animationDuration)
@@ -207,6 +220,8 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateScale_SHOW()
     {
+        rectTransform.localScale = Vector3.zero;
+
         if (withDelay)
             yield return (new WaitForSeconds(showDelay));
 
@@ -230,6 +245,7 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateFadeIn_SHOW()
     {
+        #region Initialization Part
         Graphic[] images = GetComponentsInChildren<Graphic>();
         Color[] startColors = new Color[images.Length];
         Color[] endColors = new Color[images.Length];
@@ -244,8 +260,9 @@ public class AnimationP : MonoBehaviour
 
         for (int i = 0; i < images.Length; i++)
         {
-            images[i].color = new Color(images[i].color.r, images[i].color.g, images[i].color.b, 0);
+            images[i].color = startColors[i];
         }
+        #endregion
 
         if (withDelay)
             yield return (new WaitForSeconds(showDelay));
@@ -280,14 +297,11 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateFadeIn_HIDE()
     {
-        if (withDelay)
-            yield return (new WaitForSeconds(hideDelay));
-
+        #region Initialization Part
         Graphic[] images = GetComponentsInChildren<Graphic>();
 
         Color[] startColors = new Color[images.Length];
         Color[] endColors = new Color[images.Length];
-        float startTime = Time.time;
 
         for (int i = 0; i < images.Length; i++)
         {
@@ -301,6 +315,12 @@ public class AnimationP : MonoBehaviour
         {
             images[i].color = startColors[i];
         }
+        #endregion
+
+        if (withDelay)
+            yield return (new WaitForSeconds(hideDelay));
+
+        float startTime = Time.time;
 
         while (Time.time < startTime + animationDuration)
         {
@@ -323,10 +343,12 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateScale_HIDE()
     {
+        Vector3 startPosition = rectTransform.position;
+        rectTransform.localScale = Vector3.one;
+
         if (withDelay)
             yield return (new WaitForSeconds(hideDelay));
 
-        Vector3 startPosition = rectTransform.position;
         float startTime = Time.time;
 
         while (Time.time <= startTime + animationDuration)
@@ -346,10 +368,12 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateElasticScale_HIDE()
     {
+        Vector3 startPosition = rectTransform.position;
+        rectTransform.localScale = Vector3.one;
+
         if (withDelay)
             yield return (new WaitForSeconds(hideDelay));
 
-        Vector3 startPosition = rectTransform.position;
         float startTime = Time.time;
 
         while (Time.time <= startTime + animationDuration)
@@ -369,9 +393,6 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateFromCornerWithScale_HIDE()
     {
-        if (withDelay)
-            yield return (new WaitForSeconds(hideDelay));
-
         float endX = 0;
         float endY = 0;
         float startX = Screen.width / 2;
@@ -418,11 +439,14 @@ public class AnimationP : MonoBehaviour
                 break;
         }
 
-        float startTime = Time.time;
-
         Vector3 startPos = initialPosition;
         Vector3 targetPosition = new Vector3(endX, endY, 0);
         rectTransform.position = startPos;
+
+        if (withDelay)
+            yield return (new WaitForSeconds(hideDelay));
+
+        float startTime = Time.time;
 
         while (Time.time <= startTime + animationDuration)
         {
