@@ -104,9 +104,9 @@ public class AnimationPInspector : Editor
 
     private void OnShowOnHide_EVENTS()
     {
-        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.BeginVertical();
         EditorGUILayout.PropertyField(_onItemShow, new GUIContent("onItemShow"));
         EditorGUILayout.PropertyField(_onItemHide, new GUIContent("onItemHide"));
-        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.EndVertical();
     }
 }

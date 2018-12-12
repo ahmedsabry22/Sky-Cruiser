@@ -18,7 +18,8 @@ public class Ed : EditorWindow
     {
         WindowTitle_LABEL();
         AddRemoveAnimation_BUTTONS();
-        AddRemoveAnchor_BUTTONS();
+        //AddRemoveAnchor_BUTTONS();
+        AddRemoveBackBtn_BUTTONS();
         CloseWindow_BUTTON();
     }
 
@@ -27,14 +28,14 @@ public class Ed : EditorWindow
         var titleLabelStyle = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.UpperCenter, fontSize = 30, fontStyle = FontStyle.Bold, fixedHeight = 50 };
 
         EditorGUILayout.LabelField("UI Animation Editor", titleLabelStyle);
-        EditorGUILayout.Space(); EditorGUILayout.Space(); EditorGUILayout.Space();
+        GUILayout.Space(50);
     }
 
     private void AddRemoveAnimation_BUTTONS()
     {
         GUILayout.BeginHorizontal();
 
-        if (GUILayout.Button("Add Animator"))
+        if (GUILayout.Button("Add Animator", GUILayout.Height(100)))
         {
             foreach (GameObject g in Selection.gameObjects)
             {
@@ -44,7 +45,7 @@ public class Ed : EditorWindow
                 }
             }
         }
-        if (GUILayout.Button("Remove Animator"))
+        if (GUILayout.Button("Remove Animator", GUILayout.Height(100)))
         {
             foreach (GameObject g in Selection.gameObjects)
             {
@@ -55,16 +56,14 @@ public class Ed : EditorWindow
 
         GUILayout.EndHorizontal();
 
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
+        GUILayout.Space(20);
     }
 
     private void AddRemoveAnchor_BUTTONS()
     {
         GUILayout.BeginHorizontal();
 
-        if (GUILayout.Button("Add Anchor Controller"))
+        if (GUILayout.Button("Add Anchor Controller", GUILayout.Height(100)))
         {
             foreach (GameObject g in Selection.gameObjects)
             {
@@ -74,7 +73,8 @@ public class Ed : EditorWindow
                 }
             }
         }
-        if (GUILayout.Button("Remove Anchor Controller"))
+
+        if (GUILayout.Button("Remove Anchor Controller", GUILayout.Height(100)))
         {
             foreach (GameObject g in Selection.gameObjects)
             {
@@ -85,15 +85,42 @@ public class Ed : EditorWindow
 
         GUILayout.EndHorizontal();
 
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
+        GUILayout.Space(20);
+    }
+
+    private void AddRemoveBackBtn_BUTTONS()
+    {
+        GUILayout.BeginHorizontal();
+
+        if (GUILayout.Button("Add Back Button Functionality", GUILayout.Height(100)))
+        {
+            foreach (GameObject g in Selection.gameObjects)
+            {
+                if (g.GetComponent<BackButtonP>() == null)
+                {
+                    g.AddComponent<BackButtonP>();
+                }
+            }
+        }
+
+        if (GUILayout.Button("Remove Back Button Functionality", GUILayout.Height(100)))
+        {
+            foreach (GameObject g in Selection.gameObjects)
+            {
+                if (g.GetComponent<BackButtonP>() != null)
+                    DestroyImmediate(g.GetComponent<BackButtonP>());
+            }
+        }
+
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(20);
     }
 
     private void CloseWindow_BUTTON()
     {
         GUILayout.BeginVertical();
-        if (GUILayout.Button("Close"))
+        if (GUILayout.Button("Close", GUILayout.Height(100)))
         {
             window.Close();
         }

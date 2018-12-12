@@ -5,32 +5,29 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class AnchorP : MonoBehaviour
 {
-    private float screenWidth, screenHeight;
+    private static float screenWidth, screenHeight;
 
-    private RectTransform rectTransform;
+    private static RectTransform rectTransform;
 
-    private float rectWidth, rectHeight;
+    private static float rectWidth, rectHeight;
 
-    private Vector3 rectInitialPosition;
-    private Vector2 minAnchors;
-    private Vector2 maxAnchors;
-    private Vector2 rectRelativeToScreenPosition;
+    private static Vector3 rectInitialPosition;
+    private static Vector2 minAnchors;
+    private static Vector2 maxAnchors;
+    private static Vector2 rectRelativeToScreenPosition;
 
-    private float widthRelativeToScreen;
-    private float heightRelativeToScreen;
+    private static float widthRelativeToScreen;
+    private static float heightRelativeToScreen;
 
-    private void GetRectComponent()
-    {
-        rectTransform = GetComponent<RectTransform>();
-    }
-
-    public void SetAnchors()
+    public static void SetAnchors(RectTransform rect)
     {
         // First, We will get the current position, width, and height of the rect transform, because we will reset these values after setting the anchor.
         // That's because when the anchors positions change, they autmatically change the coordinates of the rect transform.
         // Second, we will get the width and height of the screen.
         // Second, we will get the width and height of rect transform.
         // Third, we have to find the rect transform's position in relativity with screen width, and height. (rectTransform.position.x / screenWidth)
+
+        rectTransform = rect;
 
         SetInitialValues();
 
@@ -45,9 +42,18 @@ public class AnchorP : MonoBehaviour
         rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, rectWidth);
     }
 
-    private void SetInitialValues()
+    public static void SetRectToAnchor(RectTransform rect)
     {
-        GetRectComponent();
+        rectTransform = rect;
+
+        SetInitialValues();
+
+        rectTransform.offsetMin = Vector2.zero;
+        rectTransform.offsetMax = Vector2.zero;
+    }
+
+    private static void SetInitialValues()
+    {
         // Initial Position, because we will reset the position later.
         rectInitialPosition = rectTransform.position;
 
@@ -73,14 +79,6 @@ public class AnchorP : MonoBehaviour
 
         minAnchors = new Vector2(minX, minY);
         maxAnchors = new Vector2(maxX, maxY);
-    }
-
-    public void SetRectToAnchor()
-    {
-        SetInitialValues();
-
-        rectTransform.offsetMin = Vector2.zero;
-        rectTransform.offsetMax = Vector2.zero;
     }
 
     #region Old

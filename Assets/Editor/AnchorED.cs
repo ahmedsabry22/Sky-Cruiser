@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using System;
 
 public class AnchorED : EditorWindow
 {
     private static EditorWindow window;
 
-    [MenuItem ("Window/Anchors Window %#a")]
+    [MenuItem("Window/Anchors Window %#a")]
     private static void ShowWindow()
     {
         window = GetWindow<AnchorED>("Anchor Ed");
@@ -14,49 +15,77 @@ public class AnchorED : EditorWindow
 
     private void OnGUI()
     {
-        if (GUILayout.Button("Set Anchors"))
-        {
-            SetAnchorsOfSelectedGameObject();
-        }
+        WindowTitle_LABEL();
 
-        if (GUILayout.Button("Set Rect To Anchors"))
-        {
-            SetRectToAnchorSelectedGameObject();
-        }
+        SetAnchorsOfSelectedGameObject();
 
-        if (GUILayout.Button("Close"))
-        {
-            window.Close();
-        }
+        SetRectToAnchorSelectedGameObject();
+
+        CloseButton();
+    }
+
+    private void WindowTitle_LABEL()
+    {
+        var titleLabelStyle = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.UpperCenter, fontSize = 30, fontStyle = FontStyle.Bold, fixedHeight = 50 };
+
+        EditorGUILayout.LabelField("Anchors Editor", titleLabelStyle);
+        EditorGUILayout.Space(); EditorGUILayout.Space(); EditorGUILayout.Space();
+
+        GUILayout.Space(30);
     }
 
     private static void SetAnchorsOfSelectedGameObject()
     {
-        GameObject[] selectedGameObjects = Selection.gameObjects;
+        var btnContent = new GUIContent() { text = "Align Rect To Anchors", tooltip = "Move Anchors to be aligned with the rect" };
 
-        foreach (var g in selectedGameObjects)
+        if (GUILayout.Button(btnContent, GUILayout.Height(100)))
         {
-            AnchorP anchorP = g.GetComponent<AnchorP>();
+            GameObject[] selectedGameObjects = Selection.gameObjects;
 
-            if (anchorP != null)
+            foreach (var g in selectedGameObjects)
             {
-                anchorP.SetAnchors();
+                RectTransform rectTransform = g.GetComponent<RectTransform>();
+
+                if (rectTransform != null)
+                {
+                    AnchorP.SetAnchors(rectTransform);
+                }
             }
         }
+
+        GUILayout.Space(10);
     }
 
     private static void SetRectToAnchorSelectedGameObject()
     {
-        GameObject[] selectedGameObjects = Selection.gameObjects;
+        var btnContent = new GUIContent() { text = "Align Anchors With Rect", tooltip = "Align The Rect's borders With The Anchors" };
 
-        foreach (var g in selectedGameObjects)
+        if (GUILayout.Button(btnContent, GUILayout.Height(100)))
         {
-            AnchorP anchorP = g.GetComponent<AnchorP>();
+            GameObject[] selectedGameObjects = Selection.gameObjects;
 
-            if (anchorP != null)
+            foreach (var g in selectedGameObjects)
             {
-                anchorP.SetRectToAnchor();
+                RectTransform rectTransform = g.GetComponent<RectTransform>();
+
+                if (rectTransform != null)
+                {
+                    AnchorP.SetRectToAnchor(rectTransform);
+                }
             }
         }
+
+        GUILayout.Space(10);
+    }
+
+    private void CloseButton()
+    {
+        var btnContent = new GUIContent() { text = "Clsoe", tooltip = "Close this editor window" };
+        if (GUILayout.Button(btnContent, GUILayout.Height(100)))
+        {
+            window.Close();
+        }
+
+        GUILayout.Space(10);
     }
 }
