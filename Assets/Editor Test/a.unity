@@ -1987,10 +1987,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   withGraphic: 1
-  position: 1
+  position: 0
   graphicType: 0
   buttonText: Back
-  graphicSprite: {fileID: 21300006, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  graphicSprite: {fileID: 21300000, guid: a04a45ce3fb9e4a48bf5112b609a63b2, type: 3}
   backButtonManager: {fileID: 0}
 --- !u!114 &1538256958
 MonoBehaviour:
@@ -2013,8 +2013,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  animationType: 2
-  animationFromCornerType: 0
+  animationType: 3
+  animationFromCornerType: 1
   animationDuration: 0.5
   withDelay: 0
   showDelay: 0

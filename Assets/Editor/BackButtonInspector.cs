@@ -5,7 +5,7 @@ using UnityEditor;
 
 [CustomEditor(typeof(BackButtonP))]
 [CanEditMultipleObjects]
-public class BackButtonPED : Editor
+public class BackButtonInspector : Editor
 {
     private BackButtonP backButtonP;
 

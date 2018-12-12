@@ -22,8 +22,12 @@ public class BackButtonP : MonoBehaviour
 
     private AnimationP animationP;
 
+    private RectTransform rectTransform;
+
     private void Awake()
     {
+        rectTransform = GetComponent<RectTransform>();
+
         backButtonManager = Resources.Load<BackButtonManager>("Back Button Manager");
         StartCoroutine(InstantiateManager());
 
@@ -42,22 +46,6 @@ public class BackButtonP : MonoBehaviour
             string backButtonManagerName = backButtonManager.gameObject.name;
             backButtonManager = Instantiate(backButtonManager);
             backButtonManager.gameObject.name = backButtonManagerName;
-
-            switch (position)
-            {
-                case (Positions.TopRight):
-                    // Instantiate at top right
-                    break;
-                case (Positions.TopLeft):
-                    // Instantiate at top left
-                    break;
-                case (Positions.BottomRight):
-                    // Instantiate at bottom right
-                    break;
-                case (Positions.BottomLeft):
-                    // Instantiate at bottom left
-                    break;
-            }
         }
         yield return (new WaitForEndOfFrame());
             
@@ -90,6 +78,26 @@ public class BackButtonP : MonoBehaviour
 
                 img.gameObject.SetActive(false);
             }
+
+            switch (position)
+            {
+                case (Positions.TopRight):
+                    // Instantiate at top right
+                    backButton.GetComponent<RectTransform>().localPosition = new Vector3(rectTransform.rect.width / 2, rectTransform.rect.height / 2, 0);
+                    break;
+                case (Positions.TopLeft):
+                    // Instantiate at top left
+                    backButton.GetComponent<RectTransform>().localPosition = new Vector3(-rectTransform.rect.width / 2, rectTransform.rect.height / 2, 0);
+                    break;
+                case (Positions.BottomRight):
+                    // Instantiate at bottom right
+                    backButton.GetComponent<RectTransform>().localPosition = new Vector3(rectTransform.rect.width / 2, -rectTransform.rect.height / 2, 0);
+                    break;
+                case (Positions.BottomLeft):
+                    // Instantiate at bottom left
+                    backButton.GetComponent<RectTransform>().localPosition = new Vector3(-rectTransform.rect.width / 2, -rectTransform.rect.height / 2, 0);
+                    break;
+            }
         }
     }
 
@@ -117,5 +125,6 @@ public class BackButtonP : MonoBehaviour
     }
 
     public enum Positions { TopRight, TopLeft, BottomRight, BottomLeft }
+
     public enum GraphicType { Image, Text }
 }

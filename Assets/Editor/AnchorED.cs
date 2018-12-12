@@ -34,6 +34,7 @@ public class AnchorED : EditorWindow
         GUILayout.Space(30);
     }
 
+    [MenuItem("Tools/AnimationP/Align Anchors With Selected %#q")]
     private static void SetAnchorsOfSelectedGameObject()
     {
         var btnContent = new GUIContent() { text = "Align Rect To Anchors", tooltip = "Move Anchors to be aligned with the rect" };
@@ -56,6 +57,7 @@ public class AnchorED : EditorWindow
         GUILayout.Space(10);
     }
 
+    [MenuItem("Tools/AnimationP/Align Selected To Anchors %#w")]
     private static void SetRectToAnchorSelectedGameObject()
     {
         var btnContent = new GUIContent() { text = "Align Anchors With Rect", tooltip = "Align The Rect's borders With The Anchors" };
