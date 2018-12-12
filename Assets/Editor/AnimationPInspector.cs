@@ -15,8 +15,10 @@ public class AnimationPInspector : Editor
     private SerializedProperty _withDelay;
     private SerializedProperty _showDelay;
     private SerializedProperty _hideDelay;
-    private SerializedProperty _onItemShow;
-    private SerializedProperty _onItemHide;
+    private SerializedProperty _onShowEvent;
+    private SerializedProperty _onHideEvent;
+    private SerializedProperty _onShowCompleteEvent;
+    private SerializedProperty _onHideCompleteEvent;
 
     private void OnEnable()
     {
@@ -28,8 +30,10 @@ public class AnimationPInspector : Editor
         _withDelay = serializedObject.FindProperty("withDelay");
         _showDelay = serializedObject.FindProperty("showDelay");
         _hideDelay = serializedObject.FindProperty("hideDelay");
-        _onItemShow = serializedObject.FindProperty("onItemShow");
-        _onItemHide = serializedObject.FindProperty("onItemHide");
+        _onShowEvent = serializedObject.FindProperty("OnShow");
+        _onHideEvent = serializedObject.FindProperty("OnHide");
+        _onShowCompleteEvent = serializedObject.FindProperty("OnShowComplete");
+        _onHideCompleteEvent = serializedObject.FindProperty("OnHideComplete");
     }
 
     public override void OnInspectorGUI()
@@ -105,8 +109,10 @@ public class AnimationPInspector : Editor
     private void OnShowOnHide_EVENTS()
     {
         EditorGUILayout.BeginVertical();
-        EditorGUILayout.PropertyField(_onItemShow, new GUIContent("onItemShow"));
-        EditorGUILayout.PropertyField(_onItemHide, new GUIContent("onItemHide"));
+        EditorGUILayout.PropertyField(_onShowEvent, new GUIContent("OnShow"));
+        EditorGUILayout.PropertyField(_onHideEvent, new GUIContent("OnHide"));
+        EditorGUILayout.PropertyField(_onShowCompleteEvent, new GUIContent("OnShowComplete"));
+        EditorGUILayout.PropertyField(_onHideCompleteEvent, new GUIContent("OnHideComplete"));
         EditorGUILayout.EndVertical();
     }
 }

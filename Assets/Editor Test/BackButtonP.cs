@@ -34,8 +34,8 @@ public class BackButtonP : MonoBehaviour
         backButtonPrefab = Resources.Load<Button>("Back Button");
 
         animationP = GetComponent<AnimationP>();
-        animationP.onItemShow.AddListener(() => BackButtonManager.Instance.AddButtonToList(this));
-        animationP.onItemHide.AddListener(() => BackButtonManager.Instance.RemoveButtonFromList(this));
+        animationP.OnShow.AddListener(() => BackButtonManager.Instance.AddButtonToList(this));
+        animationP.OnHide.AddListener(() => BackButtonManager.Instance.RemoveButtonFromList(this));
     }
 
     private IEnumerator InstantiateManager()

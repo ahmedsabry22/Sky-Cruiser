@@ -6,8 +6,10 @@ using UnityEngine.Events;
 public class AnimationP : MonoBehaviour
 {
     //public delegate void ItemVisibility();
-    public UnityEvent onItemShow;
-    public UnityEvent onItemHide;
+    public UnityEvent OnShow;
+    public UnityEvent OnHide;
+    public UnityEvent OnShowComplete;
+    public UnityEvent OnHideComplete;
 
     public AnimationType animationType;
     public AnimationFromCornerType animationFromCornerType;
@@ -59,8 +61,8 @@ public class AnimationP : MonoBehaviour
                 break;
         }
 
-        if (onItemShow != null)
-            onItemShow.Invoke();
+        if (OnShow != null)
+            OnShow.Invoke();
     }
 
     public void HideMenu()
@@ -81,8 +83,8 @@ public class AnimationP : MonoBehaviour
                 break;
         }
 
-        if (onItemHide != null)
-            onItemHide.Invoke();
+        if (OnHide != null)
+            OnHide.Invoke();
     }
 
     #region Show Coroutines
@@ -128,6 +130,14 @@ public class AnimationP : MonoBehaviour
                 startPositionX = 0;
                 startPositionY = Screen.height;
                 break;
+            case (AnimationFromCornerType.ShowFromUp):
+                startPositionX = Screen.width / 2;
+                startPositionY = Screen.height;
+                break;
+            case (AnimationFromCornerType.ShowFromBottom):
+                startPositionX = Screen.width / 2;
+                startPositionY = 0;
+                break;
         }
 
         // Starting animating.
@@ -159,6 +169,9 @@ public class AnimationP : MonoBehaviour
 
         for (int i = 0; i < imagesInMenu.Length; i++)
             imagesInMenu[i].color = endColors[i];
+
+        if (OnShowComplete != null)
+            OnShowComplete.Invoke();
     }
 
     private IEnumerator AnimateElasticScale_SHOW()
@@ -187,6 +200,9 @@ public class AnimationP : MonoBehaviour
             rectTransform.localScale = Vector3.Lerp(Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticityPower, Vector3.one, t);
             yield return (null);
         }
+
+        if (OnShowComplete != null)
+            OnShowComplete.Invoke();
     }
 
     private IEnumerator AnimateScale_SHOW()
@@ -207,6 +223,9 @@ public class AnimationP : MonoBehaviour
         }
 
         rectTransform.localScale = Vector3.one;
+
+        if (OnShowComplete != null)
+            OnShowComplete.Invoke();
     }
 
     private IEnumerator AnimateFadeIn_SHOW()
@@ -247,6 +266,9 @@ public class AnimationP : MonoBehaviour
         {
             images[i].color = endColors[i];
         }
+
+        if (OnShowComplete != null)
+            OnShowComplete.Invoke();
     }
 
     #endregion
@@ -266,7 +288,7 @@ public class AnimationP : MonoBehaviour
         Color[] startColors = new Color[images.Length];
         Color[] endColors = new Color[images.Length];
         float startTime = Time.time;
-        
+
         for (int i = 0; i < images.Length; i++)
         {
             startColors[i] = images[i].color;
@@ -294,6 +316,9 @@ public class AnimationP : MonoBehaviour
         {
             images[i].color = endColors[i];
         }
+
+        if (OnHideComplete != null)
+            OnHideComplete.Invoke();
     }
 
     private IEnumerator AnimateScale_HIDE()
@@ -314,6 +339,9 @@ public class AnimationP : MonoBehaviour
         }
 
         rectTransform.localScale = Vector3.zero;
+
+        if (OnHideComplete != null)
+            OnHideComplete.Invoke();
     }
 
     private IEnumerator AnimateElasticScale_HIDE()
@@ -334,6 +362,9 @@ public class AnimationP : MonoBehaviour
         }
 
         rectTransform.localScale = Vector3.zero;
+
+        if (OnHideComplete != null)
+            OnHideComplete.Invoke();
     }
 
     private IEnumerator AnimateFromCornerWithScale_HIDE()
@@ -359,25 +390,32 @@ public class AnimationP : MonoBehaviour
             endColors[i].a = 0;
         }
 
-        if (animationFromCornerType == AnimationFromCornerType.ShowFromBottomRight)
+        switch (animationFromCornerType)
         {
-            endX = Screen.width;
-            endY = 0;
-        }
-        else if (animationFromCornerType == AnimationFromCornerType.ShowFromBottomLeft)
-        {
-            endX = 0;
-            endY = 0;
-        }
-        else if (animationFromCornerType == AnimationFromCornerType.ShowFromTopRight)
-        {
-            endX = Screen.width;
-            endY = Screen.height;
-        }
-        else if (animationFromCornerType == AnimationFromCornerType.ShowFromTopLeft)
-        {
-            endX = 0;
-            endY = Screen.height;
+            case (AnimationFromCornerType.ShowFromBottomRight):
+                endX = Screen.width;
+                endY = 0;
+                break;
+            case (AnimationFromCornerType.ShowFromBottomLeft):
+                endX = 0;
+                endY = 0;
+                break;
+            case (AnimationFromCornerType.ShowFromTopRight):
+                endX = Screen.width;
+                endY = Screen.height;
+                break;
+            case (AnimationFromCornerType.ShowFromTopLeft):
+                endX = 0;
+                endY = Screen.height;
+                break;
+            case (AnimationFromCornerType.ShowFromUp):
+                endX = Screen.width / 2;
+                endY = Screen.height;
+                break;
+            case (AnimationFromCornerType.ShowFromBottom):
+                endX = Screen.width / 2;
+                endY = 0;
+                break;
         }
 
         float startTime = Time.time;
@@ -407,6 +445,9 @@ public class AnimationP : MonoBehaviour
         {
             images[i].color = endColors[i];
         }
+
+        if (OnHideComplete != null)
+            OnHideComplete.Invoke();
     }
 
     #endregion
@@ -419,5 +460,5 @@ public enum AnimationType
 
 public enum AnimationFromCornerType
 {
-    ShowFromBottomRight, ShowFromTopRight, ShowFromBottomLeft, ShowFromTopLeft
+    ShowFromBottomRight, ShowFromTopRight, ShowFromBottomLeft, ShowFromTopLeft, ShowFromUp, ShowFromBottom
 }
