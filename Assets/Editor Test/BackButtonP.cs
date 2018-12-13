@@ -8,11 +8,15 @@ public class BackButtonP : MonoBehaviour
     [Tooltip("if false, it will work only on devices that has back button, and ESC button on standalone devices. If true, there will be a button on the screen")]
     public bool withGraphic;
 
+    public bool controlChildren = true;
+
     public Positions position;
 
     public GraphicType graphicType;
 
     [Range(0.1f, 1)] public float scale = 0.5f;
+
+    public float offsetX = 0, offsetY = 0;
 
     public string buttonText = "Back";
     public Sprite graphicSprite;
@@ -59,7 +63,7 @@ public class BackButtonP : MonoBehaviour
         {
             // Instantiate Button and make it child of this game object
             backButton = Instantiate(backButtonPrefab, transform, false);
-            backButton.onClick.AddListener(DoBack);
+            backButton.onClick.AddListener(DoBackOnThisObject);
             backButton.name = backButtonPrefab.name;
             backButton.GetComponent<RectTransform>().localScale = new Vector3(scale, scale, scale);
 
@@ -86,19 +90,19 @@ public class BackButtonP : MonoBehaviour
             {
                 case (Positions.TopRight):
                     // Instantiate at top right
-                    backButton.GetComponent<RectTransform>().localPosition = new Vector3(rectTransform.rect.width / 2, rectTransform.rect.height / 2, 0);
+                    backButton.GetComponent<RectTransform>().localPosition = new Vector3(rectTransform.rect.width / 2 - offsetX, rectTransform.rect.height / 2 - offsetY, 0);
                     break;
                 case (Positions.TopLeft):
                     // Instantiate at top left
-                    backButton.GetComponent<RectTransform>().localPosition = new Vector3(-rectTransform.rect.width / 2, rectTransform.rect.height / 2, 0);
+                    backButton.GetComponent<RectTransform>().localPosition = new Vector3(-rectTransform.rect.width / 2 + offsetX, rectTransform.rect.height / 2 - offsetY, 0);
                     break;
                 case (Positions.BottomRight):
                     // Instantiate at bottom right
-                    backButton.GetComponent<RectTransform>().localPosition = new Vector3(rectTransform.rect.width / 2, -rectTransform.rect.height / 2, 0);
+                    backButton.GetComponent<RectTransform>().localPosition = new Vector3(rectTransform.rect.width / 2 - offsetX, -rectTransform.rect.height / 2 + offsetY, 0);
                     break;
                 case (Positions.BottomLeft):
                     // Instantiate at bottom left
-                    backButton.GetComponent<RectTransform>().localPosition = new Vector3(-rectTransform.rect.width / 2, -rectTransform.rect.height / 2, 0);
+                    backButton.GetComponent<RectTransform>().localPosition = new Vector3(-rectTransform.rect.width / 2 + offsetX, -rectTransform.rect.height / 2 + offsetY, 0);
                     break;
             }
         }
@@ -124,7 +128,12 @@ public class BackButtonP : MonoBehaviour
 
     public void DoBack()
     {
-        BackButtonManager.Instance.DoBack(this);
+        BackButtonManager.Instance.DoBack(this, controlChildren);
+    }
+
+    public void DoBackOnThisObject()
+    {
+        BackButtonManager.Instance.DoBackOnCurrentObject(this, controlChildren);
     }
 
     public enum Positions { TopRight, TopLeft, BottomRight, BottomLeft }

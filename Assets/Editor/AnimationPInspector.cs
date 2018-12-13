@@ -9,8 +9,11 @@ public class AnimationPInspector : Editor
     private bool showFromCornerAnimation;
 
     private SerializedProperty _showOnStart;
-    private SerializedProperty _animationDuration;
-    private SerializedProperty _animationType;
+    private SerializedProperty _animationShowDuration;
+    private SerializedProperty _animationHideDuration;
+    private SerializedProperty _showAnimationType;
+    private SerializedProperty _hideAnimationType;
+    private SerializedProperty _fadeChildren;
     private SerializedProperty _animationFromCornerType;
     private SerializedProperty _elasticPower;
     private SerializedProperty _withDelay;
@@ -21,13 +24,19 @@ public class AnimationPInspector : Editor
     private SerializedProperty _onShowCompleteEvent;
     private SerializedProperty _onHideCompleteEvent;
 
+    private int currentTabIndex = 0;
+    private string[] tabsTexts = { "Show", "Hide" };
+
     private void OnEnable()
     {
         animationP = (AnimationP)target;
 
         _showOnStart = serializedObject.FindProperty("showOnStart");
-        _animationDuration = serializedObject.FindProperty("animationDuration");
-        _animationType = serializedObject.FindProperty("animationType");
+        _animationShowDuration = serializedObject.FindProperty("animationShowDuration");
+        _animationHideDuration = serializedObject.FindProperty("animationHideDuration");
+        _showAnimationType = serializedObject.FindProperty("showAnimationType");
+        _hideAnimationType = serializedObject.FindProperty("hideAnimationType");
+        _fadeChildren = serializedObject.FindProperty("fadeChildren");
         _animationFromCornerType = serializedObject.FindProperty("animationFromCornerType");
         _elasticPower = serializedObject.FindProperty("elasticityPower");
         _withDelay = serializedObject.FindProperty("withDelay");
@@ -42,11 +51,33 @@ public class AnimationPInspector : Editor
     public override void OnInspectorGUI()
     {
         InspectorTitle_LABEL();
-        AnimationWorksOnStart_TOGGLE();
-        AnimationType_DROPDOWN();
-        AnimationDuration_INPUT();
-        AnimationDelay_PROPERTIES();
-        OnShowOnHide_EVENTS();
+
+        GUILayout.Space(20);
+        currentTabIndex = GUILayout.Toolbar(currentTabIndex, tabsTexts);
+        GUILayout.Space(20);
+
+        if (currentTabIndex == 0)
+        {
+            GUI.color = Color.cyan;
+
+            AnimationWorksOnStart_TOGGLE();
+            ShowAnimationType_DROPDOWN();
+            FadeChildren_TOGGLE();
+            AnimationShowDuration_INPUT();
+            ShowAnimationDelay_PROPERTIES();
+            AutomateChildrenShowDelays_BUTTON();
+            OnShow_EVENTS();
+        }
+        else if (currentTabIndex == 1)
+        {
+            GUI.color = Color.gray;
+
+            HideAnimationType_DROPDOWN();
+            AnimationHideDuration_INPUT();
+            HideAnimationDelay_PROPERTIES();
+            AutomateChildrenHideDelays_BUTTON();
+            OnHide_EVENTS();
+        }
 
         serializedObject.ApplyModifiedProperties();
     }
@@ -66,24 +97,23 @@ public class AnimationPInspector : Editor
     {
         EditorGUILayout.BeginVertical();
 
-        GUI.color = Color.cyan;
         EditorGUILayout.PropertyField(_showOnStart, new GUIContent("Show On Start"));
-        GUI.color = Color.white;
 
         GUILayout.Space(10);
     }
 
-    private void AnimationType_DROPDOWN()
+    private void ShowAnimationType_DROPDOWN()
     {
         EditorGUILayout.BeginVertical();
 
-        EditorGUILayout.PropertyField(_animationType, new GUIContent("Animation Type"));
+        EditorGUILayout.PropertyField(_showAnimationType, new GUIContent("Animation Type"));
 
         EditorGUILayout.Space(); EditorGUILayout.Space();
 
-        switch (animationP.animationType)
+        switch (animationP.showAnimationType)
         {
-            case (AnimationType.ShowFromCorner):
+            case (AnimationType.FromCornerWithScale):
+            case (AnimationType.FromCornerWithoutScale):
                 EditorGUILayout.PropertyField(_animationFromCornerType, new GUIContent("Animation From Corner Type"));
                 break;
             case (AnimationType.ScaleElastic):
@@ -92,16 +122,51 @@ public class AnimationPInspector : Editor
         }
     }
 
-    private void AnimationDuration_INPUT()
+    private void HideAnimationType_DROPDOWN()
+    {
+        EditorGUILayout.BeginVertical();
+
+        EditorGUILayout.PropertyField(_hideAnimationType, new GUIContent("Animation Type"));
+
+        EditorGUILayout.Space(); EditorGUILayout.Space();
+
+        switch (animationP.hideAnimationType)
+        {
+            case (AnimationType.FromCornerWithScale):
+            case (AnimationType.FromCornerWithoutScale):
+                EditorGUILayout.PropertyField(_animationFromCornerType, new GUIContent("Animation To Corner Type"));
+                break;
+            case (AnimationType.ScaleElastic):
+                EditorGUILayout.PropertyField(_elasticPower, new GUIContent("Elastic Power"));
+                break;
+        }
+    }
+
+    private void FadeChildren_TOGGLE()
+    {
+        if (animationP.showAnimationType == AnimationType.Fade)
+            EditorGUILayout.PropertyField(_fadeChildren, new GUIContent("Fade Children With Parent"));
+    }
+
+    private void AnimationShowDuration_INPUT()
     {
         EditorGUILayout.Space();
 
-        EditorGUILayout.PropertyField(_animationDuration, new GUIContent("Animation Duration"));
+        EditorGUILayout.PropertyField(_animationShowDuration, new GUIContent("Animation Show Duration"));
 
         EditorGUILayout.Space(); EditorGUILayout.Space();
     }
 
-    private void AnimationDelay_PROPERTIES()
+    private void AnimationHideDuration_INPUT()
+    {
+        EditorGUILayout.Space();
+
+        EditorGUILayout.PropertyField(_animationHideDuration, new GUIContent("Animation Hide Duration"));
+
+        EditorGUILayout.Space(); EditorGUILayout.Space();
+    }
+
+    private void ShowAnimationDelay_PROPERTIES()
     {
         EditorGUILayout.BeginVertical();
 
@@ -110,6 +175,23 @@ public class AnimationPInspector : Editor
         if (animationP.withDelay)
         {
             EditorGUILayout.PropertyField(_showDelay, new GUIContent("Show Delay"));
+        }
+
+        EditorGUILayout.EndVertical();
+
+        EditorGUILayout.Space(); EditorGUILayout.Space();
+
+        EditorGUILayout.EndVertical();
+    }
+
+    private void HideAnimationDelay_PROPERTIES()
+    {
+        EditorGUILayout.BeginVertical();
+
+        EditorGUILayout.PropertyField(_withDelay, new GUIContent("With Delay"));
+
+        if (animationP.withDelay)
+        {
             EditorGUILayout.PropertyField(_hideDelay, new GUIContent("Hide Delay"));
         }
 
@@ -120,13 +202,62 @@ public class AnimationPInspector : Editor
         EditorGUILayout.EndVertical();
     }
 
-    private void OnShowOnHide_EVENTS()
+    private void OnShow_EVENTS()
     {
         EditorGUILayout.BeginVertical();
-        EditorGUILayout.PropertyField(_onShowEvent, new GUIContent("OnShow"));
-        EditorGUILayout.PropertyField(_onHideEvent, new GUIContent("OnHide"));
-        EditorGUILayout.PropertyField(_onShowCompleteEvent, new GUIContent("OnShowComplete"));
-        EditorGUILayout.PropertyField(_onHideCompleteEvent, new GUIContent("OnHideComplete"));
+        EditorGUILayout.PropertyField(_onShowEvent, new GUIContent("On Show"));
+        EditorGUILayout.PropertyField(_onShowCompleteEvent, new GUIContent("On Show Complete"));
         EditorGUILayout.EndVertical();
+    }
+
+    private void OnHide_EVENTS()
+    {
+        EditorGUILayout.BeginVertical();
+        EditorGUILayout.PropertyField(_onHideEvent, new GUIContent("On Hide"));
+        EditorGUILayout.PropertyField(_onHideCompleteEvent, new GUIContent("On Hide Complete"));
+        EditorGUILayout.EndVertical();
+    }
+
+    private void AutomateChildrenShowDelays_BUTTON()
+    {
+        if (GUILayout.Button("Automate Show Delays In Children"))
+        {
+            AnimationP[] elementsInChildren = Selection.activeGameObject.GetComponentsInChildren<AnimationP>();
+
+            float step = (animationP.animationShowDuration / elementsInChildren.Length);
+            float currentValue = 0;
+
+            for (int i = 1; i < elementsInChildren.Length; i++)
+            {
+                if (elementsInChildren[i].withDelay)
+                    elementsInChildren[i].showDelay = animationP.animationShowDuration + animationP.showDelay + currentValue;
+
+                currentValue += step;
+            }
+        }
+
+        GUILayout.Space(5);
+    }
+
+    private void AutomateChildrenHideDelays_BUTTON()
+    {
+        if (GUILayout.Button("Automate Hide Delays In Children"))
+        {
+            AnimationP[] elementsInChildren = Selection.activeGameObject.GetComponentsInChildren<AnimationP>();
+
+            float step = (animationP.hideDelay / elementsInChildren.Length);
+            float currentValue = 0;
+
+            elementsInChildren[elementsInChildren.Length - 1].hideDelay = 0;
+            for (int i = elementsInChildren.Length - 2; i >= 1 ; i--)
+            {
+                if (elementsInChildren[i].withDelay)
+                    elementsInChildren[i].hideDelay = step + currentValue;
+
+                currentValue += step;
+            }
+        }
+
+        GUILayout.Space(20);
     }
 }

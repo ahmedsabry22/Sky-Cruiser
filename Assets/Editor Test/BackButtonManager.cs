@@ -32,16 +32,50 @@ public class BackButtonManager : MonoBehaviour
         }
     }
 
-    public void DoBack(BackButtonP backButton)
+    public void DoBack(BackButtonP backButton, bool controlChildren)
     {
-        int targetIndex = ActiveButtons.Count - 1;
-
-        if (ActiveButtons.Contains(backButton))
+        if (controlChildren)
         {
-            if (backButton == ActiveButtons[targetIndex] && backButton.gameObject.activeSelf)
+            AnimationP[] childrenElements = backButton.GetComponentsInChildren<AnimationP>();
+
+            foreach (var element in childrenElements)
+                element.HideMenu();
+        }
+        else
+        {
+            int targetIndex = ActiveButtons.Count - 1;
+
+            if (ActiveButtons.Contains(backButton))
             {
-                //backButton.gameObject.SetActive(false);
-                ActiveButtons[targetIndex].GetComponent<AnimationP>().HideMenu();
+                if (backButton == ActiveButtons[targetIndex] && backButton.gameObject.activeSelf)
+                {
+                    ActiveButtons[targetIndex].GetComponent<AnimationP>().HideMenu();
+                }
+            }
+        }
+    }
+
+    public void DoBackOnCurrentObject(BackButtonP backButton, bool controlChildren)
+    {
+        if (controlChildren)
+        {
+            AnimationP[] childrenElements = backButton.GetComponentsInChildren<AnimationP>();
+
+            foreach (var element in childrenElements)
+            {
+                element.HideMenu();
+            }
+        }
+        else
+        {
+            int targetIndex = ActiveButtons.IndexOf(backButton);
+
+            if (ActiveButtons.Contains(backButton))
+            {
+                if (backButton.gameObject.activeSelf)
+                {
+                    ActiveButtons[targetIndex].GetComponent<AnimationP>().HideMenu();
+                }
             }
         }
     }

@@ -10,22 +10,28 @@ public class BackButtonInspector : Editor
     private BackButtonP backButtonP;
 
     private SerializedProperty _withGraphic;
+    private SerializedProperty _controlChildren;
     private SerializedProperty _position;
     private SerializedProperty _graphicType;
     private SerializedProperty _buttonText;
     private SerializedProperty _graphicSprite;
     private SerializedProperty _scale;
+    private SerializedProperty _offsetX;
+    private SerializedProperty _offsetY;
 
     private void OnEnable()
     {
         backButtonP = (BackButtonP)target;
 
         _withGraphic = serializedObject.FindProperty("withGraphic");
+        _controlChildren = serializedObject.FindProperty("controlChildren");
         _position = serializedObject.FindProperty("position");
         _graphicType = serializedObject.FindProperty("graphicType");
         _buttonText = serializedObject.FindProperty("buttonText");
         _graphicSprite = serializedObject.FindProperty("graphicSprite");
         _scale = serializedObject.FindProperty("scale");
+        _offsetX = serializedObject.FindProperty("offsetX");
+        _offsetY = serializedObject.FindProperty("offsetY");
     }
 
     public override void OnInspectorGUI()
@@ -47,9 +53,13 @@ public class BackButtonInspector : Editor
 
         if (backButtonP.withGraphic)
         {
+            EditorGUILayout.PropertyField(_controlChildren);
+
             EditorGUILayout.PropertyField(_graphicType);
 
             EditorGUILayout.PropertyField(_scale);
+            EditorGUILayout.PropertyField(_offsetX);
+            EditorGUILayout.PropertyField(_offsetY);
 
             if (backButtonP.graphicType == BackButtonP.GraphicType.Image)
             {
