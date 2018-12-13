@@ -15,6 +15,7 @@ public class AnimationPInspector : Editor
     private SerializedProperty _hideAnimationType;
     private SerializedProperty _fadeChildren;
     private SerializedProperty _animationFromCornerType;
+    private SerializedProperty _animationToCornerType;
     private SerializedProperty _elasticPower;
     private SerializedProperty _withDelay;
     private SerializedProperty _showDelay;
@@ -38,6 +39,7 @@ public class AnimationPInspector : Editor
         _hideAnimationType = serializedObject.FindProperty("hideAnimationType");
         _fadeChildren = serializedObject.FindProperty("fadeChildren");
         _animationFromCornerType = serializedObject.FindProperty("animationFromCornerType");
+        _animationToCornerType = serializedObject.FindProperty("animationToCornerType");
         _elasticPower = serializedObject.FindProperty("elasticityPower");
         _withDelay = serializedObject.FindProperty("withDelay");
         _showDelay = serializedObject.FindProperty("showDelay");
@@ -113,7 +115,6 @@ public class AnimationPInspector : Editor
         switch (animationP.showAnimationType)
         {
             case (AnimationType.FromCornerWithScale):
-            case (AnimationType.FromCornerWithoutScale):
                 EditorGUILayout.PropertyField(_animationFromCornerType, new GUIContent("Animation From Corner Type"));
                 break;
             case (AnimationType.ScaleElastic):
@@ -133,8 +134,7 @@ public class AnimationPInspector : Editor
         switch (animationP.hideAnimationType)
         {
             case (AnimationType.FromCornerWithScale):
-            case (AnimationType.FromCornerWithoutScale):
-                EditorGUILayout.PropertyField(_animationFromCornerType, new GUIContent("Animation To Corner Type"));
+                EditorGUILayout.PropertyField(_animationToCornerType, new GUIContent("Animation To Corner Type"));
                 break;
             case (AnimationType.ScaleElastic):
                 EditorGUILayout.PropertyField(_elasticPower, new GUIContent("Elastic Power"));

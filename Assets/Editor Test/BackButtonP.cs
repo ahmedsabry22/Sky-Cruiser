@@ -34,10 +34,10 @@ public class BackButtonP : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
 
-        backButtonManager = Resources.Load<BackButtonManager>("Back Button Manager");
         StartCoroutine(InstantiateManager());
 
-        backButtonPrefab = Resources.Load<Button>("Back Button");
+        if (withGraphic)
+            InstantiateBackButton();
 
         animationP = GetComponent<AnimationP>();
         animationP.OnShow.AddListener(() => BackButtonManager.Instance.AddButtonToList(this));
@@ -46,6 +46,7 @@ public class BackButtonP : MonoBehaviour
 
     private IEnumerator InstantiateManager()
     {
+        backButtonManager = Resources.Load<BackButtonManager>("Back Button Manager");
 
         if (BackButtonManager.Instance == null)
         {
@@ -54,58 +55,107 @@ public class BackButtonP : MonoBehaviour
             backButtonManager.gameObject.name = backButtonManagerName;
         }
         yield return (new WaitForEndOfFrame());
-            
+    }
+
+    private void InstantiateBackButton()
+    {
+        // Instantiate Button and make it child of this game object
+        backButtonPrefab = Resources.Load<Button>("Back Button");
+
+        backButton = Instantiate(backButtonPrefab, transform, false);
+        backButton.onClick.AddListener(DoBackOnThisObject);
+        backButton.name = backButtonPrefab.name;
+        backButton.GetComponent<RectTransform>().localScale = new Vector3(scale, scale, scale);
+
+        Image img = backButton.transform.Find("Image").GetComponent<Image>();
+        Text txt = backButton.transform.Find("Text").GetComponent<Text>();
+
+        if (graphicType == GraphicType.Image)
+        {
+            img.sprite = graphicSprite;
+            backButton.targetGraphic = img;
+            img.color = Color.white;
+
+            txt.gameObject.SetActive(false);
+        }
+        else if (graphicType == GraphicType.Text)
+        {
+            txt.text = buttonText;
+            backButton.targetGraphic = txt;
+
+            img.gameObject.SetActive(false);
+        }
+
+        switch (position)
+        {
+            case (Positions.TopRight):
+                // Instantiate at top right
+                backButton.GetComponent<RectTransform>().localPosition = new Vector3(rectTransform.rect.width / 2 - offsetX, rectTransform.rect.height / 2 - offsetY, 0);
+                break;
+            case (Positions.TopLeft):
+                // Instantiate at top left
+                backButton.GetComponent<RectTransform>().localPosition = new Vector3(-rectTransform.rect.width / 2 + offsetX, rectTransform.rect.height / 2 - offsetY, 0);
+                break;
+            case (Positions.BottomRight):
+                // Instantiate at bottom right
+                backButton.GetComponent<RectTransform>().localPosition = new Vector3(rectTransform.rect.width / 2 - offsetX, -rectTransform.rect.height / 2 + offsetY, 0);
+                break;
+            case (Positions.BottomLeft):
+                // Instantiate at bottom left
+                backButton.GetComponent<RectTransform>().localPosition = new Vector3(-rectTransform.rect.width / 2 + offsetX, -rectTransform.rect.height / 2 + offsetY, 0);
+                break;
+        }
     }
 
     private void Start()
     {
-        if (withGraphic)
-        {
-            // Instantiate Button and make it child of this game object
-            backButton = Instantiate(backButtonPrefab, transform, false);
-            backButton.onClick.AddListener(DoBackOnThisObject);
-            backButton.name = backButtonPrefab.name;
-            backButton.GetComponent<RectTransform>().localScale = new Vector3(scale, scale, scale);
+        //if (withGraphic)
+        //{
+        //    // Instantiate Button and make it child of this game object
+        //    backButton = Instantiate(backButtonPrefab, transform, false);
+        //    backButton.onClick.AddListener(DoBackOnThisObject);
+        //    backButton.name = backButtonPrefab.name;
+        //    backButton.GetComponent<RectTransform>().localScale = new Vector3(scale, scale, scale);
 
-            Image img = backButton.transform.Find("Image").GetComponent<Image>();
-            Text txt = backButton.transform.Find("Text").GetComponent<Text>();
+        //    Image img = backButton.transform.Find("Image").GetComponent<Image>();
+        //    Text txt = backButton.transform.Find("Text").GetComponent<Text>();
 
-            if (graphicType == GraphicType.Image)
-            {
-                img.sprite = graphicSprite;
-                backButton.targetGraphic = img;
-                img.color = Color.white;
+        //    if (graphicType == GraphicType.Image)
+        //    {
+        //        img.sprite = graphicSprite;
+        //        backButton.targetGraphic = img;
+        //        img.color = Color.white;
 
-                txt.gameObject.SetActive(false);
-            }
-            else if (graphicType == GraphicType.Text)
-            {
-                txt.text = buttonText;
-                backButton.targetGraphic = txt;
+        //        txt.gameObject.SetActive(false);
+        //    }
+        //    else if (graphicType == GraphicType.Text)
+        //    {
+        //        txt.text = buttonText;
+        //        backButton.targetGraphic = txt;
 
-                img.gameObject.SetActive(false);
-            }
+        //        img.gameObject.SetActive(false);
+        //    }
 
-            switch (position)
-            {
-                case (Positions.TopRight):
-                    // Instantiate at top right
-                    backButton.GetComponent<RectTransform>().localPosition = new Vector3(rectTransform.rect.width / 2 - offsetX, rectTransform.rect.height / 2 - offsetY, 0);
-                    break;
-                case (Positions.TopLeft):
-                    // Instantiate at top left
-                    backButton.GetComponent<RectTransform>().localPosition = new Vector3(-rectTransform.rect.width / 2 + offsetX, rectTransform.rect.height / 2 - offsetY, 0);
-                    break;
-                case (Positions.BottomRight):
-                    // Instantiate at bottom right
-                    backButton.GetComponent<RectTransform>().localPosition = new Vector3(rectTransform.rect.width / 2 - offsetX, -rectTransform.rect.height / 2 + offsetY, 0);
-                    break;
-                case (Positions.BottomLeft):
-                    // Instantiate at bottom left
-                    backButton.GetComponent<RectTransform>().localPosition = new Vector3(-rectTransform.rect.width / 2 + offsetX, -rectTransform.rect.height / 2 + offsetY, 0);
-                    break;
-            }
-        }
+        //    switch (position)
+        //    {
+        //        case (Positions.TopRight):
+        //            // Instantiate at top right
+        //            backButton.GetComponent<RectTransform>().localPosition = new Vector3(rectTransform.rect.width / 2 - offsetX, rectTransform.rect.height / 2 - offsetY, 0);
+        //            break;
+        //        case (Positions.TopLeft):
+        //            // Instantiate at top left
+        //            backButton.GetComponent<RectTransform>().localPosition = new Vector3(-rectTransform.rect.width / 2 + offsetX, rectTransform.rect.height / 2 - offsetY, 0);
+        //            break;
+        //        case (Positions.BottomRight):
+        //            // Instantiate at bottom right
+        //            backButton.GetComponent<RectTransform>().localPosition = new Vector3(rectTransform.rect.width / 2 - offsetX, -rectTransform.rect.height / 2 + offsetY, 0);
+        //            break;
+        //        case (Positions.BottomLeft):
+        //            // Instantiate at bottom left
+        //            backButton.GetComponent<RectTransform>().localPosition = new Vector3(-rectTransform.rect.width / 2 + offsetX, -rectTransform.rect.height / 2 + offsetY, 0);
+        //            break;
+        //    }
+        //}
     }
 
     private void OnEnable()
