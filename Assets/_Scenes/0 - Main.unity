@@ -799,16 +799,16 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 4
-  animationFromCornerType: 1
-  animationToCornerType: 4
-  fadeChildren: 0
-  animationShowDuration: 3
+  showAnimationType: 4
+  hideAnimationType: 2
+  animationFromCornerType: 4
+  animationToCornerType: 5
+  fadeChildren: 1
+  animationShowDuration: 0.5
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 4.909091
-  hideDelay: 0.15384616
+  showDelay: 2.5
+  hideDelay: 0.16666667
   elasticityPower: 1
 --- !u!1 &211605766
 GameObject:
@@ -2642,9 +2642,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1556979581}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1556979586}
+        m_MethodName: ShowMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4511,17 +4511,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 0
-  showAnimationType: 3
-  hideAnimationType: 0
-  animationFromCornerType: 1
-  animationToCornerType: 4
-  fadeChildren: 0
-  animationShowDuration: 3
+  showOnStart: 1
+  showAnimationType: 4
+  hideAnimationType: 2
+  animationFromCornerType: 4
+  animationToCornerType: 5
+  fadeChildren: 1
+  animationShowDuration: 0.5
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 3
-  hideDelay: 0.6923077
+  showDelay: 1.625
+  hideDelay: 0.74999994
   elasticityPower: 1
 --- !u!1 &819422485
 GameObject:
@@ -4809,16 +4809,16 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 4
-  animationFromCornerType: 1
-  animationToCornerType: 4
-  fadeChildren: 0
-  animationShowDuration: 3
+  showAnimationType: 4
+  hideAnimationType: 2
+  animationFromCornerType: 4
+  animationToCornerType: 5
+  fadeChildren: 1
+  animationShowDuration: 0.5
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 3.5454545
-  hideDelay: 0.53846157
+  showDelay: 1.875
+  hideDelay: 0.5833333
   elasticityPower: 1
 --- !u!1 &832136860
 GameObject:
@@ -5448,7 +5448,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &986898855
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6413,6 +6413,7 @@ GameObject:
   - component: {fileID: 1149148906}
   - component: {fileID: 1149148908}
   - component: {fileID: 1149148907}
+  - component: {fileID: 1149148909}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -6434,10 +6435,10 @@ RectTransform:
   m_Father: {fileID: 1556979584}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000015258789, y: -187}
-  m_SizeDelta: {x: 709.9, y: 133}
+  m_AnchorMin: {x: 0.27356347, y: 0.73967165}
+  m_AnchorMax: {x: 0.72674626, y: 0.87234324}
+  m_AnchoredPosition: {x: -0.5, y: 4.5}
+  m_SizeDelta: {x: -5.0999756, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1149148907
 MonoBehaviour:
@@ -6481,6 +6482,49 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1149148905}
   m_CullTransparentMesh: 0
+--- !u!114 &1149148909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1149148905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnShow:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHide:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnShowComplete:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHideComplete:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  showOnStart: 1
+  showAnimationType: 1
+  hideAnimationType: 0
+  animationFromCornerType: 0
+  animationToCornerType: 0
+  fadeChildren: 0
+  animationShowDuration: 0.5
+  animationHideDuration: 0.5
+  withDelay: 1
+  showDelay: 1
+  hideDelay: 0
+  elasticityPower: 1
 --- !u!1 &1173928958
 GameObject:
   m_ObjectHideFlags: 0
@@ -7171,16 +7215,16 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 4
-  animationFromCornerType: 1
-  animationToCornerType: 4
-  fadeChildren: 0
-  animationShowDuration: 3
+  showAnimationType: 4
+  hideAnimationType: 2
+  animationFromCornerType: 4
+  animationToCornerType: 5
+  fadeChildren: 1
+  animationShowDuration: 0.5
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 3.818182
-  hideDelay: 0.46153846
+  showDelay: 2
+  hideDelay: 0.5
   elasticityPower: 1
 --- !u!1 &1311458364
 GameObject:
@@ -7588,16 +7632,16 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 4
-  animationFromCornerType: 1
-  animationToCornerType: 4
-  fadeChildren: 0
-  animationShowDuration: 3
+  showAnimationType: 4
+  hideAnimationType: 2
+  animationFromCornerType: 4
+  animationToCornerType: 5
+  fadeChildren: 1
+  animationShowDuration: 0.5
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 4.6363635
-  hideDelay: 0.23076925
+  showDelay: 2.375
+  hideDelay: 0.25
   elasticityPower: 1
 --- !u!1 &1385691703
 GameObject:
@@ -7611,7 +7655,6 @@ GameObject:
   - component: {fileID: 1385691707}
   - component: {fileID: 1385691706}
   - component: {fileID: 1385691705}
-  - component: {fileID: 1385691708}
   m_Layer: 5
   m_Name: ButtonsPanel
   m_TagString: Untagged
@@ -7708,49 +7751,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1385691703}
   m_CullTransparentMesh: 0
---- !u!114 &1385691708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1385691703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnShow:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnHide:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnShowComplete:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnHideComplete:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
-  showAnimationType: 2
-  hideAnimationType: 2
-  animationFromCornerType: 0
-  animationToCornerType: 0
-  fadeChildren: 0
-  animationShowDuration: 3
-  animationHideDuration: 0.5
-  withDelay: 1
-  showDelay: 0
-  hideDelay: 0.7692308
-  elasticityPower: 1
 --- !u!1 &1395097058
 GameObject:
   m_ObjectHideFlags: 0
@@ -9025,6 +9025,8 @@ GameObject:
   - component: {fileID: 1556979584}
   - component: {fileID: 1556979583}
   - component: {fileID: 1556979582}
+  - component: {fileID: 1556979586}
+  - component: {fileID: 1556979585}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -9085,11 +9087,75 @@ RectTransform:
   m_Father: {fileID: 42363463}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015258789, y: 0.000015258789}
-  m_SizeDelta: {x: 1577.8, y: 986.5}
+  m_AnchorMin: {x: 0.08911458, y: 0.04328704}
+  m_AnchorMax: {x: 0.91088545, y: 0.95671296}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_SizeDelta: {x: -49.306286, y: -30.828121}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1556979585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1556979581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebabf37f9fef2eb478fd71fa54221f05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  withGraphic: 1
+  controlChildren: 1
+  position: 0
+  graphicType: 0
+  scale: 0.5
+  offsetX: 0
+  offsetY: 0
+  buttonText: Back
+  graphicSprite: {fileID: 21300000, guid: dcf7e60ba7accad4d9b7a57c95b79fe6, type: 3}
+  backButtonManager: {fileID: 0}
+--- !u!114 &1556979586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1556979581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnShow:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHide:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnShowComplete:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHideComplete:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  showOnStart: 1
+  showAnimationType: 4
+  hideAnimationType: 1
+  animationFromCornerType: 0
+  animationToCornerType: 0
+  fadeChildren: 0
+  animationShowDuration: 1
+  animationHideDuration: 1
+  withDelay: 0
+  showDelay: 0
+  hideDelay: 0
+  elasticityPower: 1
 --- !u!1 &1568299925
 GameObject:
   m_ObjectHideFlags: 0
@@ -9810,15 +9876,15 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 4
-  animationFromCornerType: 1
-  animationToCornerType: 4
-  fadeChildren: 0
-  animationShowDuration: 3
+  showAnimationType: 4
+  hideAnimationType: 2
+  animationFromCornerType: 4
+  animationToCornerType: 5
+  fadeChildren: 1
+  animationShowDuration: 0.5
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 5.4545455
+  showDelay: 2.75
   hideDelay: 0
   elasticityPower: 1
 --- !u!1 &1638817308
@@ -9931,16 +9997,16 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 4
-  animationFromCornerType: 1
-  animationToCornerType: 4
-  fadeChildren: 0
-  animationShowDuration: 3
+  showAnimationType: 4
+  hideAnimationType: 2
+  animationFromCornerType: 4
+  animationToCornerType: 5
+  fadeChildren: 1
+  animationShowDuration: 0.5
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 5.181818
-  hideDelay: 0.07692308
+  showDelay: 2.625
+  hideDelay: 0.083333336
   elasticityPower: 1
 --- !u!1 &1648515419
 GameObject:
@@ -10800,16 +10866,16 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 4
-  animationFromCornerType: 1
-  animationToCornerType: 4
-  fadeChildren: 0
-  animationShowDuration: 3
+  showAnimationType: 4
+  hideAnimationType: 2
+  animationFromCornerType: 4
+  animationToCornerType: 5
+  fadeChildren: 1
+  animationShowDuration: 0.5
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 4.3636365
-  hideDelay: 0.30769232
+  showDelay: 2.25
+  hideDelay: 0.33333334
   elasticityPower: 1
 --- !u!1 &1705641640
 GameObject:
@@ -11219,6 +11285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1762430400}
   - component: {fileID: 1762430401}
+  - component: {fileID: 1762430402}
   m_Layer: 5
   m_Name: SoundToggle
   m_TagString: Untagged
@@ -11241,10 +11308,10 @@ RectTransform:
   m_Father: {fileID: 1556979584}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015258789, y: -0.000015258789}
-  m_SizeDelta: {x: 483.5, y: 483.5}
+  m_AnchorMin: {x: 0.34646484, y: 0.2548084}
+  m_AnchorMax: {x: 0.6533235, y: 0.73967165}
+  m_AnchoredPosition: {x: 0.000015258789, y: 2.4999847}
+  m_SizeDelta: {x: -0.5, y: 4.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1762430401
 MonoBehaviour:
@@ -11303,6 +11370,49 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
+--- !u!114 &1762430402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1762430399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnShow:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHide:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnShowComplete:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHideComplete:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  showOnStart: 1
+  showAnimationType: 1
+  hideAnimationType: 0
+  animationFromCornerType: 0
+  animationToCornerType: 0
+  fadeChildren: 0
+  animationShowDuration: 0.5
+  animationHideDuration: 0.5
+  withDelay: 1
+  showDelay: 1.3333334
+  hideDelay: 0
+  elasticityPower: 1
 --- !u!1 &1818866172
 GameObject:
   m_ObjectHideFlags: 0
@@ -11637,7 +11747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1865012852
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11815,7 +11925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1882954773
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11909,9 +12019,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebabf37f9fef2eb478fd71fa54221f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  withGraphic: 1
+  withGraphic: 0
   controlChildren: 1
-  position: 2
+  position: 1
   graphicType: 0
   scale: 0.5
   offsetX: 50
@@ -11956,7 +12066,7 @@ MonoBehaviour:
   animationFromCornerType: 0
   animationToCornerType: 0
   fadeChildren: 0
-  animationShowDuration: 0.5
+  animationShowDuration: 1.5
   animationHideDuration: 0.5
   withDelay: 1
   showDelay: 0
@@ -12619,16 +12729,16 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 4
-  animationFromCornerType: 1
-  animationToCornerType: 4
-  fadeChildren: 0
-  animationShowDuration: 3
+  showAnimationType: 4
+  hideAnimationType: 2
+  animationFromCornerType: 4
+  animationToCornerType: 5
+  fadeChildren: 1
+  animationShowDuration: 0.5
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 3.2727273
-  hideDelay: 0.61538464
+  showDelay: 1.75
+  hideDelay: 0.6666666
   elasticityPower: 1
 --- !u!1 &1983985946
 GameObject:
@@ -13101,16 +13211,16 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 4
-  animationFromCornerType: 1
-  animationToCornerType: 4
-  fadeChildren: 0
-  animationShowDuration: 3
+  showAnimationType: 4
+  hideAnimationType: 2
+  animationFromCornerType: 4
+  animationToCornerType: 5
+  fadeChildren: 1
+  animationShowDuration: 0.5
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 4.090909
-  hideDelay: 0.3846154
+  showDelay: 2.125
+  hideDelay: 0.4166667
   elasticityPower: 1
 --- !u!1 &2056024459
 GameObject:
