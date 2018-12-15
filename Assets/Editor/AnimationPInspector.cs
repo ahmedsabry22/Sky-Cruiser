@@ -115,6 +115,7 @@ public class AnimationPInspector : Editor
         switch (animationP.showAnimationType)
         {
             case (AnimationType.FromCornerWithScale):
+            case (AnimationType.FromCornerWithoutScale):
                 EditorGUILayout.PropertyField(_animationFromCornerType, new GUIContent("Animation From Corner Type"));
                 break;
             case (AnimationType.ScaleElastic):
@@ -134,6 +135,7 @@ public class AnimationPInspector : Editor
         switch (animationP.hideAnimationType)
         {
             case (AnimationType.FromCornerWithScale):
+            case (AnimationType.FromCornerWithoutScale):
                 EditorGUILayout.PropertyField(_animationToCornerType, new GUIContent("Animation To Corner Type"));
                 break;
             case (AnimationType.ScaleElastic):

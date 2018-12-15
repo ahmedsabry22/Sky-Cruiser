@@ -29,11 +29,27 @@ public class AnimationP : MonoBehaviour
     public float elasticityPower = 1;
 
     private RectTransform rectTransform;
+
+    private AnimationP[] activeChildrenAnimationElements;
+
     private Vector3 initialPosition;
+    private Color initialColor;
+    private Vector3 initialScale;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+        initialPosition = transform.position;
+        initialScale = transform.localScale;
+        initialColor = GetComponent<Graphic>().color;
+
+        activeChildrenAnimationElements = GetComponentsInChildren<AnimationP>();
+    }
+
+    private void OnEnable()
+    {
+        if (showOnStart)
+            ShowMenu();
     }
 
     private void Start()
@@ -52,8 +68,23 @@ public class AnimationP : MonoBehaviour
             HideMenu();
     }
 
+    private void ResetToDefaults()
+    {
+        transform.position = initialPosition;
+        transform.localScale = initialScale;
+        GetComponent<Graphic>().color = initialColor;
+    }
+
     public void ShowMenu()
     {
+        gameObject.SetActive(true);
+        ResetToDefaults();
+
+        foreach (var element in activeChildrenAnimationElements)
+        {
+            element.gameObject.SetActive(true);
+        }
+
         switch (showAnimationType)
         {
             case (AnimationType.Scale):
@@ -67,6 +98,9 @@ public class AnimationP : MonoBehaviour
                 break;
             case (AnimationType.FromCornerWithScale):
                 StartCoroutine(AnimateFromCornerWithScale_SHOW());
+                break;
+            case (AnimationType.FromCornerWithoutScale):
+                StartCoroutine(AnimateFromCornerWithoutScale_SHOW());
                 break;
         }
 
@@ -89,6 +123,9 @@ public class AnimationP : MonoBehaviour
                 break;
             case (AnimationType.FromCornerWithScale):
                 StartCoroutine(AnimateToCornerWithScale_HIDE());
+                break;
+            case (AnimationType.FromCornerWithoutScale):
+                StartCoroutine(AnimateFromCornerWithoutScale_HIDE());
                 break;
         }
 
@@ -125,35 +162,35 @@ public class AnimationP : MonoBehaviour
         switch (animationFromCornerType)
         {
             case (AnimationFromCornerType.BottomRight):
-                startPositionX = Screen.width;
-                startPositionY = 0;
+                startPositionX = Screen.width + (rectTransform.rect.width / 2);
+                startPositionY = 0 - (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.BottomLeft):
-                startPositionX = 0;
-                startPositionY = 0;
+                startPositionX = 0 - (rectTransform.rect.width / 2);
+                startPositionY = 0 - (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.TopRight):
-                startPositionX = Screen.width;
-                startPositionY = Screen.height;
+                startPositionX = Screen.width + (rectTransform.rect.width / 2);
+                startPositionY = Screen.height + (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.TopLeft):
-                startPositionX = 0;
-                startPositionY = Screen.height;
+                startPositionX = 0 - (rectTransform.rect.width / 2);
+                startPositionY = Screen.height + (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Up):
                 startPositionX = initialPosition.x;
-                startPositionY = Screen.height;
+                startPositionY = Screen.height + (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Bottom):
                 startPositionX = initialPosition.x;
-                startPositionY = 0;
+                startPositionY = 0 - (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Left):
-                startPositionX = 0;
+                startPositionX = 0 - (rectTransform.rect.width / 2);
                 startPositionY = initialPosition.y;
                 break;
             case (AnimationFromCornerType.Right):
-                startPositionX = Screen.width;
+                startPositionX = Screen.width + (rectTransform.rect.width / 2);
                 startPositionY = initialPosition.y;
                 break;
         }
@@ -200,6 +237,82 @@ public class AnimationP : MonoBehaviour
             OnShowComplete.Invoke();
     }
 
+    private IEnumerator AnimateFromCornerWithoutScale_SHOW()
+    {
+        ResetScale(ResetOptions.One);
+
+        #region Initialization Part
+        float startPositionX = 0;
+        float startPositionY = 0;
+
+        switch (animationFromCornerType)
+        {
+            case (AnimationFromCornerType.BottomRight):
+                startPositionX = Screen.width + (rectTransform.rect.width / 2);
+                startPositionY = 0 - (rectTransform.rect.height / 2);
+                break;
+            case (AnimationFromCornerType.BottomLeft):
+                startPositionX = 0 - (rectTransform.rect.width / 2);
+                startPositionY = 0 - (rectTransform.rect.height / 2);
+                break;
+            case (AnimationFromCornerType.TopRight):
+                startPositionX = Screen.width + (rectTransform.rect.width / 2);
+                startPositionY = Screen.height + (rectTransform.rect.height / 2);
+                break;
+            case (AnimationFromCornerType.TopLeft):
+                startPositionX = 0 - (rectTransform.rect.width / 2);
+                startPositionY = Screen.height + (rectTransform.rect.height / 2);
+                break;
+            case (AnimationFromCornerType.Up):
+                startPositionX = initialPosition.x;
+                startPositionY = Screen.height + (rectTransform.rect.height / 2);
+                break;
+            case (AnimationFromCornerType.Bottom):
+                startPositionX = initialPosition.x;
+                startPositionY = 0 - (rectTransform.rect.height / 2);
+                break;
+            case (AnimationFromCornerType.Left):
+                startPositionX = 0 - (rectTransform.rect.width / 2);
+                startPositionY = initialPosition.y;
+                break;
+            case (AnimationFromCornerType.Right):
+                startPositionX = Screen.width + (rectTransform.rect.width / 2);
+                startPositionY = initialPosition.y;
+                break;
+        }
+
+        Vector3 startPos = new Vector3(startPositionX, startPositionY, 0);
+        Vector3 targetPosition = initialPosition;
+
+        rectTransform.position = startPos;
+
+        #endregion
+
+        if (withDelay)
+            yield return (new WaitForSeconds(showDelay));
+
+        // Starting animating.
+        float startTime = Time.time;
+
+        rectTransform.position = startPos;
+
+        while (Time.time <= startTime + animationShowDuration)
+        {
+            float t = (Time.time - startTime) / animationShowDuration;
+
+            // Here we Lerp the position and the scale as well.
+            rectTransform.position = Vector3.Lerp(startPos, targetPosition, t);
+
+            yield return (null);
+        }
+
+        // Here we set the values to their end so we avoid the missing final step.
+        rectTransform.position = targetPosition;
+
+        if (OnShowComplete != null)
+            OnShowComplete.Invoke();
+    }
+
     private IEnumerator AnimateElasticScale_SHOW()
     {
         ResetPosition();
@@ -233,6 +346,8 @@ public class AnimationP : MonoBehaviour
             yield return (null);
         }
 
+        rectTransform.localScale = Vector3.one;
+
         if (OnShowComplete != null)
             OnShowComplete.Invoke();
     }
@@ -242,8 +357,6 @@ public class AnimationP : MonoBehaviour
         ResetPosition();
         ResetScale(ResetOptions.Zero);
         ResetColor(ResetOptions.One);
-
-        //rectTransform.localScale = Vector3.zero;
 
         if (withDelay)
             yield return (new WaitForSeconds(showDelay));
@@ -375,6 +488,8 @@ public class AnimationP : MonoBehaviour
             images[i].color = endColors[i];
         }
 
+        gameObject.SetActive(false);
+
         if (OnHideComplete != null)
             OnHideComplete.Invoke();
     }
@@ -400,17 +515,21 @@ public class AnimationP : MonoBehaviour
 
         rectTransform.localScale = Vector3.zero;
 
+        gameObject.SetActive(false);
+
         if (OnHideComplete != null)
             OnHideComplete.Invoke();
     }
 
     private IEnumerator AnimateElasticScale_HIDE()
     {
-        Vector3 startPosition = rectTransform.position;
-        rectTransform.localScale = Vector3.one;
+        ResetPosition();
+        ResetScale(ResetOptions.One);
 
         if (withDelay)
             yield return (new WaitForSeconds(hideDelay));
+
+        rectTransform.localScale = Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticityPower;
 
         float startTime = Time.time;
 
@@ -436,6 +555,8 @@ public class AnimationP : MonoBehaviour
 
         rectTransform.localScale = Vector3.zero;
 
+        gameObject.SetActive(false);
+
         if (OnHideComplete != null)
             OnHideComplete.Invoke();
     }
@@ -444,10 +565,14 @@ public class AnimationP : MonoBehaviour
     {
         float endX = 0;
         float endY = 0;
-        float startX = Screen.width / 2;
-        float startY = Screen.height / 2;
 
-        Image[] images = GetComponentsInChildren<Image>();
+        Graphic[] images;            // = GetComponentsInChildren<Image>();
+
+        if (fadeChildren)
+            images = GetComponentsInChildren<Graphic>();
+        else
+            images = GetComponents<Graphic>();
+
         Color[] startColors = new Color[images.Length];
         Color[] endColors = new Color[images.Length];
 
@@ -463,35 +588,35 @@ public class AnimationP : MonoBehaviour
         switch (animationToCornerType)
         {
             case (AnimationFromCornerType.BottomRight):
-                endX = Screen.width;
-                endY = 0;
+                endX = Screen.width + (rectTransform.rect.width / 2);
+                endY = 0 - (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.BottomLeft):
-                endX = 0;
-                endY = 0;
+                endX = 0 - (rectTransform.rect.width / 2);
+                endY = 0 - (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.TopRight):
-                endX = Screen.width;
-                endY = Screen.height;
+                endX = Screen.width + (rectTransform.rect.width / 2);
+                endY = Screen.height + (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.TopLeft):
-                endX = 0;
-                endY = Screen.height;
+                endX = 0 - (rectTransform.rect.width / 2);
+                endY = Screen.height + (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Up):
-                endX = Screen.width / 2;
-                endY = Screen.height;
+                endX = initialPosition.x;
+                endY = Screen.height + (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Bottom):
-                endX = Screen.width / 2;
-                endY = 0;
+                endX = initialPosition.x;
+                endY = 0 - (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Left):
-                endX = 0;
+                endX = 0 - (rectTransform.rect.width / 2);
                 endY = initialPosition.y;
                 break;
             case (AnimationFromCornerType.Right):
-                endX = Screen.width;
+                endX = Screen.width + (rectTransform.rect.width / 2);
                 endY = initialPosition.y;
                 break;
         }
@@ -527,6 +652,74 @@ public class AnimationP : MonoBehaviour
             images[i].color = endColors[i];
         }
 
+        gameObject.SetActive(false);
+
+        if (OnHideComplete != null)
+            OnHideComplete.Invoke();
+    }
+
+    private IEnumerator AnimateFromCornerWithoutScale_HIDE()
+    {
+        float endX = 0;
+        float endY = 0;
+
+        switch (animationToCornerType)
+        {
+            case (AnimationFromCornerType.BottomRight):
+                endX = Screen.width + (rectTransform.rect.width / 2);
+                endY = 0 - (rectTransform.rect.height / 2);
+                break;
+            case (AnimationFromCornerType.BottomLeft):
+                endX = 0 - (rectTransform.rect.width / 2);
+                endY = 0 - (rectTransform.rect.height / 2);
+                break;
+            case (AnimationFromCornerType.TopRight):
+                endX = Screen.width + (rectTransform.rect.width / 2);
+                endY = Screen.height + (rectTransform.rect.height / 2);
+                break;
+            case (AnimationFromCornerType.TopLeft):
+                endX = 0 - (rectTransform.rect.width / 2);
+                endY = Screen.height + (rectTransform.rect.height / 2);
+                break;
+            case (AnimationFromCornerType.Up):
+                endX = initialPosition.x;
+                endY = Screen.height + (rectTransform.rect.height / 2);
+                break;
+            case (AnimationFromCornerType.Bottom):
+                endX = initialPosition.x;
+                endY = 0 - (rectTransform.rect.height / 2);
+                break;
+            case (AnimationFromCornerType.Left):
+                endX = 0 - (rectTransform.rect.width / 2);
+                endY = initialPosition.y;
+                break;
+            case (AnimationFromCornerType.Right):
+                endX = Screen.width + (rectTransform.rect.width / 2);
+                endY = initialPosition.y;
+                break;
+        }
+
+        Vector3 startPos = initialPosition;
+        Vector3 targetPosition = new Vector3(endX, endY, 0);
+        rectTransform.position = startPos;
+
+        if (withDelay)
+            yield return (new WaitForSeconds(hideDelay));
+
+        float startTime = Time.time;
+
+        while (Time.time <= startTime + animationHideDuration)
+        {
+            float t = (Time.time - startTime) / animationHideDuration;
+            rectTransform.position = Vector3.Lerp(startPos, targetPosition, t);
+
+            yield return (null);
+        }
+
+        rectTransform.position = targetPosition;
+
+        gameObject.SetActive(false);
+
         if (OnHideComplete != null)
             OnHideComplete.Invoke();
     }
@@ -548,6 +741,7 @@ public class AnimationP : MonoBehaviour
                 images = GetComponentsInChildren<Graphic>();
             else
                 images = GetComponents<Graphic>();
+
 
             Color[] startColors = new Color[images.Length];
             Color[] endColors = new Color[images.Length];
@@ -582,7 +776,7 @@ public class AnimationP : MonoBehaviour
                 startColors[i] = images[i].color;
                 startColors[i].a = 0;
 
-                endColors[i] = new Color(images[i].color.r, images[i].color.g, images[i].color.b, 1);
+                endColors[i] = initialColor;
             }
 
             for (int i = 0; i < images.Length; i++)
@@ -600,7 +794,7 @@ public class AnimationP : MonoBehaviour
         }
         else if (resetOption == ResetOptions.One)
         {
-            transform.localScale = Vector3.one;
+            transform.localScale = initialScale;
         }
     }
 
@@ -612,7 +806,7 @@ public class AnimationP : MonoBehaviour
 
 public enum AnimationType
 {
-    Scale, ScaleElastic, Fade, FromCornerWithScale
+    Scale, ScaleElastic, Fade, FromCornerWithScale, FromCornerWithoutScale
 }
 
 public enum AnimationFromCornerType
