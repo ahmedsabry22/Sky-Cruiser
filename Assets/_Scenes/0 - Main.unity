@@ -799,15 +799,15 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 4
+  showAnimationType: 3
   hideAnimationType: 4
-  animationFromCornerType: 4
+  animationFromCornerType: 1
   animationToCornerType: 4
   fadeChildren: 0
-  animationShowDuration: 0.5
+  animationShowDuration: 3
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 1.6363636
+  showDelay: 4.909091
   hideDelay: 0.15384616
   elasticityPower: 1
 --- !u!1 &211605766
@@ -4511,16 +4511,16 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showOnStart: 0
   showAnimationType: 3
   hideAnimationType: 0
   animationFromCornerType: 1
   animationToCornerType: 4
   fadeChildren: 0
-  animationShowDuration: 0.5
+  animationShowDuration: 3
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 1
+  showDelay: 3
   hideDelay: 0.6923077
   elasticityPower: 1
 --- !u!1 &819422485
@@ -4809,15 +4809,15 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 4
+  showAnimationType: 3
   hideAnimationType: 4
-  animationFromCornerType: 4
+  animationFromCornerType: 1
   animationToCornerType: 4
   fadeChildren: 0
-  animationShowDuration: 0.5
+  animationShowDuration: 3
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 1.1818182
+  showDelay: 3.5454545
   hideDelay: 0.53846157
   elasticityPower: 1
 --- !u!1 &832136860
@@ -7171,15 +7171,15 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 4
+  showAnimationType: 3
   hideAnimationType: 4
-  animationFromCornerType: 4
+  animationFromCornerType: 1
   animationToCornerType: 4
   fadeChildren: 0
-  animationShowDuration: 0.5
+  animationShowDuration: 3
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 1.2727273
+  showDelay: 3.818182
   hideDelay: 0.46153846
   elasticityPower: 1
 --- !u!1 &1311458364
@@ -7588,15 +7588,15 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 4
+  showAnimationType: 3
   hideAnimationType: 4
-  animationFromCornerType: 4
+  animationFromCornerType: 1
   animationToCornerType: 4
   fadeChildren: 0
-  animationShowDuration: 0.5
+  animationShowDuration: 3
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 1.5454545
+  showDelay: 4.6363635
   hideDelay: 0.23076925
   elasticityPower: 1
 --- !u!1 &1385691703
@@ -7739,13 +7739,13 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 0
+  showOnStart: 1
   showAnimationType: 2
   hideAnimationType: 2
   animationFromCornerType: 0
   animationToCornerType: 0
   fadeChildren: 0
-  animationShowDuration: 1
+  animationShowDuration: 3
   animationHideDuration: 0.5
   withDelay: 1
   showDelay: 0
@@ -9810,15 +9810,15 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 4
+  showAnimationType: 3
   hideAnimationType: 4
-  animationFromCornerType: 4
+  animationFromCornerType: 1
   animationToCornerType: 4
   fadeChildren: 0
-  animationShowDuration: 0.5
+  animationShowDuration: 3
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 1.8181819
+  showDelay: 5.4545455
   hideDelay: 0
   elasticityPower: 1
 --- !u!1 &1638817308
@@ -9931,15 +9931,15 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 4
+  showAnimationType: 3
   hideAnimationType: 4
-  animationFromCornerType: 4
+  animationFromCornerType: 1
   animationToCornerType: 4
   fadeChildren: 0
-  animationShowDuration: 0.5
+  animationShowDuration: 3
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 1.7272727
+  showDelay: 5.181818
   hideDelay: 0.07692308
   elasticityPower: 1
 --- !u!1 &1648515419
@@ -10800,15 +10800,15 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 4
+  showAnimationType: 3
   hideAnimationType: 4
-  animationFromCornerType: 4
+  animationFromCornerType: 1
   animationToCornerType: 4
   fadeChildren: 0
-  animationShowDuration: 0.5
+  animationShowDuration: 3
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 1.4545455
+  showDelay: 4.3636365
   hideDelay: 0.30769232
   elasticityPower: 1
 --- !u!1 &1705641640
@@ -11637,7 +11637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1865012852
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11815,7 +11815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1882954773
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12619,15 +12619,15 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 4
+  showAnimationType: 3
   hideAnimationType: 4
-  animationFromCornerType: 4
+  animationFromCornerType: 1
   animationToCornerType: 4
   fadeChildren: 0
-  animationShowDuration: 0.5
+  animationShowDuration: 3
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 1.0909091
+  showDelay: 3.2727273
   hideDelay: 0.61538464
   elasticityPower: 1
 --- !u!1 &1983985946
@@ -13101,15 +13101,15 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 4
+  showAnimationType: 3
   hideAnimationType: 4
-  animationFromCornerType: 4
+  animationFromCornerType: 1
   animationToCornerType: 4
   fadeChildren: 0
-  animationShowDuration: 0.5
+  animationShowDuration: 3
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 1.3636364
+  showDelay: 4.090909
   hideDelay: 0.3846154
   elasticityPower: 1
 --- !u!1 &2056024459

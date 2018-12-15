@@ -64,7 +64,7 @@ public class AnimationPInspector : Editor
 
             AnimationWorksOnStart_TOGGLE();
             ShowAnimationType_DROPDOWN();
-            FadeChildren_TOGGLE();
+            FadeChildrenShow_TOGGLE();
             AnimationShowDuration_INPUT();
             ShowAnimationDelay_PROPERTIES();
             AutomateChildrenShowDelays_BUTTON();
@@ -75,6 +75,7 @@ public class AnimationPInspector : Editor
             GUI.color = Color.gray;
 
             HideAnimationType_DROPDOWN();
+            FadeChildrenHide_TOGGLE();
             AnimationHideDuration_INPUT();
             HideAnimationDelay_PROPERTIES();
             AutomateChildrenHideDelays_BUTTON();
@@ -144,9 +145,15 @@ public class AnimationPInspector : Editor
         }
     }
 
-    private void FadeChildren_TOGGLE()
+    private void FadeChildrenShow_TOGGLE()
     {
         if (animationP.showAnimationType == AnimationType.Fade)
+            EditorGUILayout.PropertyField(_fadeChildren, new GUIContent("Fade Children With Parent"));
+    }
+
+    private void FadeChildrenHide_TOGGLE()
+    {
+        if (animationP.hideAnimationType == AnimationType.Fade)
             EditorGUILayout.PropertyField(_fadeChildren, new GUIContent("Fade Children With Parent"));
     }
 

@@ -41,18 +41,13 @@ public class AnimationP : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         initialPosition = transform.position;
         initialScale = transform.localScale;
-        initialColor = GetComponent<Graphic>().color;
+        if (GetComponent<Graphic>())
+            initialColor = GetComponent<Graphic>().color;
 
         activeChildrenAnimationElements = GetComponentsInChildren<AnimationP>();
     }
 
     private void OnEnable()
-    {
-        if (showOnStart)
-            ShowMenu();
-    }
-
-    private void Start()
     {
         initialPosition = transform.position;
 
@@ -72,7 +67,8 @@ public class AnimationP : MonoBehaviour
     {
         transform.position = initialPosition;
         transform.localScale = initialScale;
-        GetComponent<Graphic>().color = initialColor;
+        if (GetComponent<Graphic>())
+            initialColor = GetComponent<Graphic>().color;
     }
 
     public void ShowMenu()
@@ -110,6 +106,8 @@ public class AnimationP : MonoBehaviour
 
     public void HideMenu()
     {
+        OnHideComplete.AddListener(ResetToDefaults);
+
         switch (hideAnimationType)
         {
             case (AnimationType.Scale):
@@ -239,6 +237,7 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateFromCornerWithoutScale_SHOW()
     {
+        ResetColor(ResetOptions.One);
         ResetScale(ResetOptions.One);
 
         #region Initialization Part
@@ -319,7 +318,6 @@ public class AnimationP : MonoBehaviour
         ResetScale(ResetOptions.Zero);
         ResetColor(ResetOptions.One);
 
-        Vector3 startPosition = rectTransform.position;
         rectTransform.localScale = Vector3.zero;
 
         if (withDelay)
@@ -525,11 +523,12 @@ public class AnimationP : MonoBehaviour
     {
         ResetPosition();
         ResetScale(ResetOptions.One);
+        ResetColor(ResetOptions.One);
 
         if (withDelay)
             yield return (new WaitForSeconds(hideDelay));
 
-        rectTransform.localScale = Vector3.one + new Vector3(0.1f, 0.1f, 0.1f) * elasticityPower;
+        rectTransform.localScale = Vector3.one; // + new Vector3(0.1f, 0.1f, 0.1f) * elasticityPower;
 
         float startTime = Time.time;
 

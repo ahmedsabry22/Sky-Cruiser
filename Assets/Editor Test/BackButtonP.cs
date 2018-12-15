@@ -93,6 +93,7 @@ public class BackButtonP : MonoBehaviour
                 break;
             case (Positions.TopLeft):
                 // Instantiate at top left
+                print("top left");
                 backButton.GetComponent<RectTransform>().localPosition = new Vector3(-rectTransform.rect.width / 2 + offsetX, rectTransform.rect.height / 2 - offsetY, 0);
                 break;
             case (Positions.BottomRight):
@@ -108,6 +109,9 @@ public class BackButtonP : MonoBehaviour
 
     private void OnEnable()
     {
+        if (withGraphic && backButton == null)
+            InstantiateBackButton();
+
         BackButtonManager.Instance.AddButtonToList(this);
     }
 
