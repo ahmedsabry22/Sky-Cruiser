@@ -807,7 +807,7 @@ MonoBehaviour:
   animationShowDuration: 1
   animationHideDuration: 1
   withDelay: 1
-  showDelay: 1.1666666
+  showDelay: 1.6666666
   hideDelay: 0.16666667
   elasticityPower: 1
 --- !u!1 &211605766
@@ -2551,7 +2551,7 @@ MonoBehaviour:
   animationShowDuration: 0.5
   animationHideDuration: 0.5
   withDelay: 1
-  showDelay: 0.7
+  showDelay: 1
   hideDelay: 0.83333325
   elasticityPower: 1
 --- !u!1 &605506424
@@ -2642,8 +2642,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1556979586}
-        m_MethodName: ShowMenu
+      - m_Target: {fileID: 1556979587}
+        m_MethodName: ShowElement
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4520,7 +4520,7 @@ MonoBehaviour:
   animationShowDuration: 1
   animationHideDuration: 1
   withDelay: 1
-  showDelay: 0.7583333
+  showDelay: 1.0833334
   hideDelay: 0.74999994
   elasticityPower: 1
 --- !u!1 &819422485
@@ -4817,7 +4817,7 @@ MonoBehaviour:
   animationShowDuration: 1
   animationHideDuration: 1
   withDelay: 1
-  showDelay: 0.875
+  showDelay: 1.25
   hideDelay: 0.5833333
   elasticityPower: 1
 --- !u!1 &832136860
@@ -6413,7 +6413,6 @@ GameObject:
   - component: {fileID: 1149148906}
   - component: {fileID: 1149148908}
   - component: {fileID: 1149148907}
-  - component: {fileID: 1149148909}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -6433,7 +6432,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1556979584}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.27356347, y: 0.73967165}
   m_AnchorMax: {x: 0.72674626, y: 0.87234324}
@@ -6482,49 +6481,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1149148905}
   m_CullTransparentMesh: 0
---- !u!114 &1149148909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1149148905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnShow:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnHide:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnShowComplete:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnHideComplete:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 3
-  animationFromCornerType: 1
-  animationToCornerType: 3
-  fadeChildren: 0
-  animationShowDuration: 0.5
-  animationHideDuration: 0.5
-  withDelay: 1
-  showDelay: 1
-  hideDelay: 0.26666668
-  elasticityPower: 1
 --- !u!1 &1173928958
 GameObject:
   m_ObjectHideFlags: 0
@@ -7223,7 +7179,7 @@ MonoBehaviour:
   animationShowDuration: 1
   animationHideDuration: 1
   withDelay: 1
-  showDelay: 0.93333334
+  showDelay: 1.3333334
   hideDelay: 0.5
   elasticityPower: 1
 --- !u!1 &1311458364
@@ -7640,7 +7596,7 @@ MonoBehaviour:
   animationShowDuration: 1
   animationHideDuration: 1
   withDelay: 1
-  showDelay: 1.1083333
+  showDelay: 1.5833333
   hideDelay: 0.25
   elasticityPower: 1
 --- !u!1 &1385691703
@@ -7829,18 +7785,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1395097061}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2056024459}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1395097061
@@ -9025,6 +8970,7 @@ GameObject:
   - component: {fileID: 1556979584}
   - component: {fileID: 1556979583}
   - component: {fileID: 1556979582}
+  - component: {fileID: 1556979587}
   - component: {fileID: 1556979586}
   - component: {fileID: 1556979585}
   m_Layer: 5
@@ -9081,8 +9027,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1149148906}
   - {fileID: 1762430400}
+  - {fileID: 1149148906}
   - {fileID: 986898855}
   m_Father: {fileID: 42363463}
   m_RootOrder: 2
@@ -9105,15 +9051,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   withGraphic: 1
   controlChildren: 1
-  position: 0
-  graphicType: 0
+  position: 2
+  graphicType: 2
+  imageColor: {r: 0, g: 1, b: 0.09488511, a: 1}
+  textColor: {r: 1, g: 0, b: 0, a: 1}
   scale: 1
-  offsetX: 0
-  offsetY: 0
+  offsetX: 70
+  offsetY: 50
   buttonText: Back
-  graphicSprite: {fileID: 21300000, guid: dcf7e60ba7accad4d9b7a57c95b79fe6, type: 3}
+  graphicSprite: {fileID: 21300000, guid: 42254f606610cb3418a1c711f145a87d, type: 3}
   backButtonManager: {fileID: 0}
 --- !u!114 &1556979586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1556979581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 980c575a93135d7469d5b3060cdcd2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  childrenElements:
+  - {fileID: 1556979587}
+  showMenuOnStart: 1
+--- !u!114 &1556979587
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9145,16 +9107,16 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 3
-  animationFromCornerType: 0
-  animationToCornerType: 0
-  fadeChildren: 0
-  animationShowDuration: 1
-  animationHideDuration: 1
-  withDelay: 1
+  showAnimationType: 2
+  hideAnimationType: 2
+  animationFromCornerType: 1
+  animationToCornerType: 1
+  fadeChildren: 1
+  animationShowDuration: 0.5
+  animationHideDuration: 0.5
+  withDelay: 0
   showDelay: 0
-  hideDelay: 0.8
+  hideDelay: 0.5
   elasticityPower: 1
 --- !u!1 &1568299925
 GameObject:
@@ -9884,7 +9846,7 @@ MonoBehaviour:
   animationShowDuration: 1
   animationHideDuration: 1
   withDelay: 1
-  showDelay: 1.2833333
+  showDelay: 1.8333333
   hideDelay: 0
   elasticityPower: 1
 --- !u!1 &1638817308
@@ -10005,7 +9967,7 @@ MonoBehaviour:
   animationShowDuration: 1
   animationHideDuration: 1
   withDelay: 1
-  showDelay: 1.2249999
+  showDelay: 1.75
   hideDelay: 0.083333336
   elasticityPower: 1
 --- !u!1 &1648515419
@@ -10874,7 +10836,7 @@ MonoBehaviour:
   animationShowDuration: 1
   animationHideDuration: 1
   withDelay: 1
-  showDelay: 1.05
+  showDelay: 1.5
   hideDelay: 0.33333334
   elasticityPower: 1
 --- !u!1 &1705641640
@@ -11285,7 +11247,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1762430400}
   - component: {fileID: 1762430401}
-  - component: {fileID: 1762430402}
   m_Layer: 5
   m_Name: SoundToggle
   m_TagString: Untagged
@@ -11306,7 +11267,7 @@ RectTransform:
   m_Children:
   - {fileID: 614695705}
   m_Father: {fileID: 1556979584}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.34646484, y: 0.2548084}
   m_AnchorMax: {x: 0.6533235, y: 0.73967165}
@@ -11370,49 +11331,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
---- !u!114 &1762430402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1762430399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnShow:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnHide:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnShowComplete:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnHideComplete:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
-  showAnimationType: 4
-  hideAnimationType: 3
-  animationFromCornerType: 1
-  animationToCornerType: 3
-  fadeChildren: 0
-  animationShowDuration: 0.5
-  animationHideDuration: 0.5
-  withDelay: 1
-  showDelay: 1.3333334
-  hideDelay: 0
-  elasticityPower: 1
 --- !u!1 &1818866172
 GameObject:
   m_ObjectHideFlags: 0
@@ -11741,6 +11659,8 @@ GameObject:
   - component: {fileID: 1865012852}
   - component: {fileID: 1865012854}
   - component: {fileID: 1865012853}
+  - component: {fileID: 1865012856}
+  - component: {fileID: 1865012855}
   m_Layer: 5
   m_Name: Main Screen
   m_TagString: Untagged
@@ -11811,6 +11731,69 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1865012851}
   m_CullTransparentMesh: 0
+--- !u!114 &1865012855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1865012851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 980c575a93135d7469d5b3060cdcd2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  childrenElements:
+  - {fileID: 1865012856}
+  - {fileID: 1571150318}
+  - {fileID: 445973780}
+  - {fileID: 2067227922}
+  - {fileID: 605506429}
+  - {fileID: 638314619}
+  - {fileID: 842226516}
+  showMenuOnStart: 1
+--- !u!114 &1865012856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1865012851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a137b4f0b7363244ca3778a59730095a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnShow:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHide:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnShowComplete:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHideComplete:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  showOnStart: 0
+  showAnimationType: 0
+  hideAnimationType: 0
+  animationFromCornerType: 0
+  animationToCornerType: 0
+  fadeChildren: 0
+  animationShowDuration: 0.5
+  animationHideDuration: 0.5
+  withDelay: 0
+  showDelay: 0
+  hideDelay: 0
+  elasticityPower: 1
 --- !u!1 &1877294200
 GameObject:
   m_ObjectHideFlags: 0
@@ -11917,6 +11900,7 @@ GameObject:
   - component: {fileID: 1882954776}
   - component: {fileID: 1882954775}
   - component: {fileID: 1882954774}
+  - component: {fileID: 1882954779}
   - component: {fileID: 1882954778}
   - component: {fileID: 1882954777}
   m_Layer: 5
@@ -12021,15 +12005,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   withGraphic: 1
   controlChildren: 1
-  position: 1
+  position: 0
   graphicType: 0
+  imageColor: {r: 0, g: 0, b: 0, a: 0}
+  textColor: {r: 0, g: 0, b: 0, a: 0}
   scale: 0.5
-  offsetX: 50
-  offsetY: 40
+  offsetX: 0
+  offsetY: 0
   buttonText: Back
-  graphicSprite: {fileID: 21300000, guid: dcf7e60ba7accad4d9b7a57c95b79fe6, type: 3}
+  graphicSprite: {fileID: 0}
   backButtonManager: {fileID: 0}
 --- !u!114 &1882954778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1882954772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 980c575a93135d7469d5b3060cdcd2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  childrenElements:
+  - {fileID: 1882954779}
+  - {fileID: 546848179}
+  - {fileID: 816083895}
+  - {fileID: 1982784108}
+  - {fileID: 1291177360}
+  - {fileID: 2051857848}
+  - {fileID: 1700990570}
+  - {fileID: 1380747381}
+  - {fileID: 194047946}
+  - {fileID: 1638817312}
+  - {fileID: 1631245406}
+  showMenuOnStart: 1
+--- !u!114 &1882954779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12066,7 +12076,7 @@ MonoBehaviour:
   animationFromCornerType: 0
   animationToCornerType: 0
   fadeChildren: 0
-  animationShowDuration: 0.7
+  animationShowDuration: 1
   animationHideDuration: 0.5
   withDelay: 1
   showDelay: 0
@@ -12737,7 +12747,7 @@ MonoBehaviour:
   animationShowDuration: 1
   animationHideDuration: 1
   withDelay: 1
-  showDelay: 0.81666666
+  showDelay: 1.1666666
   hideDelay: 0.6666666
   elasticityPower: 1
 --- !u!1 &1983985946
@@ -13219,7 +13229,7 @@ MonoBehaviour:
   animationShowDuration: 1
   animationHideDuration: 1
   withDelay: 1
-  showDelay: 0.9916667
+  showDelay: 1.4166667
   hideDelay: 0.4166667
   elasticityPower: 1
 --- !u!1 &2056024459

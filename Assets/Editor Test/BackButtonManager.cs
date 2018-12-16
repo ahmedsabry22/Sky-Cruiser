@@ -36,10 +36,10 @@ public class BackButtonManager : MonoBehaviour
     {
         if (controlChildren)
         {
-            AnimationP[] childrenElements = backButton.GetComponentsInChildren<AnimationP>();
+            AnimationPElement[] childrenElements = backButton.GetComponentsInChildren<AnimationPElement>();
 
             foreach (var element in childrenElements)
-                element.HideMenu();
+                element.HideElement();
         }
         else
         {
@@ -49,7 +49,7 @@ public class BackButtonManager : MonoBehaviour
             {
                 if (backButton == ActiveButtons[targetIndex] && backButton.gameObject.activeSelf)
                 {
-                    ActiveButtons[targetIndex].GetComponent<AnimationP>().HideMenu();
+                    ActiveButtons[targetIndex].GetComponent<AnimationPElement>().HideElement();
                 }
             }
         }
@@ -59,11 +59,11 @@ public class BackButtonManager : MonoBehaviour
     {
         if (controlChildren)
         {
-            AnimationP[] childrenElements = backButton.GetComponentsInChildren<AnimationP>();
+            AnimationPElement[] childrenElements = backButton.GetComponentsInChildren<AnimationPElement>();
 
             foreach (var element in childrenElements)
             {
-                element.HideMenu();
+                element.HideElement();
             }
         }
         else
@@ -74,7 +74,7 @@ public class BackButtonManager : MonoBehaviour
             {
                 if (backButton.gameObject.activeSelf)
                 {
-                    ActiveButtons[targetIndex].GetComponent<AnimationP>().HideMenu();
+                    ActiveButtons[targetIndex].GetComponent<AnimationPElement>().HideElement();
                 }
             }
         }

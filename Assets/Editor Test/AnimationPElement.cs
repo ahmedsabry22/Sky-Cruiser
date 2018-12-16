@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(RectTransform))]
-public class AnimationP : MonoBehaviour
+public class AnimationPElement : MonoBehaviour
 {
     public UnityEvent OnShow;
     public UnityEvent OnHide;
@@ -31,7 +31,7 @@ public class AnimationP : MonoBehaviour
 
     private RectTransform rectTransform;
 
-    private AnimationP[] activeChildrenAnimationElements;
+    private AnimationPElement[] activeChildrenAnimationElements;
 
     private Graphic[] graphics;
 
@@ -49,37 +49,20 @@ public class AnimationP : MonoBehaviour
         initialScale = transform.localScale;
 
         for (int i = 0; i < graphics.Length; i++)
-        {
             initialColorsOfChildren[i] = graphics[i].color;
-        }
 
-        activeChildrenAnimationElements = GetComponentsInChildren<AnimationP>();
+        activeChildrenAnimationElements = GetComponentsInChildren<AnimationPElement>();
     }
 
     private void OnEnable()
     {
-        initialPosition = transform.position;
+        //initialPosition = transform.position;
 
-        if (showOnStart)
-            ShowMenu();
+        //if (showOnStart)
+        //    ShowElement();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown("z"))
-            ShowMenu();
-        if (Input.GetKeyDown("x"))
-            HideMenu();
-    }
-
-    private void ResetDefaults()
-    {
-        ResetPosition();
-        ResetScale(ResetOptions.One);
-        ResetColor(ResetOptions.One);
-    }
-
-    public void ShowMenu()
+    public void ShowElement()
     {
         gameObject.SetActive(true);
 
@@ -111,7 +94,7 @@ public class AnimationP : MonoBehaviour
             OnShow.Invoke();
     }
 
-    public void HideMenu()
+    public void HideElement()
     {
         OnHideComplete.AddListener(ResetDefaults);
 
@@ -142,8 +125,6 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateFromCornerWithScale_SHOW()
     {
-        yield return (new WaitForEndOfFrame());
-
         ResetScale(ResetOptions.Zero);
         ResetColor(ResetOptions.Zero);
 
@@ -282,8 +263,6 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateFromCornerWithoutScale_SHOW()
     {
-        yield return (new WaitForEndOfFrame());
-
         ResetPosition();
         ResetColor(ResetOptions.One);
         ResetScale(ResetOptions.One);
@@ -362,14 +341,12 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateElasticScale_SHOW()
     {
-        yield return (new WaitForEndOfFrame());
-
         ResetPosition();
         ResetScale(ResetOptions.Zero);
         ResetColor(ResetOptions.One);
 
         rectTransform.localScale = Vector3.zero;
-
+        
         if (withDelay)
             yield return (new WaitForSeconds(showDelay));
 
@@ -402,8 +379,6 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateScale_SHOW()
     {
-        yield return (new WaitForEndOfFrame());
-
         ResetPosition();
         ResetScale(ResetOptions.Zero);
         ResetColor(ResetOptions.One);
@@ -431,8 +406,6 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateFadeIn_SHOW()
     {
-        yield return (new WaitForEndOfFrame());
-
         ResetPosition();
         ResetScale(ResetOptions.One);
 
@@ -595,7 +568,7 @@ public class AnimationP : MonoBehaviour
         if (withDelay)
             yield return (new WaitForSeconds(hideDelay));
 
-        rectTransform.localScale = Vector3.one; // + new Vector3(0.1f, 0.1f, 0.1f) * elasticityPower;
+        rectTransform.localScale = Vector3.one;
 
         float startTime = Time.time;
 
@@ -791,6 +764,13 @@ public class AnimationP : MonoBehaviour
     }
 
     #endregion
+
+    private void ResetDefaults()
+    {
+        ResetPosition();
+        ResetScale(ResetOptions.One);
+        ResetColor(ResetOptions.One);
+    }
 
     private void ResetPosition()
     {

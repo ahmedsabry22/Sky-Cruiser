@@ -13,6 +13,8 @@ public class BackButtonInspector : Editor
     private SerializedProperty _controlChildren;
     private SerializedProperty _position;
     private SerializedProperty _graphicType;
+    private SerializedProperty _imageColor;
+    private SerializedProperty _textColor;
     private SerializedProperty _buttonText;
     private SerializedProperty _graphicSprite;
     private SerializedProperty _scale;
@@ -27,6 +29,8 @@ public class BackButtonInspector : Editor
         _controlChildren = serializedObject.FindProperty("controlChildren");
         _position = serializedObject.FindProperty("position");
         _graphicType = serializedObject.FindProperty("graphicType");
+        _imageColor = serializedObject.FindProperty("imageColor");
+        _textColor = serializedObject.FindProperty("textColor");
         _buttonText = serializedObject.FindProperty("buttonText");
         _graphicSprite = serializedObject.FindProperty("graphicSprite");
         _scale = serializedObject.FindProperty("scale");
@@ -64,10 +68,18 @@ public class BackButtonInspector : Editor
             if (backButtonP.graphicType == BackButtonP.GraphicType.Image)
             {
                 EditorGUILayout.PropertyField(_graphicSprite);
+                EditorGUILayout.PropertyField(_imageColor);
             }
-
             else if (backButtonP.graphicType == BackButtonP.GraphicType.Text)
             {
+                EditorGUILayout.PropertyField(_buttonText);
+                EditorGUILayout.PropertyField(_textColor);
+            }
+            else if (backButtonP.graphicType == BackButtonP.GraphicType.Both)
+            {
+                EditorGUILayout.PropertyField(_graphicSprite);
+                EditorGUILayout.PropertyField(_imageColor);
+                EditorGUILayout.PropertyField(_textColor);
                 EditorGUILayout.PropertyField(_buttonText);
             }
 

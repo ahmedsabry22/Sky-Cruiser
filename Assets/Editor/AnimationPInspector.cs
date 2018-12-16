@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(AnimationP))]
+[CustomEditor(typeof(AnimationPElement))]
 [CanEditMultipleObjects]
 public class AnimationPInspector : Editor
 {
-    private AnimationP animationP;
+    private AnimationPElement animationP;
     private bool showFromCornerAnimation;
 
     private SerializedProperty _showOnStart;
@@ -30,7 +30,7 @@ public class AnimationPInspector : Editor
 
     private void OnEnable()
     {
-        animationP = (AnimationP)target;
+        animationP = (AnimationPElement)target;
 
         _showOnStart = serializedObject.FindProperty("showOnStart");
         _animationShowDuration = serializedObject.FindProperty("animationShowDuration");
@@ -231,7 +231,7 @@ public class AnimationPInspector : Editor
     {
         if (GUILayout.Button("Automate Show Delays In Children"))
         {
-            AnimationP[] elementsInChildren = Selection.activeGameObject.GetComponentsInChildren<AnimationP>();
+            AnimationPElement[] elementsInChildren = Selection.activeGameObject.GetComponentsInChildren<AnimationPElement>();
 
             float step = (animationP.animationShowDuration / elementsInChildren.Length);
             float currentValue = 0;
@@ -252,7 +252,7 @@ public class AnimationPInspector : Editor
     {
         if (GUILayout.Button("Automate Hide Delays In Children"))
         {
-            AnimationP[] elementsInChildren = Selection.activeGameObject.GetComponentsInChildren<AnimationP>();
+            AnimationPElement[] elementsInChildren = Selection.activeGameObject.GetComponentsInChildren<AnimationPElement>();
 
             float step = (animationP.hideDelay / elementsInChildren.Length);
             float currentValue = 0;

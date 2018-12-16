@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(AnimationP))]
+[RequireComponent(typeof(AnimationPElement))]
 public class BackButtonP : MonoBehaviour
 {
     [Tooltip("if false, it will work only on devices that has back button, and ESC button on standalone devices. If true, there will be a button on the screen")]
@@ -14,6 +14,9 @@ public class BackButtonP : MonoBehaviour
     public Positions position;
 
     public GraphicType graphicType;
+
+    public Color imageColor = Color.white;
+    public Color textColor = Color.white;
 
     [Range(0.1f, 1)] public float scale = 0.5f;
 
@@ -27,7 +30,7 @@ public class BackButtonP : MonoBehaviour
     private Button backButtonPrefab;
     private Button backButton;
 
-    private AnimationP animationP;
+    private AnimationPElement animationP;
 
     private RectTransform rectTransform;
 
@@ -38,16 +41,16 @@ public class BackButtonP : MonoBehaviour
         InstantiateManager();
 
 
-        animationP = GetComponent<AnimationP>();
+        animationP = GetComponent<AnimationPElement>();
 
         if (withGraphic)
         {
             InstantiateBackButton();
             animationP.OnShow.AddListener(SetPositionAndScale);
+            animationP.OnShow.AddListener(() => BackButtonManager.Instance.AddButtonToList(this));
+            animationP.OnShow.AddListener(() => backButton.gameObject.SetActive(true));
         }
 
-        animationP.OnShow.AddListener(() => BackButtonManager.Instance.AddButtonToList(this));
-        animationP.OnShow.AddListener(() => backButton.gameObject.SetActive(true));
 
         animationP.OnHide.AddListener(() => BackButtonManager.Instance.RemoveButtonFromList(this));
     }
@@ -82,17 +85,28 @@ public class BackButtonP : MonoBehaviour
             if (graphicType == GraphicType.Image)
             {
                 img.sprite = graphicSprite;
+                img.color = Color.black;
                 backButton.targetGraphic = img;
-                img.color = Color.white;
 
                 txt.gameObject.SetActive(false);
             }
             else if (graphicType == GraphicType.Text)
             {
                 txt.text = buttonText;
+                txt.color = textColor;
                 backButton.targetGraphic = txt;
 
                 img.gameObject.SetActive(false);
+            }
+            else if (graphicType == GraphicType.Both)
+            {
+                img.sprite = graphicSprite;
+                img.color = imageColor;
+                backButton.targetGraphic = img;
+
+                txt.text = buttonText;
+                txt.color = textColor;
+                backButton.targetGraphic = txt;
             }
 
             SetPositionAndScale();
@@ -158,5 +172,5 @@ public class BackButtonP : MonoBehaviour
 
     public enum Positions { TopRight, TopLeft, BottomRight, BottomLeft }
 
-    public enum GraphicType { Image, Text }
+    public enum GraphicType { Image, Text, Both }
 }

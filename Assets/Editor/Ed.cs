@@ -17,8 +17,8 @@ public class Ed : EditorWindow
     private void OnGUI()
     {
         WindowTitle_LABEL();
+        AddRemoveAnimationManager_BUTTONS();
         AddRemoveAnimation_BUTTONS();
-        //AddRemoveAnchor_BUTTONS();
         AddRemoveBackBtn_BUTTONS();
         CloseWindow_BUTTON();
     }
@@ -31,6 +31,34 @@ public class Ed : EditorWindow
         GUILayout.Space(50);
     }
 
+    private void AddRemoveAnimationManager_BUTTONS()
+    {
+        GUILayout.BeginHorizontal();
+
+        if (GUILayout.Button("Add Animation Manager", GUILayout.Height(100)))
+        {
+            foreach (GameObject g in Selection.gameObjects)
+            {
+                if (g.GetComponent<AnimationPManager>() == null)
+                {
+                    g.AddComponent<AnimationPManager>();
+                }
+            }
+        }
+        if (GUILayout.Button("Remove Animation Manager", GUILayout.Height(100)))
+        {
+            foreach (GameObject g in Selection.gameObjects)
+            {
+                if (g.GetComponent<AnimationPManager>() != null)
+                    DestroyImmediate(g.GetComponent<AnimationPManager>());
+            }
+        }
+
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(20);
+    }
+
     private void AddRemoveAnimation_BUTTONS()
     {
         GUILayout.BeginHorizontal();
@@ -39,9 +67,9 @@ public class Ed : EditorWindow
         {
             foreach (GameObject g in Selection.gameObjects)
             {
-                if (g.GetComponent<AnimationP>() == null)
+                if (g.GetComponent<AnimationPElement>() == null)
                 {
-                    g.AddComponent<AnimationP>();
+                    g.AddComponent<AnimationPElement>();
                 }
             }
         }
@@ -49,8 +77,8 @@ public class Ed : EditorWindow
         {
             foreach (GameObject g in Selection.gameObjects)
             {
-                if (g.GetComponent<AnimationP>() != null)
-                    DestroyImmediate(g.GetComponent<AnimationP>());
+                if (g.GetComponent<AnimationPElement>() != null)
+                    DestroyImmediate(g.GetComponent<AnimationPElement>());
             }
         }
 
