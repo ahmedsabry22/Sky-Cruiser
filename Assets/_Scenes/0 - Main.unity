@@ -11402,7 +11402,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   showOnStart: 1
-  showAnimationType: 3
+  showAnimationType: 4
   hideAnimationType: 3
   animationFromCornerType: 1
   animationToCornerType: 3
