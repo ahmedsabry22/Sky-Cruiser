@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(RectTransform))]
 public class AnimationP : MonoBehaviour
 {
     public UnityEvent OnShow;
@@ -32,25 +33,32 @@ public class AnimationP : MonoBehaviour
 
     private AnimationP[] activeChildrenAnimationElements;
 
+    private Graphic[] graphics;
+
     private Vector3 initialPosition;
-    private Color initialColor;
+    //private Color initialColor;
     private Vector3 initialScale;
+
+    private Color[] initialColorsOfChildren;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+        graphics = GetComponentsInChildren<Graphic>();
+        initialColorsOfChildren = new Color[graphics.Length];
         initialPosition = transform.position;
         initialScale = transform.localScale;
-        if (GetComponent<Graphic>())
-            initialColor = GetComponent<Graphic>().color;
+
+        for (int i = 0; i < graphics.Length; i++)
+        {
+            initialColorsOfChildren[i] = graphics[i].color;
+        }
 
         activeChildrenAnimationElements = GetComponentsInChildren<AnimationP>();
     }
 
     private void OnEnable()
     {
-        initialPosition = transform.position;
-
         if (showOnStart)
             ShowMenu();
     }
@@ -63,18 +71,16 @@ public class AnimationP : MonoBehaviour
             HideMenu();
     }
 
-    private void ResetToDefaults()
+    private void ResetDefaults()
     {
-        transform.position = initialPosition;
-        transform.localScale = initialScale;
-        if (GetComponent<Graphic>())
-            initialColor = GetComponent<Graphic>().color;
+        ResetPosition();
+        ResetScale(ResetOptions.One);
+        ResetColor(ResetOptions.One);
     }
 
     public void ShowMenu()
     {
         gameObject.SetActive(true);
-        ResetToDefaults();
 
         foreach (var element in activeChildrenAnimationElements)
         {
@@ -106,7 +112,7 @@ public class AnimationP : MonoBehaviour
 
     public void HideMenu()
     {
-        OnHideComplete.AddListener(ResetToDefaults);
+        OnHideComplete.AddListener(ResetDefaults);
 
         switch (hideAnimationType)
         {
@@ -237,6 +243,7 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateFromCornerWithoutScale_SHOW()
     {
+        ResetPosition();
         ResetColor(ResetOptions.One);
         ResetScale(ResetOptions.One);
 
@@ -381,51 +388,56 @@ public class AnimationP : MonoBehaviour
     {
         ResetPosition();
         ResetScale(ResetOptions.One);
-        ResetColor(ResetOptions.Zero);
 
         #region Initialization Part
-        Graphic[] images;
 
-        if (fadeChildren)
-            images = GetComponentsInChildren<Graphic>();
-        else
-            images = GetComponents<Graphic>();
+        Color[] startColors = new Color[graphics.Length], endColors = new Color[graphics.Length];
 
-        Color[] startColors = new Color[images.Length];
-        Color[] endColors = new Color[images.Length];
-
-        for (int i = 0; i < images.Length; i++)
+        for (int i = 0; i < graphics.Length; i++)
         {
-            startColors[i] = images[i].color;
+            startColors[i] = graphics[i].color;
             startColors[i].a = 0;
 
-            endColors[i] = new Color(images[i].color.r, images[i].color.g, images[i].color.b, 1);
+            endColors[i] = initialColorsOfChildren[i];
         }
 
-        for (int i = 0; i < images.Length; i++)
-        {
-            images[i].color = startColors[i];
-        }
+        ResetColor(ResetOptions.Zero);
+
         #endregion
 
         if (withDelay)
             yield return (new WaitForSeconds(showDelay));
 
-        float startTime = Time.time;
-
-        while (Time.time < startTime + animationShowDuration)
+        if (fadeChildren)
         {
-            float t = (Time.time - startTime) / animationShowDuration;
-            for (int i = 0; i < images.Length; i++)
+            float startTime = Time.time;
+            while (Time.time < startTime + animationShowDuration)
             {
-                images[i].color = Color.Lerp(startColors[i], endColors[i], t);
+                float t = (Time.time - startTime) / animationShowDuration;
+                for (int i = 0; i < graphics.Length; i++)
+                {
+                    graphics[i].color = Color.Lerp(startColors[i], endColors[i], t);
+                }
+
+                yield return (null);
+            }
+            for (int i = 0; i < graphics.Length; i++)
+            {
+                graphics[i].color = endColors[i];
+            }
+        }
+        else
+        {
+            float startTime = Time.time;
+            while (Time.time < startTime + animationShowDuration)
+            {
+                float t = (Time.time - startTime) / animationShowDuration;
+                graphics[0].color = Color.Lerp(startColors[0], endColors[0], t);
+
+                yield return (null);
             }
 
-            yield return (null);
-        }
-        for (int i = 0; i < images.Length; i++)
-        {
-            images[i].color = endColors[i];
+            graphics[0].color = endColors[0];
         }
 
         if (OnShowComplete != null)
@@ -441,29 +453,22 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateFadeIn_HIDE()
     {
+        ResetPosition();
+        ResetScale(ResetOptions.One);
+        ResetColor(ResetOptions.One);
+
         #region Initialization Part
-        Graphic[] images;
 
-        if (fadeChildren)
-            images = GetComponentsInChildren<Graphic>();
-        else
-            images = GetComponents<Graphic>();
+        Color[] startColors = new Color[graphics.Length], endColors = new Color[graphics.Length];
 
-        Color[] startColors = new Color[images.Length];
-        Color[] endColors = new Color[images.Length];
-
-        for (int i = 0; i < images.Length; i++)
+        for (int i = 0; i < graphics.Length; i++)
         {
-            startColors[i] = images[i].color;
+            startColors[i] = initialColorsOfChildren[i];
 
-            endColors[i] = images[i].color;
+            endColors[i] = initialColorsOfChildren[i];
             endColors[i].a = 0;
         }
 
-        for (int i = 0; i < images.Length; i++)
-        {
-            images[i].color = startColors[i];
-        }
         #endregion
 
         if (withDelay)
@@ -471,19 +476,34 @@ public class AnimationP : MonoBehaviour
 
         float startTime = Time.time;
 
-        while (Time.time < startTime + animationHideDuration)
+        if (fadeChildren)
         {
-            float t = (Time.time - startTime) / animationHideDuration;
-            for (int i = 0; i < images.Length; i++)
+            while (Time.time < startTime + animationHideDuration)
             {
-                images[i].color = Color.Lerp(startColors[i], endColors[i], t);
+                float t = (Time.time - startTime) / animationHideDuration;
+                for (int i = 0; i < graphics.Length; i++)
+                {
+                    graphics[i].color = Color.Lerp(startColors[i], endColors[i], t);
+                }
+
+                yield return (null);
+            }
+            for (int i = 0; i < graphics.Length; i++)
+            {
+                graphics[i].color = endColors[i];
+            }
+        }
+        else
+        {
+            while (Time.time < startTime + animationHideDuration)
+            {
+                float t = (Time.time - startTime) / animationHideDuration;
+                graphics[0].color = Color.Lerp(startColors[0], endColors[0], t);
+
+                yield return (null);
             }
 
-            yield return (null);
-        }
-        for (int i = 0; i < images.Length; i++)
-        {
-            images[i].color = endColors[i];
+            graphics[0].color = endColors[0];
         }
 
         gameObject.SetActive(false);
@@ -734,53 +754,31 @@ public class AnimationP : MonoBehaviour
     {
         if (resetOption == ResetOptions.Zero)
         {
-            Graphic[] images;
-
             if (fadeChildren)
-                images = GetComponentsInChildren<Graphic>();
-            else
-                images = GetComponents<Graphic>();
-
-
-            Color[] startColors = new Color[images.Length];
-            Color[] endColors = new Color[images.Length];
-
-            for (int i = 0; i < images.Length; i++)
             {
-                startColors[i] = images[i].color;
-                startColors[i].a = 0;
-
-                endColors[i] = new Color(images[i].color.r, images[i].color.g, images[i].color.b, 1);
+                for (int i = 0; i < graphics.Length; i++)
+                {
+                    graphics[i].color = new Color(initialColorsOfChildren[i].r, initialColorsOfChildren[i].g, initialColorsOfChildren[i].b, 0);
+                }
             }
-
-            for (int i = 0; i < images.Length; i++)
+            else
             {
-                images[i].color = startColors[i];
+                // because the index 0 is for the componet on this game object.
+                graphics[0].color = new Color(initialColorsOfChildren[0].r, initialColorsOfChildren[0].g, initialColorsOfChildren[0].b, 0);
             }
         }
         else if (resetOption == ResetOptions.One)
         {
-            Graphic[] images;
-
             if (fadeChildren)
-                images = GetComponentsInChildren<Graphic>();
-            else
-                images = GetComponents<Graphic>();
-
-            Color[] startColors = new Color[images.Length];
-            Color[] endColors = new Color[images.Length];
-
-            for (int i = 0; i < images.Length; i++)
             {
-                startColors[i] = images[i].color;
-                startColors[i].a = 0;
-
-                endColors[i] = initialColor;
+                for (int i = 0; i < graphics.Length; i++)
+                {
+                    graphics[i].color = initialColorsOfChildren[i];
+                }
             }
-
-            for (int i = 0; i < images.Length; i++)
+            else
             {
-                images[i].color = endColors[i];
+                graphics[0].color = initialColorsOfChildren[0];
             }
         }
     }
