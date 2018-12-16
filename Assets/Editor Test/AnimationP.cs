@@ -36,7 +36,6 @@ public class AnimationP : MonoBehaviour
     private Graphic[] graphics;
 
     private Vector3 initialPosition;
-    //private Color initialColor;
     private Vector3 initialScale;
 
     private Color[] initialColorsOfChildren;
@@ -59,6 +58,8 @@ public class AnimationP : MonoBehaviour
 
     private void OnEnable()
     {
+        initialPosition = transform.position;
+
         if (showOnStart)
             ShowMenu();
     }
@@ -141,6 +142,8 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateFromCornerWithScale_SHOW()
     {
+        yield return (new WaitForEndOfFrame());
+
         ResetScale(ResetOptions.Zero);
         ResetColor(ResetOptions.Zero);
 
@@ -163,10 +166,46 @@ public class AnimationP : MonoBehaviour
             endColors[i].a = 1;
         }
 
+        //switch (animationFromCornerType)
+        //{
+        //    case (AnimationFromCornerType.BottomRight):
+        //        startPositionX = Screen.width + (rectTransform.rect.width / 2);
+        //        startPositionY = 0 - (rectTransform.rect.height / 2);
+        //        break;
+        //    case (AnimationFromCornerType.BottomLeft):
+        //        startPositionX = 0 - (rectTransform.rect.width / 2);
+        //        startPositionY = 0 - (rectTransform.rect.height / 2);
+        //        break;
+        //    case (AnimationFromCornerType.TopRight):
+        //        startPositionX = Screen.width + (rectTransform.rect.width / 2);
+        //        startPositionY = Screen.height + (rectTransform.rect.height / 2);
+        //        break;
+        //    case (AnimationFromCornerType.TopLeft):
+        //        startPositionX = 0 - (rectTransform.rect.width / 2);
+        //        startPositionY = Screen.height + (rectTransform.rect.height / 2);
+        //        break;
+        //    case (AnimationFromCornerType.Up):
+        //        startPositionX = initialPosition.x;
+        //        startPositionY = Screen.height + (rectTransform.rect.height / 2);
+        //        break;
+        //    case (AnimationFromCornerType.Bottom):
+        //        startPositionX = initialPosition.x;
+        //        startPositionY = 0 - (rectTransform.rect.height / 2);
+        //        break;
+        //    case (AnimationFromCornerType.Left):
+        //        startPositionX = 0 - (rectTransform.rect.width / 2);
+        //        startPositionY = initialPosition.y;
+        //        break;
+        //    case (AnimationFromCornerType.Right):
+        //        startPositionX = Screen.width + (rectTransform.rect.width / 2);
+        //        startPositionY = initialPosition.y;
+        //        break;
+        //}
+
         switch (animationFromCornerType)
         {
             case (AnimationFromCornerType.BottomRight):
-                startPositionX = Screen.width + (rectTransform.rect.width / 2);
+                startPositionX = transform.parent.GetComponent<RectTransform>().rect.width + (rectTransform.rect.width / 2);
                 startPositionY = 0 - (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.BottomLeft):
@@ -174,16 +213,16 @@ public class AnimationP : MonoBehaviour
                 startPositionY = 0 - (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.TopRight):
-                startPositionX = Screen.width + (rectTransform.rect.width / 2);
-                startPositionY = Screen.height + (rectTransform.rect.height / 2);
+                startPositionX = transform.parent.GetComponent<RectTransform>().rect.width + (rectTransform.rect.width / 2);
+                startPositionY = transform.parent.GetComponent<RectTransform>().rect.height + (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.TopLeft):
                 startPositionX = 0 - (rectTransform.rect.width / 2);
-                startPositionY = Screen.height + (rectTransform.rect.height / 2);
+                startPositionY = transform.parent.GetComponent<RectTransform>().rect.height + (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Up):
                 startPositionX = initialPosition.x;
-                startPositionY = Screen.height + (rectTransform.rect.height / 2);
+                startPositionY = transform.parent.GetComponent<RectTransform>().rect.height + (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Bottom):
                 startPositionX = initialPosition.x;
@@ -194,16 +233,16 @@ public class AnimationP : MonoBehaviour
                 startPositionY = initialPosition.y;
                 break;
             case (AnimationFromCornerType.Right):
-                startPositionX = Screen.width + (rectTransform.rect.width / 2);
+                startPositionX = transform.parent.GetComponent<RectTransform>().rect.width + (rectTransform.rect.width / 2);
                 startPositionY = initialPosition.y;
                 break;
         }
+
 
         Vector3 startPos = new Vector3(startPositionX, startPositionY, 0);
         Vector3 targetPosition = initialPosition;
 
         rectTransform.position = startPos;
-        rectTransform.localScale = Vector3.zero;
 
         #endregion
 
@@ -211,9 +250,9 @@ public class AnimationP : MonoBehaviour
             yield return (new WaitForSeconds(showDelay));
 
         // Starting animating.
-        float startTime = Time.time;
-
         rectTransform.position = startPos;
+
+        float startTime = Time.time;
 
         while (Time.time <= startTime + animationShowDuration)
         {
@@ -243,6 +282,8 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateFromCornerWithoutScale_SHOW()
     {
+        yield return (new WaitForEndOfFrame());
+
         ResetPosition();
         ResetColor(ResetOptions.One);
         ResetScale(ResetOptions.One);
@@ -321,6 +362,8 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateElasticScale_SHOW()
     {
+        yield return (new WaitForEndOfFrame());
+
         ResetPosition();
         ResetScale(ResetOptions.Zero);
         ResetColor(ResetOptions.One);
@@ -359,6 +402,8 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateScale_SHOW()
     {
+        yield return (new WaitForEndOfFrame());
+
         ResetPosition();
         ResetScale(ResetOptions.Zero);
         ResetColor(ResetOptions.One);
@@ -386,6 +431,8 @@ public class AnimationP : MonoBehaviour
 
     private IEnumerator AnimateFadeIn_SHOW()
     {
+        yield return (new WaitForEndOfFrame());
+
         ResetPosition();
         ResetScale(ResetOptions.One);
 
