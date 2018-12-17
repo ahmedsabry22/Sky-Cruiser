@@ -35,7 +35,8 @@ public class AnimationPElement : MonoBehaviour
 
     private Graphic[] graphics;
 
-    private Vector3 initialPosition;
+    private Vector3 initialWorldPosition;
+    private Vector3 initialLocalPosition;
     private Vector3 initialScale;
 
     private Color[] initialColorsOfChildren;
@@ -45,21 +46,14 @@ public class AnimationPElement : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         graphics = GetComponentsInChildren<Graphic>();
         initialColorsOfChildren = new Color[graphics.Length];
-        initialPosition = transform.position;
+        initialWorldPosition = transform.position;
+        initialLocalPosition = transform.localPosition;
         initialScale = transform.localScale;
 
         for (int i = 0; i < graphics.Length; i++)
             initialColorsOfChildren[i] = graphics[i].color;
 
         activeChildrenAnimationElements = GetComponentsInChildren<AnimationPElement>();
-    }
-
-    private void OnEnable()
-    {
-        //initialPosition = transform.position;
-
-        //if (showOnStart)
-        //    ShowElement();
     }
 
     public void ShowElement()
@@ -125,6 +119,7 @@ public class AnimationPElement : MonoBehaviour
 
     private IEnumerator AnimateFromCornerWithScale_SHOW()
     {
+        ResetPosition();
         ResetScale(ResetOptions.Zero);
         ResetColor(ResetOptions.Zero);
 
@@ -202,26 +197,26 @@ public class AnimationPElement : MonoBehaviour
                 startPositionY = transform.parent.GetComponent<RectTransform>().rect.height + (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Up):
-                startPositionX = initialPosition.x;
+                startPositionX = initialWorldPosition.x;
                 startPositionY = transform.parent.GetComponent<RectTransform>().rect.height + (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Bottom):
-                startPositionX = initialPosition.x;
+                startPositionX = initialWorldPosition.x;
                 startPositionY = 0 - (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Left):
                 startPositionX = 0 - (rectTransform.rect.width / 2);
-                startPositionY = initialPosition.y;
+                startPositionY = initialWorldPosition.y;
                 break;
             case (AnimationFromCornerType.Right):
                 startPositionX = transform.parent.GetComponent<RectTransform>().rect.width + (rectTransform.rect.width / 2);
-                startPositionY = initialPosition.y;
+                startPositionY = initialWorldPosition.y;
                 break;
         }
 
 
         Vector3 startPos = new Vector3(startPositionX, startPositionY, 0);
-        Vector3 targetPosition = initialPosition;
+        Vector3 targetPosition = initialWorldPosition;
 
         rectTransform.position = startPos;
 
@@ -290,25 +285,25 @@ public class AnimationPElement : MonoBehaviour
                 startPositionY = Screen.height + (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Up):
-                startPositionX = initialPosition.x;
+                startPositionX = initialWorldPosition.x;
                 startPositionY = Screen.height + (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Bottom):
-                startPositionX = initialPosition.x;
+                startPositionX = initialWorldPosition.x;
                 startPositionY = 0 - (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Left):
                 startPositionX = 0 - (rectTransform.rect.width / 2);
-                startPositionY = initialPosition.y;
+                startPositionY = initialWorldPosition.y;
                 break;
             case (AnimationFromCornerType.Right):
                 startPositionX = Screen.width + (rectTransform.rect.width / 2);
-                startPositionY = initialPosition.y;
+                startPositionY = initialWorldPosition.y;
                 break;
         }
 
         Vector3 startPos = new Vector3(startPositionX, startPositionY, 0);
-        Vector3 targetPosition = initialPosition;
+        Vector3 targetPosition = initialWorldPosition;
 
         rectTransform.position = startPos;
 
@@ -334,7 +329,7 @@ public class AnimationPElement : MonoBehaviour
 
         // Here we set the values to their end so we avoid the missing final step.
         rectTransform.position = targetPosition;
-
+        print(rectTransform.localScale);
         if (OnShowComplete != null)
             OnShowComplete.Invoke();
     }
@@ -643,24 +638,24 @@ public class AnimationPElement : MonoBehaviour
                 endY = Screen.height + (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Up):
-                endX = initialPosition.x;
+                endX = initialWorldPosition.x;
                 endY = Screen.height + (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Bottom):
-                endX = initialPosition.x;
+                endX = initialWorldPosition.x;
                 endY = 0 - (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Left):
                 endX = 0 - (rectTransform.rect.width / 2);
-                endY = initialPosition.y;
+                endY = initialWorldPosition.y;
                 break;
             case (AnimationFromCornerType.Right):
                 endX = Screen.width + (rectTransform.rect.width / 2);
-                endY = initialPosition.y;
+                endY = initialWorldPosition.y;
                 break;
         }
 
-        Vector3 startPos = initialPosition;
+        Vector3 startPos = initialWorldPosition;
         Vector3 targetPosition = new Vector3(endX, endY, 0);
         rectTransform.position = startPos;
 
@@ -721,24 +716,24 @@ public class AnimationPElement : MonoBehaviour
                 endY = Screen.height + (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Up):
-                endX = initialPosition.x;
+                endX = initialWorldPosition.x;
                 endY = Screen.height + (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Bottom):
-                endX = initialPosition.x;
+                endX = initialWorldPosition.x;
                 endY = 0 - (rectTransform.rect.height / 2);
                 break;
             case (AnimationFromCornerType.Left):
                 endX = 0 - (rectTransform.rect.width / 2);
-                endY = initialPosition.y;
+                endY = initialWorldPosition.y;
                 break;
             case (AnimationFromCornerType.Right):
                 endX = Screen.width + (rectTransform.rect.width / 2);
-                endY = initialPosition.y;
+                endY = initialWorldPosition.y;
                 break;
         }
 
-        Vector3 startPos = initialPosition;
+        Vector3 startPos = initialWorldPosition;
         Vector3 targetPosition = new Vector3(endX, endY, 0);
         rectTransform.position = startPos;
 
@@ -774,7 +769,8 @@ public class AnimationPElement : MonoBehaviour
 
     private void ResetPosition()
     {
-        transform.position = initialPosition;
+        transform.position = initialWorldPosition;
+        transform.localPosition = initialLocalPosition;
     }
 
     private void ResetColor(ResetOptions resetOption)

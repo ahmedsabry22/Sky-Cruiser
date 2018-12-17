@@ -21,6 +21,7 @@ public class AnchorP : MonoBehaviour
 
     public static void SetAnchorsToRect(RectTransform rect)
     {
+        // Done in 17-12-2018  ----------- It took too much time.
         // First, We will get the current position, width, and height of the rect transform, because we will reset these values after setting the anchor.
         // That's because when the anchors positions change, they autmatically change the coordinates of the rect transform.
         // Second, we will get the width and height of the screen.
@@ -36,7 +37,7 @@ public class AnchorP : MonoBehaviour
         rectTransform.anchorMax = maxAnchors;
 
         // Resetting the rect to its initial position, width, and height.
-        rectTransform.position = rectInitialPosition;
+        rectTransform.localPosition = rectInitialPosition;
 
         rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, rectHeight);
         rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, rectWidth);
@@ -55,71 +56,32 @@ public class AnchorP : MonoBehaviour
     private static void SetInitialValues()
     {
         // Initial Position, because we will reset the position later.
-        rectInitialPosition = rectTransform.position;
+        rectInitialPosition = rectTransform.localPosition;
 
         // Screen dimensions.
         // We do not use Screen.width and Screen.height here, because these variables are only set correctly in play mode, in edit mode, they return the size of the window, it's a litte bit tricky -_- .
-        string[] resolution = UnityEditor.UnityStats.screenRes.Split('x');
+
+        //string[] resolution = UnityEditor.UnityStats.screenRes.Split('x');
         //screenWidth = int.Parse(resolution[0]);
         //screenHeight = int.Parse(resolution[1]);
+
+        screenWidth = rectTransform.parent.GetComponent<RectTransform>().rect.width;
+        screenHeight = rectTransform.parent.GetComponent<RectTransform>().rect.height;
 
         // Rect dimensions.
         rectWidth = rectTransform.rect.width;
         rectHeight = rectTransform.rect.height;
 
-        screenWidth = rectTransform.parent.GetComponent<RectTransform>().rect.width;
-        screenHeight = rectTransform.parent.GetComponent<RectTransform>().rect.height;
+        // Relative position, width, and height. We add 0.5 to X and Y becuase the center in local space is (0, 0) while the center in world space (0.5, 0.5).
+        rectRelativeToScreenPosition = new Vector2(rectTransform.localPosition.x / screenWidth + 0.5f, rectTransform.localPosition.y / screenHeight + 0.5f);
 
-        print("screenWidth " + screenWidth);
-        print("screenHeight " + screenHeight);
-        print("rectHeight " + rectHeight);
-        print("rectWidth " + rectWidth);
-
-        // Relative position, width, and height.
-        rectRelativeToScreenPosition = new Vector2(rectTransform.position.x / screenWidth, rectTransform.position.y / screenHeight);
         widthRelativeToScreen = rectWidth / screenWidth;
         heightRelativeToScreen = rectHeight / screenHeight;
 
-        print("rectRelativeToScreenPosition.x " + rectRelativeToScreenPosition.x);
-        print("rectRelativeToScreenPosition.y " + rectRelativeToScreenPosition.y);
-
-        float zz = (screenHeight / rectHeight * 0.5f) - rectTransform.parent.GetComponent<RectTransform>().position.normalized.y;
-        float xx = (screenWidth / rectWidth * 0.5f) - rectTransform.parent.GetComponent<RectTransform>().position.normalized.x;
-
-        print("zz " + zz);
-        print("xx " + xx);
-
-        // Before 17-12
-        //float minX = rectRelativeToScreenPosition.x - (widthRelativeToScreen / 2) ;
-        //float minY = rectRelativeToScreenPosition.y - (heightRelativeToScreen / 2);
-        //float maxX = rectRelativeToScreenPosition.x + (widthRelativeToScreen / 2) ;
-        //float maxY = rectRelativeToScreenPosition.y + (heightRelativeToScreen / 2);
-
-        float minX = 0;
-        float minY = 0;
-        float maxX = 0;
-        float maxY = 0;
-
-        if (1600 / screenWidth == 1)
-        {
-            minX = rectRelativeToScreenPosition.x - (widthRelativeToScreen / 2) * (1600 / screenWidth);
-            minY = rectRelativeToScreenPosition.y - (heightRelativeToScreen / 2) * (900 / screenHeight);
-            maxX = rectRelativeToScreenPosition.x + (widthRelativeToScreen / 2) * (1600 / screenWidth);
-            maxY = rectRelativeToScreenPosition.y + (heightRelativeToScreen / 2) * (900 / screenHeight);
-        }
-        else
-        {
-            minX = rectRelativeToScreenPosition.x - (widthRelativeToScreen / 2) - .13f;
-            minY = rectRelativeToScreenPosition.y - (heightRelativeToScreen / 2) + -.04f;
-            maxX = rectRelativeToScreenPosition.x + (widthRelativeToScreen / 2) - .13f;
-            maxY = rectRelativeToScreenPosition.y + (heightRelativeToScreen / 2) + -.04f;
-        }
-
-        print("minX " + minX);
-        print("minY " + minY);
-        print("maxX " + maxX);
-        print("maxY " + maxY);
-
+        float minX = rectRelativeToScreenPosition.x - (widthRelativeToScreen / 2);
+        float minY = rectRelativeToScreenPosition.y - (heightRelativeToScreen / 2);
+        float maxX = rectRelativeToScreenPosition.x + (widthRelativeToScreen / 2);
+        float maxY = rectRelativeToScreenPosition.y + (heightRelativeToScreen / 2);
 
         minAnchors = new Vector2(minX, minY);
         maxAnchors = new Vector2(maxX, maxY);

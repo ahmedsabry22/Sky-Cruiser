@@ -34,27 +34,35 @@ public class BackButtonManager : MonoBehaviour
 
     public void DoBack(BackButtonP backButton, bool controlChildren)
     {
-        if (controlChildren)
+        if (ActiveButtons.Contains(backButton))
         {
-            AnimationPElement[] childrenElements = backButton.GetComponentsInChildren<AnimationPElement>();
+            int index = ActiveButtons.IndexOf(backButton);
 
-            foreach (var element in childrenElements)
-                element.HideElement();
-        }
-        else
-        {
-            int targetIndex = ActiveButtons.Count - 1;
-
-            if (ActiveButtons.Contains(backButton))
+            if (index == ActiveButtons.Count - 1)
             {
-                if (backButton == ActiveButtons[targetIndex] && backButton.gameObject.activeSelf)
+
+                if (controlChildren)
                 {
-                    ActiveButtons[targetIndex].GetComponent<AnimationPElement>().HideElement();
+                    AnimationPElement[] childrenElements = backButton.GetComponentsInChildren<AnimationPElement>();
+
+                    foreach (var element in childrenElements)
+                        element.HideElement();
+                }
+                else
+                {
+                    int targetIndex = ActiveButtons.Count - 1;
+
+                    //if (ActiveButtons.Contains(backButton))
+                    {
+                        if (backButton == ActiveButtons[targetIndex] && backButton.gameObject.activeSelf)
+                        {
+                            ActiveButtons[targetIndex].GetComponent<AnimationPElement>().HideElement();
+                        }
+                    }
                 }
             }
         }
     }
-
     public void DoBackOnCurrentObject(BackButtonP backButton, bool controlChildren)
     {
         if (controlChildren)

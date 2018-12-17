@@ -37,7 +37,7 @@ public class AnchorED : EditorWindow
     [MenuItem("Tools/AnimationP/Align Anchors With Selected %#q")]
     private static void SetAnchorsOfSelectedGameObject()
     {
-        var btnContent = new GUIContent() { text = "Align Rect To Anchors", tooltip = "Move Anchors to be aligned with the rect" };
+        var btnContent = new GUIContent() { text = "Align Anchors With Rect", tooltip = "Move Anchors to be aligned with the rect" };
 
         if (GUILayout.Button(btnContent, GUILayout.Height(100)))
         {
@@ -60,7 +60,7 @@ public class AnchorED : EditorWindow
     [MenuItem("Tools/AnimationP/Align Selected To Anchors %#w")]
     private static void SetRectToAnchorSelectedGameObject()
     {
-        var btnContent = new GUIContent() { text = "Align Anchors With Rect", tooltip = "Align The Rect's borders With The Anchors" };
+        var btnContent = new GUIContent() { text = "Align Rect To Anchors", tooltip = "Align The Rect's borders With The Anchors" };
 
         if (GUILayout.Button(btnContent, GUILayout.Height(100)))
         {
@@ -82,7 +82,7 @@ public class AnchorED : EditorWindow
 
     private void CloseButton()
     {
-        var btnContent = new GUIContent() { text = "Clsoe", tooltip = "Close this editor window" };
+        var btnContent = new GUIContent() { text = "Close", tooltip = "Close this editor window" };
         if (GUILayout.Button(btnContent, GUILayout.Height(100)))
         {
             window.Close();

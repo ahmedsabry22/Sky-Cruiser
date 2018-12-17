@@ -5,13 +5,13 @@ using System.Collections;
 public class AnimationPManager : MonoBehaviour
 {
     [HideInInspector] public AnimationPElement[] childrenElements;
-    public bool showMenuOnStart;
+    [Tooltip("Wheather or not to show the animation when the menu is enabled")]public bool showMenuOnEnable;
 
     private void Start()
     {
         UpdateElementsInChildren();
 
-        if (showMenuOnStart)
+        if (showMenuOnEnable)
         {
             ShowMenu();
         }
