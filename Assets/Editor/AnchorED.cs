@@ -49,7 +49,7 @@ public class AnchorED : EditorWindow
 
                 if (rectTransform != null)
                 {
-                    AnchorP.SetAnchors(rectTransform);
+                    AnchorP.SetAnchorsToRect(rectTransform);
                 }
             }
         }

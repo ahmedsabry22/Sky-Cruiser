@@ -3,21 +3,21 @@ using System.Collections;
 
 public class AnimationStartPosition : MonoBehaviour
 {
-
     /// <summary>
     /// Used for initializing the position from a certian corner.
     /// </summary>
     /// <param name="initialPosition">the start position of the transform</param>
     /// <param name="rect">the rect transform</param>
     /// <param name="animationFromCornerType">BottomRight, TopRight, BottomLeft, TopLeft, Up, Bottom, Left, Or Right</param>
+    /// <param name="animationFromCornerStartFromType">Screen or Rect</param>
     /// <returns></returns>
     public static Vector3 GetStartPositionFromCorner
-        (Vector3 initialPosition, RectTransform rect, AnimationFromCornerType animationFromCornerType, AnimationFromCornerStartFromType AnimationFromCornerStartFromType)
+        (Vector3 initialPosition, RectTransform rect, AnimationFromCornerType animationFromCornerType, AnimationFromCornerStartFromType animationFromCornerStartFromType)
     {
         float startPositionX = 0;
         float startPositionY = 0;
 
-        if (AnimationFromCornerStartFromType == AnimationFromCornerStartFromType.Screen)
+        if (animationFromCornerStartFromType == AnimationFromCornerStartFromType.Screen)
         {
             switch (animationFromCornerType)
             {
@@ -55,7 +55,7 @@ public class AnimationStartPosition : MonoBehaviour
                     break;
             }
         }
-        else if (AnimationFromCornerStartFromType == AnimationFromCornerStartFromType.Screen)
+        else if (animationFromCornerStartFromType == AnimationFromCornerStartFromType.Screen)
         {
             switch (animationFromCornerType)
             {
@@ -100,7 +100,7 @@ public class AnimationStartPosition : MonoBehaviour
     }
 }
 
-// Move this enum to AnimationPElement script when you go home.
+// TODO: Move this enum to AnimationPElement script when you go home.
 public enum AnimationFromCornerStartFromType
 {
     // Screen is used to start the animation from bordres of the screen.
