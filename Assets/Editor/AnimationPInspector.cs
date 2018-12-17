@@ -13,6 +13,7 @@ public class AnimationPInspector : Editor
     private SerializedProperty _animationHideDuration;
     private SerializedProperty _showAnimationType;
     private SerializedProperty _hideAnimationType;
+    private SerializedProperty _animationFromCornerStartFromType;
     private SerializedProperty _fadeChildren;
     private SerializedProperty _animationFromCornerType;
     private SerializedProperty _animationToCornerType;
@@ -37,6 +38,7 @@ public class AnimationPInspector : Editor
         _animationHideDuration = serializedObject.FindProperty("animationHideDuration");
         _showAnimationType = serializedObject.FindProperty("showAnimationType");
         _hideAnimationType = serializedObject.FindProperty("hideAnimationType");
+        _animationFromCornerStartFromType = serializedObject.FindProperty("animationFromCornerStartFromType");
         _fadeChildren = serializedObject.FindProperty("fadeChildren");
         _animationFromCornerType = serializedObject.FindProperty("animationFromCornerType");
         _animationToCornerType = serializedObject.FindProperty("animationToCornerType");
@@ -64,6 +66,7 @@ public class AnimationPInspector : Editor
 
             AnimationWorksOnStart_TOGGLE();
             ShowAnimationType_DROPDOWN();
+            ShowAnimationStartPosition_DROPDOWN();
             FadeChildrenShow_TOGGLE();
             AnimationShowDuration_INPUT();
             ShowAnimationDelay_PROPERTIES();
@@ -118,11 +121,30 @@ public class AnimationPInspector : Editor
             case (AnimationType.FromCornerWithScale):
             case (AnimationType.FromCornerWithoutScale):
                 EditorGUILayout.PropertyField(_animationFromCornerType, new GUIContent("Animation From Corner Type"));
+                //EditorGUILayout.PropertyField(_animationFromCornerStartFromType, new GUIContent("Animation Start From"));
                 break;
             case (AnimationType.ScaleElastic):
                 EditorGUILayout.PropertyField(_elasticPower, new GUIContent("Elastic Power"));
                 break;
         }
+    }
+
+    private void ShowAnimationStartPosition_DROPDOWN()
+    {
+        //EditorGUILayout.BeginVertical();
+
+        //EditorGUILayout.PropertyField(_showAnimationType, new GUIContent("Animation Start From"));
+
+        //switch (animationP.showAnimationType)
+        //{
+        //    case (AnimationType.FromCornerWithScale):
+        //    case (AnimationType.FromCornerWithoutScale):
+        //        EditorGUILayout.PropertyField(_animationFromCornerType, new GUIContent("Animation From Corner Type"));
+        //        break;
+        //}
+
+        //EditorGUILayout.EndVertical();
+        //GUILayout.Space(20);
     }
 
     private void HideAnimationType_DROPDOWN()

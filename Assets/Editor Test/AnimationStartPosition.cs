@@ -55,7 +55,7 @@ public class AnimationStartPosition : MonoBehaviour
                     break;
             }
         }
-        else if (animationFromCornerStartFromType == AnimationFromCornerStartFromType.Screen)
+        else if (animationFromCornerStartFromType == AnimationFromCornerStartFromType.Rect)
         {
             switch (animationFromCornerType)
             {
@@ -81,7 +81,7 @@ public class AnimationStartPosition : MonoBehaviour
                     break;
                 case (AnimationFromCornerType.Bottom):
                     startPositionX = initialPosition.x;
-                    startPositionY = 0 - (rect.rect.height / 2);
+                    startPositionY = 0 - (rect.parent.GetComponent<RectTransform>().rect.height / 2);
                     break;
                 case (AnimationFromCornerType.Left):
                     startPositionX = 0 - (rect.rect.width / 2);

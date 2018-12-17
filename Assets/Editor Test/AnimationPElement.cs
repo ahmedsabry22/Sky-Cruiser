@@ -17,6 +17,7 @@ public class AnimationPElement : MonoBehaviour
     public AnimationType hideAnimationType;
     public AnimationFromCornerType animationFromCornerType;
     public AnimationFromCornerType animationToCornerType;
+    public AnimationFromCornerStartFromType animationFromCornerStartFromType;
 
     public bool fadeChildren;
 
@@ -124,8 +125,6 @@ public class AnimationPElement : MonoBehaviour
         ResetColor(ResetOptions.Zero);
 
         #region Initialization Part
-        float startPositionX = 0;
-        float startPositionY = 0;
 
         Graphic[] imagesInMenu = GetComponentsInChildren<Graphic>();
 
@@ -133,91 +132,17 @@ public class AnimationPElement : MonoBehaviour
         Color[] startColors = new Color[imagesInMenu.Length];
         Color[] endColors = new Color[imagesInMenu.Length];
 
-        for (int i = 0; i < imagesInMenu.Length; i++)
+        for (int i = 0; i < graphics.Length; i++)
         {
-            startColors[i] = imagesInMenu[i].color;
+            startColors[i] = graphics[i].color;
             startColors[i].a = 0;
 
-            endColors[i] = imagesInMenu[i].color;
-            endColors[i].a = 1;
+            endColors[i] = initialColorsOfChildren[i];
         }
 
-        //switch (animationFromCornerType)
-        //{
-        //    case (AnimationFromCornerType.BottomRight):
-        //        startPositionX = Screen.width + (rectTransform.rect.width / 2);
-        //        startPositionY = 0 - (rectTransform.rect.height / 2);
-        //        break;
-        //    case (AnimationFromCornerType.BottomLeft):
-        //        startPositionX = 0 - (rectTransform.rect.width / 2);
-        //        startPositionY = 0 - (rectTransform.rect.height / 2);
-        //        break;
-        //    case (AnimationFromCornerType.TopRight):
-        //        startPositionX = Screen.width + (rectTransform.rect.width / 2);
-        //        startPositionY = Screen.height + (rectTransform.rect.height / 2);
-        //        break;
-        //    case (AnimationFromCornerType.TopLeft):
-        //        startPositionX = 0 - (rectTransform.rect.width / 2);
-        //        startPositionY = Screen.height + (rectTransform.rect.height / 2);
-        //        break;
-        //    case (AnimationFromCornerType.Up):
-        //        startPositionX = initialPosition.x;
-        //        startPositionY = Screen.height + (rectTransform.rect.height / 2);
-        //        break;
-        //    case (AnimationFromCornerType.Bottom):
-        //        startPositionX = initialPosition.x;
-        //        startPositionY = 0 - (rectTransform.rect.height / 2);
-        //        break;
-        //    case (AnimationFromCornerType.Left):
-        //        startPositionX = 0 - (rectTransform.rect.width / 2);
-        //        startPositionY = initialPosition.y;
-        //        break;
-        //    case (AnimationFromCornerType.Right):
-        //        startPositionX = Screen.width + (rectTransform.rect.width / 2);
-        //        startPositionY = initialPosition.y;
-        //        break;
-        //}
+        Vector3 startPos = AnimationStartPosition.GetStartPositionFromCorner(initialWorldPosition, rectTransform, animationFromCornerType, AnimationFromCornerStartFromType.Screen);
 
-        switch (animationFromCornerType)
-        {
-            case (AnimationFromCornerType.BottomRight):
-                startPositionX = transform.parent.GetComponent<RectTransform>().rect.width + (rectTransform.rect.width / 2);
-                startPositionY = 0 - (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.BottomLeft):
-                startPositionX = 0 - (rectTransform.rect.width / 2);
-                startPositionY = 0 - (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.TopRight):
-                startPositionX = transform.parent.GetComponent<RectTransform>().rect.width + (rectTransform.rect.width / 2);
-                startPositionY = transform.parent.GetComponent<RectTransform>().rect.height + (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.TopLeft):
-                startPositionX = 0 - (rectTransform.rect.width / 2);
-                startPositionY = transform.parent.GetComponent<RectTransform>().rect.height + (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.Up):
-                startPositionX = initialWorldPosition.x;
-                startPositionY = transform.parent.GetComponent<RectTransform>().rect.height + (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.Bottom):
-                startPositionX = initialWorldPosition.x;
-                startPositionY = 0 - (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.Left):
-                startPositionX = 0 - (rectTransform.rect.width / 2);
-                startPositionY = initialWorldPosition.y;
-                break;
-            case (AnimationFromCornerType.Right):
-                startPositionX = transform.parent.GetComponent<RectTransform>().rect.width + (rectTransform.rect.width / 2);
-                startPositionY = initialWorldPosition.y;
-                break;
-        }
-
-
-        Vector3 startPos = new Vector3(startPositionX, startPositionY, 0);
         Vector3 targetPosition = initialWorldPosition;
-
         rectTransform.position = startPos;
 
         #endregion
@@ -263,46 +188,9 @@ public class AnimationPElement : MonoBehaviour
         ResetScale(ResetOptions.One);
 
         #region Initialization Part
-        float startPositionX = 0;
-        float startPositionY = 0;
 
-        switch (animationFromCornerType)
-        {
-            case (AnimationFromCornerType.BottomRight):
-                startPositionX = Screen.width + (rectTransform.rect.width / 2);
-                startPositionY = 0 - (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.BottomLeft):
-                startPositionX = 0 - (rectTransform.rect.width / 2);
-                startPositionY = 0 - (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.TopRight):
-                startPositionX = Screen.width + (rectTransform.rect.width / 2);
-                startPositionY = Screen.height + (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.TopLeft):
-                startPositionX = 0 - (rectTransform.rect.width / 2);
-                startPositionY = Screen.height + (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.Up):
-                startPositionX = initialWorldPosition.x;
-                startPositionY = Screen.height + (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.Bottom):
-                startPositionX = initialWorldPosition.x;
-                startPositionY = 0 - (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.Left):
-                startPositionX = 0 - (rectTransform.rect.width / 2);
-                startPositionY = initialWorldPosition.y;
-                break;
-            case (AnimationFromCornerType.Right):
-                startPositionX = Screen.width + (rectTransform.rect.width / 2);
-                startPositionY = initialWorldPosition.y;
-                break;
-        }
 
-        Vector3 startPos = new Vector3(startPositionX, startPositionY, 0);
+        Vector3 startPos = AnimationStartPosition.GetStartPositionFromCorner(initialWorldPosition, rectTransform, animationFromCornerType, AnimationFromCornerStartFromType.Screen);
         Vector3 targetPosition = initialWorldPosition;
 
         rectTransform.position = startPos;
@@ -329,7 +217,7 @@ public class AnimationPElement : MonoBehaviour
 
         // Here we set the values to their end so we avoid the missing final step.
         rectTransform.position = targetPosition;
-        print(rectTransform.localScale);
+
         if (OnShowComplete != null)
             OnShowComplete.Invoke();
     }
@@ -341,7 +229,7 @@ public class AnimationPElement : MonoBehaviour
         ResetColor(ResetOptions.One);
 
         rectTransform.localScale = Vector3.zero;
-        
+
         if (withDelay)
             yield return (new WaitForSeconds(showDelay));
 
@@ -597,9 +485,6 @@ public class AnimationPElement : MonoBehaviour
 
     private IEnumerator AnimateToCornerWithScale_HIDE()
     {
-        float endX = 0;
-        float endY = 0;
-
         Graphic[] images;            // = GetComponentsInChildren<Image>();
 
         if (fadeChildren)
@@ -619,44 +504,10 @@ public class AnimationPElement : MonoBehaviour
             endColors[i].a = 0;
         }
 
-        switch (animationToCornerType)
-        {
-            case (AnimationFromCornerType.BottomRight):
-                endX = Screen.width + (rectTransform.rect.width / 2);
-                endY = 0 - (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.BottomLeft):
-                endX = 0 - (rectTransform.rect.width / 2);
-                endY = 0 - (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.TopRight):
-                endX = Screen.width + (rectTransform.rect.width / 2);
-                endY = Screen.height + (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.TopLeft):
-                endX = 0 - (rectTransform.rect.width / 2);
-                endY = Screen.height + (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.Up):
-                endX = initialWorldPosition.x;
-                endY = Screen.height + (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.Bottom):
-                endX = initialWorldPosition.x;
-                endY = 0 - (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.Left):
-                endX = 0 - (rectTransform.rect.width / 2);
-                endY = initialWorldPosition.y;
-                break;
-            case (AnimationFromCornerType.Right):
-                endX = Screen.width + (rectTransform.rect.width / 2);
-                endY = initialWorldPosition.y;
-                break;
-        }
+
 
         Vector3 startPos = initialWorldPosition;
-        Vector3 targetPosition = new Vector3(endX, endY, 0);
+        Vector3 targetPosition = AnimationStartPosition.GetStartPositionFromCorner(initialWorldPosition, rectTransform, animationToCornerType, AnimationFromCornerStartFromType.Screen);
         rectTransform.position = startPos;
 
         if (withDelay)
@@ -694,47 +545,8 @@ public class AnimationPElement : MonoBehaviour
 
     private IEnumerator AnimateFromCornerWithoutScale_HIDE()
     {
-        float endX = 0;
-        float endY = 0;
-
-        switch (animationToCornerType)
-        {
-            case (AnimationFromCornerType.BottomRight):
-                endX = Screen.width + (rectTransform.rect.width / 2);
-                endY = 0 - (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.BottomLeft):
-                endX = 0 - (rectTransform.rect.width / 2);
-                endY = 0 - (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.TopRight):
-                endX = Screen.width + (rectTransform.rect.width / 2);
-                endY = Screen.height + (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.TopLeft):
-                endX = 0 - (rectTransform.rect.width / 2);
-                endY = Screen.height + (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.Up):
-                endX = initialWorldPosition.x;
-                endY = Screen.height + (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.Bottom):
-                endX = initialWorldPosition.x;
-                endY = 0 - (rectTransform.rect.height / 2);
-                break;
-            case (AnimationFromCornerType.Left):
-                endX = 0 - (rectTransform.rect.width / 2);
-                endY = initialWorldPosition.y;
-                break;
-            case (AnimationFromCornerType.Right):
-                endX = Screen.width + (rectTransform.rect.width / 2);
-                endY = initialWorldPosition.y;
-                break;
-        }
-
         Vector3 startPos = initialWorldPosition;
-        Vector3 targetPosition = new Vector3(endX, endY, 0);
+        Vector3 targetPosition = AnimationStartPosition.GetStartPositionFromCorner(initialWorldPosition, rectTransform, animationToCornerType, AnimationFromCornerStartFromType.Screen);
         rectTransform.position = startPos;
 
         if (withDelay)
