@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AnimationStartPosition : MonoBehaviour
+public class AnimationStartPositions : MonoBehaviour
 {
     /// <summary>
     /// Used for initializing the position from a certian corner.
@@ -12,7 +12,7 @@ public class AnimationStartPosition : MonoBehaviour
     /// <param name="animationFromCornerStartFromType">Screen or Rect</param>
     /// <returns></returns>
     public static Vector3 GetStartPositionFromCorner
-        (Vector3 initialPosition, RectTransform rect, AnimationFromCornerType animationFromCornerType, AnimationFromCornerStartFromType animationFromCornerStartFromType)
+        (Vector3 initialPosition, RectTransform rect, AnimationStartPosition animationFromCornerType, AnimationFromCornerStartFromType animationFromCornerStartFromType)
     {
         float startPositionX = 0;
         float startPositionY = 0;
@@ -21,35 +21,35 @@ public class AnimationStartPosition : MonoBehaviour
         {
             switch (animationFromCornerType)
             {
-                case (AnimationFromCornerType.BottomRight):
+                case (AnimationStartPosition.BottomRight):
                     startPositionX = Screen.width + (rect.rect.width / 2);
                     startPositionY = 0 - (rect.rect.height / 2);
                     break;
-                case (AnimationFromCornerType.BottomLeft):
+                case (AnimationStartPosition.BottomLeft):
                     startPositionX = 0 - (rect.rect.width / 2);
                     startPositionY = 0 - (rect.rect.height / 2);
                     break;
-                case (AnimationFromCornerType.TopRight):
+                case (AnimationStartPosition.TopRight):
                     startPositionX = Screen.width + (rect.rect.width / 2);
                     startPositionY = Screen.height + (rect.rect.height / 2);
                     break;
-                case (AnimationFromCornerType.TopLeft):
+                case (AnimationStartPosition.TopLeft):
                     startPositionX = 0 - (rect.rect.width / 2);
                     startPositionY = Screen.height + (rect.rect.height / 2);
                     break;
-                case (AnimationFromCornerType.Up):
+                case (AnimationStartPosition.Top):
                     startPositionX = initialPosition.x;
                     startPositionY = Screen.height + (rect.rect.height / 2);
                     break;
-                case (AnimationFromCornerType.Bottom):
+                case (AnimationStartPosition.Bottom):
                     startPositionX = initialPosition.x;
                     startPositionY = 0 - (rect.rect.height / 2);
                     break;
-                case (AnimationFromCornerType.Left):
+                case (AnimationStartPosition.Left):
                     startPositionX = 0 - (rect.rect.width / 2);
                     startPositionY = initialPosition.y;
                     break;
-                case (AnimationFromCornerType.Right):
+                case (AnimationStartPosition.Right):
                     startPositionX = Screen.width + (rect.rect.width / 2);
                     startPositionY = initialPosition.y;
                     break;
@@ -59,35 +59,35 @@ public class AnimationStartPosition : MonoBehaviour
         {
             switch (animationFromCornerType)
             {
-                case (AnimationFromCornerType.BottomRight):
+                case (AnimationStartPosition.BottomRight):
                     startPositionX = rect.parent.GetComponent<RectTransform>().rect.width + (rect.rect.width / 2);
                     startPositionY = 0 - (rect.rect.height / 2);
                     break;
-                case (AnimationFromCornerType.BottomLeft):
+                case (AnimationStartPosition.BottomLeft):
                     startPositionX = 0 - (rect.rect.width / 2);
                     startPositionY = 0 - (rect.rect.height / 2);
                     break;
-                case (AnimationFromCornerType.TopRight):
+                case (AnimationStartPosition.TopRight):
                     startPositionX = rect.parent.GetComponent<RectTransform>().rect.width + (rect.rect.width / 2);
                     startPositionY = rect.parent.GetComponent<RectTransform>().rect.height + (rect.rect.height / 2);
                     break;
-                case (AnimationFromCornerType.TopLeft):
+                case (AnimationStartPosition.TopLeft):
                     startPositionX = 0 - (rect.rect.width / 2);
                     startPositionY = rect.parent.GetComponent<RectTransform>().rect.height + (rect.rect.height / 2);
                     break;
-                case (AnimationFromCornerType.Up):
+                case (AnimationStartPosition.Top):
                     startPositionX = initialPosition.x;
                     startPositionY = rect.parent.GetComponent<RectTransform>().rect.height + (rect.rect.height / 2);
                     break;
-                case (AnimationFromCornerType.Bottom):
+                case (AnimationStartPosition.Bottom):
                     startPositionX = initialPosition.x;
                     startPositionY = 0 - (rect.parent.GetComponent<RectTransform>().rect.height / 2);
                     break;
-                case (AnimationFromCornerType.Left):
+                case (AnimationStartPosition.Left):
                     startPositionX = 0 - (rect.rect.width / 2);
                     startPositionY = initialPosition.y;
                     break;
-                case (AnimationFromCornerType.Right):
+                case (AnimationStartPosition.Right):
                     startPositionX = rect.parent.GetComponent<RectTransform>().rect.width + (rect.rect.width / 2);
                     startPositionY = initialPosition.y;
                     break;

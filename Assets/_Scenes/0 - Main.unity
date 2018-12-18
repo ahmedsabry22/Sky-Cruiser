@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1980, y: 1080}
@@ -798,19 +798,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 3
+  showItemOnMenuEnable: 1
+  showAnimationType: 2
+  hideAnimationType: 2
   animationFromCornerType: 3
   animationToCornerType: 0
+  pivotWhileRotating: 6
   animationFromCornerStartFromType: 0
   fadeChildren: 1
-  animationShowDuration: 1
+  animationShowDuration: 3
   animationHideDuration: 1
   withDelay: 1
   showDelay: 1.6666666
   hideDelay: 0.16666667
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 90, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &211605766
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,11 +1487,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showItemOnMenuEnable: 0
   showAnimationType: 3
   hideAnimationType: 0
   animationFromCornerType: 3
   animationToCornerType: 0
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
   animationShowDuration: 0.5
@@ -1497,6 +1501,8 @@ MonoBehaviour:
   showDelay: 0.71428573
   hideDelay: 0.2857143
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &382932190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,19 +1984,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showItemOnMenuEnable: 1
   showAnimationType: 3
   hideAnimationType: 0
   animationFromCornerType: 7
   animationToCornerType: 0
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
-  animationShowDuration: 1
+  animationShowDuration: 0.5
   animationHideDuration: 0.5
-  withDelay: 0
-  showDelay: 0
+  withDelay: 1
+  showDelay: 1
   hideDelay: 0
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &462967718
 GameObject:
   m_ObjectHideFlags: 0
@@ -2341,11 +2350,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showItemOnMenuEnable: 0
   showAnimationType: 3
   hideAnimationType: 0
   animationFromCornerType: 3
   animationToCornerType: 0
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
   animationShowDuration: 0.5
@@ -2354,6 +2364,8 @@ MonoBehaviour:
   showDelay: 0.64285713
   hideDelay: 0.42857146
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &516731610
 GameObject:
   m_ObjectHideFlags: 0
@@ -2634,11 +2646,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showItemOnMenuEnable: 1
   showAnimationType: 1
   hideAnimationType: 4
   animationFromCornerType: 0
   animationToCornerType: 4
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
   animationShowDuration: 0.5
@@ -2647,6 +2660,8 @@ MonoBehaviour:
   showDelay: 1
   hideDelay: 0.83333325
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &605506424
 GameObject:
   m_ObjectHideFlags: 0
@@ -2806,19 +2821,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showItemOnMenuEnable: 1
   showAnimationType: 3
   hideAnimationType: 0
   animationFromCornerType: 6
   animationToCornerType: 0
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
-  animationShowDuration: 1
+  animationShowDuration: 0.5
   animationHideDuration: 0.5
-  withDelay: 0
-  showDelay: 0
+  withDelay: 1
+  showDelay: 1
   hideDelay: 0
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &614695704
 GameObject:
   m_ObjectHideFlags: 0
@@ -3053,19 +3071,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showItemOnMenuEnable: 1
   showAnimationType: 4
   hideAnimationType: 3
   animationFromCornerType: 7
   animationToCornerType: 7
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
-  animationShowDuration: 1
+  animationShowDuration: 0.5
   animationHideDuration: 0.5
-  withDelay: 0
-  showDelay: 0
+  withDelay: 1
+  showDelay: 1
   hideDelay: 0
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &639360964
 GameObject:
   m_ObjectHideFlags: 0
@@ -3417,11 +3438,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showItemOnMenuEnable: 0
   showAnimationType: 3
   hideAnimationType: 0
   animationFromCornerType: 3
   animationToCornerType: 0
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
   animationShowDuration: 0.5
@@ -3430,6 +3452,8 @@ MonoBehaviour:
   showDelay: 0.5714286
   hideDelay: 0.5714286
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &665548977
 GameObject:
   m_ObjectHideFlags: 0
@@ -4651,19 +4675,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 3
+  showItemOnMenuEnable: 1
+  showAnimationType: 2
+  hideAnimationType: 2
   animationFromCornerType: 3
   animationToCornerType: 0
+  pivotWhileRotating: 6
   animationFromCornerStartFromType: 0
   fadeChildren: 1
-  animationShowDuration: 1
+  animationShowDuration: 3
   animationHideDuration: 1
   withDelay: 1
   showDelay: 1.0833334
   hideDelay: 0.74999994
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 90, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &819422485
 GameObject:
   m_ObjectHideFlags: 0
@@ -4949,19 +4976,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 3
+  showItemOnMenuEnable: 1
+  showAnimationType: 2
+  hideAnimationType: 2
   animationFromCornerType: 3
   animationToCornerType: 0
+  pivotWhileRotating: 6
   animationFromCornerStartFromType: 0
   fadeChildren: 1
-  animationShowDuration: 1
+  animationShowDuration: 3
   animationHideDuration: 1
   withDelay: 1
   showDelay: 1.25
   hideDelay: 0.5833333
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 90, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &832136860
 GameObject:
   m_ObjectHideFlags: 0
@@ -5211,19 +5241,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showItemOnMenuEnable: 1
   showAnimationType: 3
   hideAnimationType: 0
   animationFromCornerType: 7
   animationToCornerType: 0
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
-  animationShowDuration: 1
+  animationShowDuration: 0.5
   animationHideDuration: 0.5
-  withDelay: 0
-  showDelay: 0
+  withDelay: 1
+  showDelay: 1
   hideDelay: 0
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &884622425
 GameObject:
   m_ObjectHideFlags: 0
@@ -6656,11 +6689,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showItemOnMenuEnable: 0
   showAnimationType: 3
   hideAnimationType: 3
   animationFromCornerType: 2
   animationToCornerType: 2
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 1
   fadeChildren: 0
   animationShowDuration: 0.5
@@ -6669,6 +6703,8 @@ MonoBehaviour:
   showDelay: 2
   hideDelay: 1
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &1173928958
 GameObject:
   m_ObjectHideFlags: 0
@@ -7358,19 +7394,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 3
+  showItemOnMenuEnable: 1
+  showAnimationType: 2
+  hideAnimationType: 2
   animationFromCornerType: 3
   animationToCornerType: 0
+  pivotWhileRotating: 6
   animationFromCornerStartFromType: 0
   fadeChildren: 1
-  animationShowDuration: 1
+  animationShowDuration: 3
   animationHideDuration: 1
   withDelay: 1
   showDelay: 1.3333334
   hideDelay: 0.5
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 90, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &1311458364
 GameObject:
   m_ObjectHideFlags: 0
@@ -7776,19 +7815,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 3
+  showItemOnMenuEnable: 1
+  showAnimationType: 2
+  hideAnimationType: 2
   animationFromCornerType: 3
   animationToCornerType: 0
+  pivotWhileRotating: 6
   animationFromCornerStartFromType: 0
   fadeChildren: 1
-  animationShowDuration: 1
+  animationShowDuration: 3
   animationHideDuration: 1
   withDelay: 1
   showDelay: 1.5833333
   hideDelay: 0.25
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 90, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &1385691703
 GameObject:
   m_ObjectHideFlags: 0
@@ -7834,7 +7876,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.00000011920929, y: 0}
   m_AnchorMax: {x: 2.545, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.00024414062, y: 0}
   m_SizeDelta: {x: 0.00031568526, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1385691705
@@ -8056,19 +8098,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showItemOnMenuEnable: 1
   showAnimationType: 3
   hideAnimationType: 0
   animationFromCornerType: 6
   animationToCornerType: 0
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
-  animationShowDuration: 1
+  animationShowDuration: 0.5
   animationHideDuration: 0.5
-  withDelay: 0
-  showDelay: 0
+  withDelay: 1
+  showDelay: 1
   hideDelay: 0
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &1415750590
 GameObject:
   m_ObjectHideFlags: 0
@@ -8735,11 +8780,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 0
+  showItemOnMenuEnable: 0
   showAnimationType: 2
   hideAnimationType: 0
   animationFromCornerType: 0
   animationToCornerType: 0
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 1
   animationShowDuration: 0.5
@@ -8748,6 +8794,8 @@ MonoBehaviour:
   showDelay: 0
   hideDelay: 0
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &1484876974
 GameObject:
   m_ObjectHideFlags: 0
@@ -8938,11 +8986,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showItemOnMenuEnable: 0
   showAnimationType: 3
   hideAnimationType: 0
   animationFromCornerType: 3
   animationToCornerType: 0
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
   animationShowDuration: 0.5
@@ -8951,6 +9000,8 @@ MonoBehaviour:
   showDelay: 0.5
   hideDelay: 0.71428573
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &1508443167
 GameObject:
   m_ObjectHideFlags: 0
@@ -9416,11 +9467,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showItemOnMenuEnable: 0
   showAnimationType: 3
   hideAnimationType: 2
   animationFromCornerType: 1
   animationToCornerType: 1
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 1
   animationShowDuration: 0.5
@@ -9429,6 +9481,8 @@ MonoBehaviour:
   showDelay: 0
   hideDelay: 3
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &1568299925
 GameObject:
   m_ObjectHideFlags: 0
@@ -9551,7 +9605,7 @@ GameObject:
   - component: {fileID: 1571150315}
   - component: {fileID: 1571150318}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9571,10 +9625,10 @@ RectTransform:
   m_Father: {fileID: 1865012852}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.26348957, y: 0.84223336}
-  m_AnchorMax: {x: 0.7365104, y: 0.9851963}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0}
-  m_SizeDelta: {x: -28.381214, y: -4.824972}
+  m_AnchorMin: {x: 0.27080336, y: 0.84439814}
+  m_AnchorMax: {x: 0.72916067, y: 0.98346806}
+  m_AnchoredPosition: {x: 0.0009460449, y: 0.000061035156}
+  m_SizeDelta: {x: -0.00004386902, y: 0.000048160553}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1571150315
 MonoBehaviour:
@@ -9664,19 +9718,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
-  showAnimationType: 3
+  showItemOnMenuEnable: 1
+  showAnimationType: 2
   hideAnimationType: 0
-  animationFromCornerType: 1
+  animationFromCornerType: 4
   animationToCornerType: 0
+  pivotWhileRotating: 6
   animationFromCornerStartFromType: 1
   fadeChildren: 0
-  animationShowDuration: 5
+  animationShowDuration: 2
   animationHideDuration: 0.5
-  withDelay: 0
-  showDelay: 0
+  withDelay: 1
+  showDelay: 1
   hideDelay: 0
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 90, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!114 &1588705099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9918,11 +9975,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 0
+  showItemOnMenuEnable: 0
   showAnimationType: 0
   hideAnimationType: 0
   animationFromCornerType: 0
   animationToCornerType: 0
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
   animationShowDuration: 0.5
@@ -9931,6 +9989,8 @@ MonoBehaviour:
   showDelay: 0.5
   hideDelay: 0
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &1604832528
 GameObject:
   m_ObjectHideFlags: 0
@@ -10194,19 +10254,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 3
+  showItemOnMenuEnable: 1
+  showAnimationType: 2
+  hideAnimationType: 2
   animationFromCornerType: 3
   animationToCornerType: 0
+  pivotWhileRotating: 6
   animationFromCornerStartFromType: 0
   fadeChildren: 1
-  animationShowDuration: 1
+  animationShowDuration: 3
   animationHideDuration: 1
   withDelay: 1
   showDelay: 1.8333333
   hideDelay: 0
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 90, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &1638817308
 GameObject:
   m_ObjectHideFlags: 0
@@ -10316,19 +10379,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 3
+  showItemOnMenuEnable: 1
+  showAnimationType: 2
+  hideAnimationType: 2
   animationFromCornerType: 3
   animationToCornerType: 0
+  pivotWhileRotating: 6
   animationFromCornerStartFromType: 0
   fadeChildren: 1
-  animationShowDuration: 1
+  animationShowDuration: 3
   animationHideDuration: 1
   withDelay: 1
   showDelay: 1.75
   hideDelay: 0.083333336
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 90, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &1648515419
 GameObject:
   m_ObjectHideFlags: 0
@@ -10981,11 +11047,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showItemOnMenuEnable: 0
   showAnimationType: 3
   hideAnimationType: 0
   animationFromCornerType: 3
   animationToCornerType: 0
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
   animationShowDuration: 0.5
@@ -10994,6 +11061,8 @@ MonoBehaviour:
   showDelay: 0.78571427
   hideDelay: 0.14285715
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &1699597901
 GameObject:
   m_ObjectHideFlags: 0
@@ -11231,19 +11300,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 3
+  showItemOnMenuEnable: 1
+  showAnimationType: 2
+  hideAnimationType: 2
   animationFromCornerType: 3
   animationToCornerType: 0
+  pivotWhileRotating: 6
   animationFromCornerStartFromType: 0
   fadeChildren: 1
-  animationShowDuration: 1
+  animationShowDuration: 3
   animationHideDuration: 1
   withDelay: 1
   showDelay: 1.5
   hideDelay: 0.33333334
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 90, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &1705641640
 GameObject:
   m_ObjectHideFlags: 0
@@ -11551,19 +11623,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 0
+  showItemOnMenuEnable: 0
   showAnimationType: 0
   hideAnimationType: 0
   animationFromCornerType: 0
   animationToCornerType: 0
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
-  animationShowDuration: 1
+  animationShowDuration: 0.5
   animationHideDuration: 0.5
   withDelay: 0
   showDelay: 0
   hideDelay: 0
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &1756723935
 GameObject:
   m_ObjectHideFlags: 0
@@ -11769,11 +11844,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showItemOnMenuEnable: 0
   showAnimationType: 1
   hideAnimationType: 0
   animationFromCornerType: 0
   animationToCornerType: 0
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
   animationShowDuration: 0.5
@@ -11782,6 +11858,8 @@ MonoBehaviour:
   showDelay: 0.5
   hideDelay: 0
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &1818866172
 GameObject:
   m_ObjectHideFlags: 0
@@ -11972,11 +12050,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showItemOnMenuEnable: 0
   showAnimationType: 3
   hideAnimationType: 0
   animationFromCornerType: 3
   animationToCornerType: 0
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
   animationShowDuration: 0.5
@@ -11985,6 +12064,8 @@ MonoBehaviour:
   showDelay: 0.85714287
   hideDelay: 0
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!114 &1821699648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12278,19 +12359,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 0
+  showItemOnMenuEnable: 1
   showAnimationType: 2
-  hideAnimationType: 0
+  hideAnimationType: 2
   animationFromCornerType: 0
   animationToCornerType: 0
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
-  animationShowDuration: 0.5
+  animationShowDuration: 0
   animationHideDuration: 0.5
   withDelay: 0
-  showDelay: 0
+  showDelay: 1
   hideDelay: 0
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &1877294200
 GameObject:
   m_ObjectHideFlags: 0
@@ -12528,6 +12612,7 @@ MonoBehaviour:
   - {fileID: 546848179}
   - {fileID: 816083895}
   - {fileID: 1982784108}
+  - {fileID: 832105038}
   - {fileID: 1291177360}
   - {fileID: 2051857848}
   - {fileID: 1700990570}
@@ -12567,11 +12652,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
-  showAnimationType: 2
-  hideAnimationType: 2
+  showItemOnMenuEnable: 1
+  showAnimationType: 3
+  hideAnimationType: 3
   animationFromCornerType: 0
   animationToCornerType: 0
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
   animationShowDuration: 1
@@ -12580,6 +12666,8 @@ MonoBehaviour:
   showDelay: 0
   hideDelay: 1
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &1897150386
 GameObject:
   m_ObjectHideFlags: 0
@@ -13236,19 +13324,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 3
+  showItemOnMenuEnable: 1
+  showAnimationType: 2
+  hideAnimationType: 2
   animationFromCornerType: 3
   animationToCornerType: 0
+  pivotWhileRotating: 6
   animationFromCornerStartFromType: 0
   fadeChildren: 1
-  animationShowDuration: 1
+  animationShowDuration: 3
   animationHideDuration: 1
   withDelay: 1
   showDelay: 1.1666666
   hideDelay: 0.6666666
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 90, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &1983985946
 GameObject:
   m_ObjectHideFlags: 0
@@ -13719,19 +13810,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
-  showAnimationType: 3
-  hideAnimationType: 3
+  showItemOnMenuEnable: 1
+  showAnimationType: 2
+  hideAnimationType: 2
   animationFromCornerType: 3
   animationToCornerType: 0
+  pivotWhileRotating: 6
   animationFromCornerStartFromType: 0
   fadeChildren: 1
-  animationShowDuration: 1
+  animationShowDuration: 3
   animationHideDuration: 1
   withDelay: 1
   showDelay: 1.4166667
   hideDelay: 0.4166667
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 90, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &2056024459
 GameObject:
   m_ObjectHideFlags: 0
@@ -13904,11 +13998,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showItemOnMenuEnable: 0
   showAnimationType: 4
   hideAnimationType: 4
   animationFromCornerType: 4
   animationToCornerType: 5
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
   animationShowDuration: 0.5
@@ -13917,6 +14012,8 @@ MonoBehaviour:
   showDelay: 0
   hideDelay: 1
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &2067227918
 GameObject:
   m_ObjectHideFlags: 0
@@ -14023,19 +14120,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  showOnStart: 1
+  showItemOnMenuEnable: 1
   showAnimationType: 3
   hideAnimationType: 0
   animationFromCornerType: 7
   animationToCornerType: 0
+  pivotWhileRotating: 0
   animationFromCornerStartFromType: 0
   fadeChildren: 0
-  animationShowDuration: 1
+  animationShowDuration: 0.5
   animationHideDuration: 0.5
-  withDelay: 0
-  showDelay: 0
+  withDelay: 1
+  showDelay: 1
   hideDelay: 0
   elasticityPower: 1
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
 --- !u!1 &2144370862
 GameObject:
   m_ObjectHideFlags: 0

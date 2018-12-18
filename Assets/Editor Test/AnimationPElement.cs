@@ -11,12 +11,13 @@ public class AnimationPElement : MonoBehaviour
     public UnityEvent OnShowComplete;
     public UnityEvent OnHideComplete;
 
-    public bool showOnStart;
+    [Tooltip("Show Item Animation On Menu Enable")] public bool showItemOnMenuEnable;
 
     public AnimationType showAnimationType;
     public AnimationType hideAnimationType;
-    public AnimationFromCornerType animationFromCornerType;
-    public AnimationFromCornerType animationToCornerType;
+    public AnimationStartPosition animationFromCornerType;
+    public AnimationStartPosition animationToCornerType;
+    public AnimationStartPosition pivotWhileRotating;
     public AnimationFromCornerStartFromType animationFromCornerStartFromType;
 
     public bool fadeChildren;
@@ -30,6 +31,9 @@ public class AnimationPElement : MonoBehaviour
 
     public float elasticityPower = 1;
 
+    public Vector3 rotateFrom;
+    public Vector3 rotateTo;
+
     private RectTransform rectTransform;
 
     private AnimationPElement[] activeChildrenAnimationElements;
@@ -39,6 +43,8 @@ public class AnimationPElement : MonoBehaviour
     private Vector3 initialWorldPosition;
     private Vector3 initialLocalPosition;
     private Vector3 initialScale;
+    private Quaternion initialRotation;
+    private Vector2 initialPivot;
 
     private Color[] initialColorsOfChildren;
 
@@ -50,6 +56,8 @@ public class AnimationPElement : MonoBehaviour
         initialWorldPosition = transform.position;
         initialLocalPosition = transform.localPosition;
         initialScale = transform.localScale;
+        initialRotation = transform.rotation;
+        initialPivot = rectTransform.pivot;
 
         for (int i = 0; i < graphics.Length; i++)
             initialColorsOfChildren[i] = graphics[i].color;
@@ -71,10 +79,13 @@ public class AnimationPElement : MonoBehaviour
             case (AnimationType.Scale):
                 StartCoroutine(AnimateScale_SHOW());
                 break;
+            case (AnimationType.Rotate):
+                StartCoroutine(AnimateRoation_SHOW());
+                break;
             case (AnimationType.ScaleElastic):
                 StartCoroutine(AnimateElasticScale_SHOW());
                 break;
-            case (AnimationType.Fade):
+            case (AnimationType.FadeColor):
                 StartCoroutine(AnimateFadeIn_SHOW());
                 break;
             case (AnimationType.FromCornerWithScale):
@@ -98,10 +109,13 @@ public class AnimationPElement : MonoBehaviour
             case (AnimationType.Scale):
                 StartCoroutine(AnimateScale_HIDE());
                 break;
+            case (AnimationType.Rotate):
+                StartCoroutine(AnimateRoation_HIDE());
+                break;
             case (AnimationType.ScaleElastic):
                 StartCoroutine(AnimateElasticScale_HIDE());
                 break;
-            case (AnimationType.Fade):
+            case (AnimationType.FadeColor):
                 StartCoroutine(AnimateFadeIn_HIDE());
                 break;
             case (AnimationType.FromCornerWithScale):
@@ -120,6 +134,9 @@ public class AnimationPElement : MonoBehaviour
 
     private IEnumerator AnimateFromCornerWithScale_SHOW()
     {
+        if (animationShowDuration <= 0)
+            yield break;
+
         ResetPosition();
         ResetScale(ResetOptions.Zero);
         ResetColor(ResetOptions.Zero);
@@ -140,7 +157,7 @@ public class AnimationPElement : MonoBehaviour
             endColors[i] = initialColorsOfChildren[i];
         }
 
-        Vector3 startPos = AnimationStartPosition.GetStartPositionFromCorner(initialWorldPosition, rectTransform, animationFromCornerType, AnimationFromCornerStartFromType.Screen);
+        Vector3 startPos = AnimationStartPositions.GetStartPositionFromCorner(initialWorldPosition, rectTransform, animationFromCornerType, AnimationFromCornerStartFromType.Screen);
 
         Vector3 targetPosition = initialWorldPosition;
         rectTransform.position = startPos;
@@ -183,14 +200,17 @@ public class AnimationPElement : MonoBehaviour
 
     private IEnumerator AnimateFromCornerWithoutScale_SHOW()
     {
+        if (animationShowDuration <= 0)
+            yield break;
+
         ResetPosition();
-        ResetColor(ResetOptions.One);
-        ResetScale(ResetOptions.One);
+        ResetScale(ResetOptions.Zero);
+        ResetColor(ResetOptions.Zero);
 
         #region Initialization Part
 
 
-        Vector3 startPos = AnimationStartPosition.GetStartPositionFromCorner(initialWorldPosition, rectTransform, animationFromCornerType, AnimationFromCornerStartFromType.Screen);
+        Vector3 startPos = AnimationStartPositions.GetStartPositionFromCorner(initialWorldPosition, rectTransform, animationFromCornerType, AnimationFromCornerStartFromType.Screen);
         Vector3 targetPosition = initialWorldPosition;
 
         rectTransform.position = startPos;
@@ -199,6 +219,10 @@ public class AnimationPElement : MonoBehaviour
 
         if (withDelay)
             yield return (new WaitForSeconds(showDelay));
+
+        ResetPosition();
+        ResetScale(ResetOptions.One);
+        ResetColor(ResetOptions.One);
 
         // Starting animating.
         float startTime = Time.time;
@@ -224,6 +248,9 @@ public class AnimationPElement : MonoBehaviour
 
     private IEnumerator AnimateElasticScale_SHOW()
     {
+        if (animationShowDuration <= 0)
+            yield break;
+
         ResetPosition();
         ResetScale(ResetOptions.Zero);
         ResetColor(ResetOptions.One);
@@ -262,6 +289,9 @@ public class AnimationPElement : MonoBehaviour
 
     private IEnumerator AnimateScale_SHOW()
     {
+        if (animationShowDuration <= 0)
+            yield break;
+
         ResetPosition();
         ResetScale(ResetOptions.Zero);
         ResetColor(ResetOptions.One);
@@ -289,6 +319,9 @@ public class AnimationPElement : MonoBehaviour
 
     private IEnumerator AnimateFadeIn_SHOW()
     {
+        if (animationShowDuration <= 0)
+            yield break;
+
         ResetPosition();
         ResetScale(ResetOptions.One);
 
@@ -345,6 +378,39 @@ public class AnimationPElement : MonoBehaviour
 
         if (OnShowComplete != null)
             OnShowComplete.Invoke();
+    }
+
+    private IEnumerator AnimateRoation_SHOW()
+    {
+        if (animationShowDuration <= 0)
+            yield break;
+
+        ResetPosition();
+        ResetScale(ResetOptions.One);
+        ResetColor(ResetOptions.One);
+        ResetRotation(ResetOptions.One);
+        SetPivot(pivotWhileRotating);
+
+        if (withDelay)
+            yield return (new WaitForSeconds(showDelay));
+
+        ResetRotation(ResetOptions.One);
+
+        transform.rotation = Quaternion.Euler(rotateFrom);
+
+        float startTime = Time.time;
+        while (Time.time <= startTime + animationShowDuration)
+        {
+            //float t = (Time.time - startTime) / animationShowDuration;
+
+            rectTransform.rotation = Quaternion.Slerp(transform.rotation, initialRotation, Time.deltaTime / animationShowDuration * 4f);
+
+            yield return (null);
+        }
+
+        ResetRotation(ResetOptions.Zero);
+
+        ResetPivot();
     }
 
     #endregion
@@ -507,7 +573,7 @@ public class AnimationPElement : MonoBehaviour
 
 
         Vector3 startPos = initialWorldPosition;
-        Vector3 targetPosition = AnimationStartPosition.GetStartPositionFromCorner(initialWorldPosition, rectTransform, animationToCornerType, AnimationFromCornerStartFromType.Screen);
+        Vector3 targetPosition = AnimationStartPositions.GetStartPositionFromCorner(initialWorldPosition, rectTransform, animationToCornerType, AnimationFromCornerStartFromType.Screen);
         rectTransform.position = startPos;
 
         if (withDelay)
@@ -546,7 +612,7 @@ public class AnimationPElement : MonoBehaviour
     private IEnumerator AnimateFromCornerWithoutScale_HIDE()
     {
         Vector3 startPos = initialWorldPosition;
-        Vector3 targetPosition = AnimationStartPosition.GetStartPositionFromCorner(initialWorldPosition, rectTransform, animationToCornerType, AnimationFromCornerStartFromType.Screen);
+        Vector3 targetPosition = AnimationStartPositions.GetStartPositionFromCorner(initialWorldPosition, rectTransform, animationToCornerType, AnimationFromCornerStartFromType.Screen);
         rectTransform.position = startPos;
 
         if (withDelay)
@@ -570,19 +636,59 @@ public class AnimationPElement : MonoBehaviour
             OnHideComplete.Invoke();
     }
 
+    private IEnumerator AnimateRoation_HIDE()
+    {
+        if (animationHideDuration <= 0)
+            yield break;
+
+        ResetPosition();
+        ResetScale(ResetOptions.One);
+        ResetColor(ResetOptions.One);
+        ResetRotation(ResetOptions.Zero);
+        SetPivot(pivotWhileRotating);
+
+        if (withDelay)
+            yield return (new WaitForSeconds(hideDelay));
+
+        ResetRotation(ResetOptions.Zero);
+
+        transform.rotation = Quaternion.Euler(rotateFrom);
+
+        float startTime = Time.time;
+        while (Time.time <= startTime + animationHideDuration)
+        {
+            //float t = (Time.time - startTime) / animationShowDuration;
+
+            rectTransform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(rotateFrom), Time.deltaTime / animationHideDuration * 4f);
+
+            yield return (null);
+        }
+
+        ResetRotation(ResetOptions.Zero);
+
+        ResetPivot();
+    }
+
     #endregion
 
     private void ResetDefaults()
     {
         ResetPosition();
+        ResetPivot();
         ResetScale(ResetOptions.One);
         ResetColor(ResetOptions.One);
+        ResetRotation(ResetOptions.Zero);
     }
 
     private void ResetPosition()
     {
         transform.position = initialWorldPosition;
         transform.localPosition = initialLocalPosition;
+    }
+
+    private void ResetPivot()
+    {
+        rectTransform.pivot = initialPivot;
     }
 
     private void ResetColor(ResetOptions resetOption)
@@ -630,18 +736,64 @@ public class AnimationPElement : MonoBehaviour
         }
     }
 
+    private void ResetRotation(ResetOptions resetOption)
+    {
+        if (resetOption == ResetOptions.Zero)
+        {
+            transform.rotation = initialRotation;
+        }
+        else if (resetOption == ResetOptions.One)
+        {
+            transform.rotation = Quaternion.Euler(rotateFrom);
+        }
+    }
+
     private enum ResetOptions
     {
         Zero, One
+    }
+
+    private void SetPivot(AnimationStartPosition pivotPosition)
+    {
+        switch (pivotPosition)
+        {
+            case (AnimationStartPosition.Bottom):
+                rectTransform.pivot = new Vector2();
+            break;
+            case (AnimationStartPosition.Top):
+                rectTransform.pivot = new Vector2(0.5f, 1);
+                break;
+            case (AnimationStartPosition.Right):
+                rectTransform.pivot = new Vector2(1, 0.5f);
+                break;
+            case (AnimationStartPosition.Left):
+                rectTransform.pivot = new Vector2(0, 0.5f);
+                break;
+            case (AnimationStartPosition.TopRight):
+                rectTransform.pivot = Vector2.one;
+                break;
+            case (AnimationStartPosition.TopLeft):
+                rectTransform.pivot = new Vector2(0, 1);
+                break;
+            case (AnimationStartPosition.BottomRight):
+                rectTransform.pivot = new Vector2(1, 0);
+                break;
+            case (AnimationStartPosition.BottomLeft):
+                rectTransform.pivot = Vector2.zero;
+                break;
+            case (AnimationStartPosition.Center):
+                rectTransform.pivot = new Vector2(0.5f, 0.5f);
+                break;
+        }
     }
 }
 
 public enum AnimationType
 {
-    Scale, ScaleElastic, Fade, FromCornerWithScale, FromCornerWithoutScale
+    Scale, ScaleElastic, Rotate, FadeColor, FromCornerWithScale, FromCornerWithoutScale
 }
 
-public enum AnimationFromCornerType
+public enum AnimationStartPosition
 {
-    BottomRight, TopRight, BottomLeft, TopLeft, Up, Bottom, Left, Right
+    BottomRight, TopRight, BottomLeft, TopLeft, Top, Bottom, Left, Right, Center
 }

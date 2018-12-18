@@ -21,7 +21,7 @@ public class AnimationPManager : MonoBehaviour
     {
         foreach (var element in childrenElements)
         {
-            if (element.showOnStart)
+            if (element.showItemOnMenuEnable)
                 element.ShowElement();
         }
     }

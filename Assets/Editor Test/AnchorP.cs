@@ -5,19 +5,19 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class AnchorP : MonoBehaviour
 {
-    private static float screenWidth, screenHeight;
+    private static float parentRectWidth, parentRectHeight;
 
     private static RectTransform rectTransform;
 
-    private static float rectWidth, rectHeight;
+    private static float thisRectWidth, thisRectHeight;
 
     private static Vector3 rectInitialPosition;
     private static Vector2 minAnchors;
     private static Vector2 maxAnchors;
     private static Vector2 rectRelativeToScreenPosition;
 
-    private static float widthRelativeToScreen;
-    private static float heightRelativeToScreen;
+    private static float rectWidthRatio;
+    private static float rectHeightRatio;
 
     public static void SetAnchorsToRect(RectTransform rect)
     {
@@ -39,15 +39,93 @@ public class AnchorP : MonoBehaviour
         // Resetting the rect to its initial position, width, and height.
         rectTransform.localPosition = rectInitialPosition;
 
-        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, rectHeight);
-        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, rectWidth);
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, thisRectHeight);
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, thisRectWidth);
+    }
+
+    public static void SetAnchorsCenterOfRect(RectTransform rect)
+    {
+        rectTransform = rect;
+
+        SetInitialValues();
+
+        rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+        rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+
+        // Resetting the rect to its initial position, width, and height.
+        rectTransform.localPosition = rectInitialPosition;
+
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, thisRectHeight);
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, thisRectWidth);
+    }
+
+    public static void SetAnchorsTopRight(RectTransform rect)
+    {
+        rectTransform = rect;
+
+        SetInitialValues();
+
+        rectTransform.anchorMin = Vector2.one;
+        rectTransform.anchorMax = Vector2.one;
+
+        // Resetting the rect to its initial position, width, and height.
+        rectTransform.localPosition = rectInitialPosition;
+
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, thisRectHeight);
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, thisRectWidth);
+    }
+
+    public static void SetAnchorsTopLeft(RectTransform rect)
+    {
+        rectTransform = rect;
+
+        SetInitialValues();
+
+        rectTransform.anchorMin = new Vector2(0, 1);
+        rectTransform.anchorMax = new Vector2(0, 1);
+
+        // Resetting the rect to its initial position, width, and height.
+        rectTransform.localPosition = rectInitialPosition;
+
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, thisRectHeight);
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, thisRectWidth);
+    }
+
+    public static void SetAnchorsBottomRight(RectTransform rect)
+    {
+        rectTransform = rect;
+
+        SetInitialValues();
+
+        rectTransform.anchorMin = new Vector2(1, 0);
+        rectTransform.anchorMax = new Vector2(1, 0);
+
+        // Resetting the rect to its initial position, width, and height.
+        rectTransform.localPosition = rectInitialPosition;
+
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, thisRectHeight);
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, thisRectWidth);
+    }
+
+    public static void SetAnchorsBottomLeft(RectTransform rect)
+    {
+        rectTransform = rect;
+
+        SetInitialValues();
+
+        rectTransform.anchorMin = Vector2.zero;
+        rectTransform.anchorMax = Vector2.zero;
+
+        // Resetting the rect to its initial position, width, and height.
+        rectTransform.localPosition = rectInitialPosition;
+
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, thisRectHeight);
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, thisRectWidth);
     }
 
     public static void SetRectToAnchor(RectTransform rect)
     {
         rectTransform = rect;
-
-        SetInitialValues();
 
         rectTransform.offsetMin = Vector2.zero;
         rectTransform.offsetMax = Vector2.zero;
@@ -59,29 +137,31 @@ public class AnchorP : MonoBehaviour
         rectInitialPosition = rectTransform.localPosition;
 
         // Screen dimensions.
-        // We do not use Screen.width and Screen.height here, because these variables are only set correctly in play mode, in edit mode, they return the size of the window, it's a litte bit tricky -_- .
+        // We do not use Screen.width and Screen.height here, because these variables are only set correctly in play mode, in edit mode, they return the size of the game window, it's a litte bit tricky -_- .
+        // We do not use screen dimensions anymore. Instead we use the parent rect's dimensions.
 
         //string[] resolution = UnityEditor.UnityStats.screenRes.Split('x');
         //screenWidth = int.Parse(resolution[0]);
         //screenHeight = int.Parse(resolution[1]);
 
-        screenWidth = rectTransform.parent.GetComponent<RectTransform>().rect.width;
-        screenHeight = rectTransform.parent.GetComponent<RectTransform>().rect.height;
+        parentRectWidth = rectTransform.parent.GetComponent<RectTransform>().rect.width;
+        parentRectHeight = rectTransform.parent.GetComponent<RectTransform>().rect.height;
 
         // Rect dimensions.
-        rectWidth = rectTransform.rect.width;
-        rectHeight = rectTransform.rect.height;
+        thisRectWidth = rectTransform.rect.width;
+        thisRectHeight = rectTransform.rect.height;
 
-        // Relative position, width, and height. We add 0.5 to X and Y becuase the center in local space is (0, 0) while the center in world space (0.5, 0.5).
-        rectRelativeToScreenPosition = new Vector2(rectTransform.localPosition.x / screenWidth + 0.5f, rectTransform.localPosition.y / screenHeight + 0.5f);
+        // Relative position, width, and height. We add 0.5 to X and Y coordinates becuase the center in local space is (0, 0) while the center in world space (0.5, 0.5).
+        rectRelativeToScreenPosition = new Vector2((rectTransform.localPosition.x / parentRectWidth) + 0.5f, (rectTransform.localPosition.y / parentRectHeight) + 0.5f);
 
-        widthRelativeToScreen = rectWidth / screenWidth;
-        heightRelativeToScreen = rectHeight / screenHeight;
+        // widthRelativeToScreen and heightRelativeToScreen return the ratio of the current rect's dimensions relative to screen. e.g if parent rect's width = 400 and current rect's width = 100, then widthRelativeToScreen will be 0.25 
+        rectWidthRatio = thisRectWidth / parentRectWidth;
+        rectHeightRatio = thisRectHeight / parentRectHeight;
 
-        float minX = rectRelativeToScreenPosition.x - (widthRelativeToScreen / 2);
-        float minY = rectRelativeToScreenPosition.y - (heightRelativeToScreen / 2);
-        float maxX = rectRelativeToScreenPosition.x + (widthRelativeToScreen / 2);
-        float maxY = rectRelativeToScreenPosition.y + (heightRelativeToScreen / 2);
+        float minX = rectRelativeToScreenPosition.x - (rectWidthRatio / 2);
+        float minY = rectRelativeToScreenPosition.y - (rectHeightRatio / 2);
+        float maxX = rectRelativeToScreenPosition.x + (rectWidthRatio / 2);
+        float maxY = rectRelativeToScreenPosition.y + (rectHeightRatio / 2);
 
         minAnchors = new Vector2(minX, minY);
         maxAnchors = new Vector2(maxX, maxY);

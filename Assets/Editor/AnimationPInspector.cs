@@ -8,9 +8,12 @@ public class AnimationPInspector : Editor
     private AnimationPElement animationP;
     private bool showFromCornerAnimation;
 
-    private SerializedProperty _showOnStart;
+    private SerializedProperty _showItemOnMenuEnable;
     private SerializedProperty _animationShowDuration;
     private SerializedProperty _animationHideDuration;
+    private SerializedProperty _pivotWhileRotating;
+    private SerializedProperty _rotateFrom;
+    private SerializedProperty _rotateTo;
     private SerializedProperty _showAnimationType;
     private SerializedProperty _hideAnimationType;
     private SerializedProperty _animationFromCornerStartFromType;
@@ -33,9 +36,12 @@ public class AnimationPInspector : Editor
     {
         animationP = (AnimationPElement)target;
 
-        _showOnStart = serializedObject.FindProperty("showOnStart");
+        _showItemOnMenuEnable = serializedObject.FindProperty("showItemOnMenuEnable");
         _animationShowDuration = serializedObject.FindProperty("animationShowDuration");
         _animationHideDuration = serializedObject.FindProperty("animationHideDuration");
+        _pivotWhileRotating = serializedObject.FindProperty("pivotWhileRotating");
+        _rotateFrom = serializedObject.FindProperty("rotateFrom");
+        _rotateTo = serializedObject.FindProperty("rotateTo");
         _showAnimationType = serializedObject.FindProperty("showAnimationType");
         _hideAnimationType = serializedObject.FindProperty("hideAnimationType");
         _animationFromCornerStartFromType = serializedObject.FindProperty("animationFromCornerStartFromType");
@@ -67,6 +73,7 @@ public class AnimationPInspector : Editor
             AnimationWorksOnStart_TOGGLE();
             ShowAnimationType_DROPDOWN();
             ShowAnimationStartPosition_DROPDOWN();
+            ShowAnimationRotaion_PROPERTIES();
             FadeChildrenShow_TOGGLE();
             AnimationShowDuration_INPUT();
             ShowAnimationDelay_PROPERTIES();
@@ -78,6 +85,7 @@ public class AnimationPInspector : Editor
             GUI.color = Color.gray;
 
             HideAnimationType_DROPDOWN();
+            HideAnimationRotaion_PROPERTIES();
             FadeChildrenHide_TOGGLE();
             AnimationHideDuration_INPUT();
             HideAnimationDelay_PROPERTIES();
@@ -92,26 +100,20 @@ public class AnimationPInspector : Editor
     {
         var titleLabelStyle = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.UpperCenter, fontSize = 20, fontStyle = FontStyle.Bold, fixedHeight = 50 };
 
-        EditorGUILayout.BeginVertical();
         EditorGUILayout.LabelField("AnimationP Inspector", titleLabelStyle);
-        EditorGUILayout.EndVertical();
 
         EditorGUILayout.Space(); EditorGUILayout.Space();
     }
 
     private void AnimationWorksOnStart_TOGGLE()
     {
-        EditorGUILayout.BeginVertical();
-
-        EditorGUILayout.PropertyField(_showOnStart, new GUIContent("Show On Start"));
+        EditorGUILayout.PropertyField(_showItemOnMenuEnable, new GUIContent("Show Animation On Menu Enable"));
 
         GUILayout.Space(10);
     }
 
     private void ShowAnimationType_DROPDOWN()
     {
-        EditorGUILayout.BeginVertical();
-
         EditorGUILayout.PropertyField(_showAnimationType, new GUIContent("Animation Type"));
 
         EditorGUILayout.Space(); EditorGUILayout.Space();
@@ -149,8 +151,6 @@ public class AnimationPInspector : Editor
 
     private void HideAnimationType_DROPDOWN()
     {
-        EditorGUILayout.BeginVertical();
-
         EditorGUILayout.PropertyField(_hideAnimationType, new GUIContent("Animation Type"));
 
         EditorGUILayout.Space(); EditorGUILayout.Space();
@@ -169,13 +169,13 @@ public class AnimationPInspector : Editor
 
     private void FadeChildrenShow_TOGGLE()
     {
-        if (animationP.showAnimationType == AnimationType.Fade)
+        if (animationP.showAnimationType == AnimationType.FadeColor)
             EditorGUILayout.PropertyField(_fadeChildren, new GUIContent("Fade Children With Parent"));
     }
 
     private void FadeChildrenHide_TOGGLE()
     {
-        if (animationP.hideAnimationType == AnimationType.Fade)
+        if (animationP.hideAnimationType == AnimationType.FadeColor)
             EditorGUILayout.PropertyField(_fadeChildren, new GUIContent("Fade Children With Parent"));
     }
 
@@ -190,17 +190,15 @@ public class AnimationPInspector : Editor
 
     private void AnimationHideDuration_INPUT()
     {
-        EditorGUILayout.Space();
+        GUILayout.Space(10);
 
         EditorGUILayout.PropertyField(_animationHideDuration, new GUIContent("Animation Hide Duration"));
 
-        EditorGUILayout.Space(); EditorGUILayout.Space();
+        GUILayout.Space(10);
     }
 
     private void ShowAnimationDelay_PROPERTIES()
     {
-        EditorGUILayout.BeginVertical();
-
         EditorGUILayout.PropertyField(_withDelay, new GUIContent("With Delay"));
 
         if (animationP.withDelay)
@@ -208,17 +206,37 @@ public class AnimationPInspector : Editor
             EditorGUILayout.PropertyField(_showDelay, new GUIContent("Show Delay"));
         }
 
-        EditorGUILayout.EndVertical();
-
         EditorGUILayout.Space(); EditorGUILayout.Space();
+    }
 
-        EditorGUILayout.EndVertical();
+    private void ShowAnimationRotaion_PROPERTIES()
+    {
+        if (animationP.showAnimationType == AnimationType.Rotate)
+        {
+            EditorGUILayout.PropertyField(_rotateFrom, new GUIContent("Rotate From"), true);
+            EditorGUILayout.PropertyField(_rotateTo, new GUIContent("Rotate To"), true);
+
+            EditorGUILayout.PropertyField(_pivotWhileRotating, new GUIContent("Rotaion Pivot"));
+        }
+
+        GUILayout.Space(10);
+    }
+
+    private void HideAnimationRotaion_PROPERTIES()
+    {
+        if (animationP.hideAnimationType == AnimationType.Rotate)
+        {
+            EditorGUILayout.PropertyField(_rotateFrom, new GUIContent("Rotate From"), true);
+            EditorGUILayout.PropertyField(_rotateTo, new GUIContent("Rotate To"), true);
+
+            EditorGUILayout.PropertyField(_pivotWhileRotating, new GUIContent("Rotaion Pivot"));
+        }
+
+        GUILayout.Space(10);
     }
 
     private void HideAnimationDelay_PROPERTIES()
     {
-        EditorGUILayout.BeginVertical();
-
         EditorGUILayout.PropertyField(_withDelay, new GUIContent("With Delay"));
 
         if (animationP.withDelay)
@@ -226,27 +244,19 @@ public class AnimationPInspector : Editor
             EditorGUILayout.PropertyField(_hideDelay, new GUIContent("Hide Delay"));
         }
 
-        EditorGUILayout.EndVertical();
-
         EditorGUILayout.Space(); EditorGUILayout.Space();
-
-        EditorGUILayout.EndVertical();
     }
 
     private void OnShow_EVENTS()
     {
-        EditorGUILayout.BeginVertical();
         EditorGUILayout.PropertyField(_onShowEvent, new GUIContent("On Show"));
         EditorGUILayout.PropertyField(_onShowCompleteEvent, new GUIContent("On Show Complete"));
-        EditorGUILayout.EndVertical();
     }
 
     private void OnHide_EVENTS()
     {
-        EditorGUILayout.BeginVertical();
         EditorGUILayout.PropertyField(_onHideEvent, new GUIContent("On Hide"));
         EditorGUILayout.PropertyField(_onHideCompleteEvent, new GUIContent("On Hide Complete"));
-        EditorGUILayout.EndVertical();
     }
 
     private void AutomateChildrenShowDelays_BUTTON()
@@ -267,7 +277,7 @@ public class AnimationPInspector : Editor
             }
         }
 
-        GUILayout.Space(5);
+        GUILayout.Space(10);
     }
 
     private void AutomateChildrenHideDelays_BUTTON()
@@ -280,7 +290,7 @@ public class AnimationPInspector : Editor
             float currentValue = 0;
 
             elementsInChildren[elementsInChildren.Length - 1].hideDelay = 0;
-            for (int i = elementsInChildren.Length - 2; i >= 1 ; i--)
+            for (int i = elementsInChildren.Length - 2; i >= 1; i--)
             {
                 if (elementsInChildren[i].withDelay)
                     elementsInChildren[i].hideDelay = step + currentValue;
@@ -289,6 +299,6 @@ public class AnimationPInspector : Editor
             }
         }
 
-        GUILayout.Space(20);
+        GUILayout.Space(10);
     }
 }
