@@ -7,7 +7,7 @@ public class Ed : EditorWindow
 {
     private static EditorWindow window;
 
-    [MenuItem("Window/Ed %#e")]
+    [MenuItem("Window/Ed %#q")]
     private static void ShowWindow()
     {
         window = GetWindow<Ed>("Ed Test");

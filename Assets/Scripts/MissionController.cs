@@ -75,7 +75,7 @@ public class MissionController : MonoBehaviour
             GameObject image = Instantiate(imageToInstantiate, aircraftImagesPanel.transform, false);
             image.GetComponent<Image>().sprite = aircraft.aircraftData.Photo;
 
-            image.GetComponent<Button>().onClick.AddListener(() => new SceneController().StartScene(1));
+            image.GetComponent<Button>().onClick.AddListener(() => new SceneController().StartScene("1 - Game"));
             image.GetComponent<Button>().onClick.AddListener(() => AircraftController.Instance.ChangeActiveAircraft(index));
             image.GetComponent<Button>().onClick.AddListener(() => loading.SetActive(true));
 

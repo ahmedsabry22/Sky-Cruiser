@@ -66,8 +66,8 @@ public class Aircraft : MonoBehaviour
                 Instantiate(ExplosionParticlePrefab, transform.position, Quaternion.identity);
                 Audio.Instance.PlayClip("explosion");
                 GameObject losePanel = Instantiate(Resources.Load<GameObject>("Prefabs/LosePanel"), GameObject.FindGameObjectWithTag("UICanvas").transform, false);
-                losePanel.transform.Find("play_btn").GetComponent<Button>().onClick.AddListener(() => FindObjectOfType<SceneController>().StartScene(1));
-                losePanel.transform.Find("exit_btn").GetComponent<Button>().onClick.AddListener(() => FindObjectOfType<SceneController>().StartScene(0));
+                losePanel.transform.Find("play_btn").GetComponent<Button>().onClick.AddListener(() => FindObjectOfType<SceneController>().StartScene("1 - Game"));
+                losePanel.transform.Find("exit_btn").GetComponent<Button>().onClick.AddListener(() => FindObjectOfType<SceneController>().StartScene("0 - Home"));
                 Destroy(gameObject);
             }
         }

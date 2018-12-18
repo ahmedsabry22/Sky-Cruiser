@@ -3,10 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    public void StartScene(int sceneIndex)
+    public void StartScene(string sceneName)
     {
         Time.timeScale = 1;
-        SceneManager.LoadSceneAsync(sceneIndex);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
     public void PausePlay(float timeScele)

@@ -31,7 +31,7 @@ public class AnimationPManagerInspector : Editor
         if (GUILayout.Button("Update Animated Elements"))
         {
             animationPManager.UpdateElementsInChildren();
-            Debug.Log("Updated UI Elements - current UI elements in children : " + animationPManager.childrenElements.Length);
+            Debug.Log("Updated UI Elements - current UI animation elements in menu : " + animationPManager.childrenElements.Length);
         }
 
         GUILayout.Space(20);

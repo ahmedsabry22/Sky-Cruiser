@@ -6,13 +6,13 @@ public class AnchorED : EditorWindow
 {
     private static EditorWindow window;
 
-    [MenuItem("Window/Anchors Window %#a")]
+    [MenuItem("Window/Anchors Window %#r")]
     private static void ShowWindow()
     {
         window = GetWindow<AnchorED>("Anchor Ed");
         window.Show();
-        window.maxSize = new Vector2(300, 500);
-        window.minSize = new Vector2(300, 500);
+        window.maxSize = new Vector2(270, 490);
+        window.minSize = new Vector2(270, 490);
     }
 
     private void OnGUI()
@@ -53,7 +53,7 @@ public class AnchorED : EditorWindow
         GUILayout.Space(30);
     }
 
-    [MenuItem("Tools/AnimationP/Align Anchors With Selected %#q")]
+    [MenuItem("Tools/AnimationP/Align Anchors With Selected %#k")]
     private static void SetAnchorsToFitRect()
     {
         var btnContent = new GUIContent() { text = "Align Anchors With Rect", tooltip = "Move Anchors to be aligned with the rect" };
@@ -73,7 +73,7 @@ public class AnchorED : EditorWindow
             }
         }
 
-        GUILayout.Space(5);
+        GUILayout.Space(20);
     }
 
     private void SetAnchorsCenterOfRect()
@@ -94,8 +94,6 @@ public class AnchorED : EditorWindow
                 }
             }
         }
-
-        GUILayout.Space(5);
     }
 
     private void SetAnchorsTopRight()
@@ -116,8 +114,6 @@ public class AnchorED : EditorWindow
                 }
             }
         }
-
-        GUILayout.Space(5);
     }
 
     private void SetAnchorsTopLeft()
@@ -138,8 +134,6 @@ public class AnchorED : EditorWindow
                 }
             }
         }
-
-        GUILayout.Space(5);
     }
 
     private void SetAnchorsBottomRight()
@@ -160,8 +154,6 @@ public class AnchorED : EditorWindow
                 }
             }
         }
-
-        GUILayout.Space(5);
     }
 
     private void SetAnchorsBottomLeft()
@@ -183,7 +175,7 @@ public class AnchorED : EditorWindow
             }
         }
 
-        GUILayout.Space(5);
+        GUILayout.Space(20);
     }
 
     [MenuItem("Tools/AnimationP/Align Selected To Anchors %#w")]

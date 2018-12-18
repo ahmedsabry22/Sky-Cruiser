@@ -389,11 +389,11 @@ public class AnimationPElement : MonoBehaviour
         ResetScale(ResetOptions.One);
         ResetColor(ResetOptions.One);
         ResetRotation(ResetOptions.One);
-        SetPivot(pivotWhileRotating);
 
         if (withDelay)
             yield return (new WaitForSeconds(showDelay));
 
+        SetPivot(pivotWhileRotating);
         ResetRotation(ResetOptions.One);
 
         transform.rotation = Quaternion.Euler(rotateFrom);
@@ -645,14 +645,15 @@ public class AnimationPElement : MonoBehaviour
         ResetScale(ResetOptions.One);
         ResetColor(ResetOptions.One);
         ResetRotation(ResetOptions.Zero);
-        SetPivot(pivotWhileRotating);
 
         if (withDelay)
             yield return (new WaitForSeconds(hideDelay));
 
+        SetPivot(pivotWhileRotating);
+
         ResetRotation(ResetOptions.Zero);
 
-        transform.rotation = Quaternion.Euler(rotateFrom);
+        transform.rotation = initialRotation;
 
         float startTime = Time.time;
         while (Time.time <= startTime + animationHideDuration)
@@ -664,7 +665,7 @@ public class AnimationPElement : MonoBehaviour
             yield return (null);
         }
 
-        ResetRotation(ResetOptions.Zero);
+        ResetRotation(ResetOptions.One);
 
         ResetPivot();
     }
